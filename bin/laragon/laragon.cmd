@@ -1,0 +1,1 @@
+@SET "LARAGON_ROOT=C:\Project-for-webdev-Software\" && SET "DOCUMENT_ROOT=C:/Project-for-webdev-Software/www" && SET "OPENSSL_CONF=C:\Project-for-webdev-Software\bin\git\mingw64\ssl\openssl.cnf" && SET "PATH=C:\Users\lukeo\AppData\Local\Yarn\config\global\node_modules\.bin;C:\Users\lukeo\AppData\Roaming\npm;C:\Users\lukeo\AppData\Roaming\Composer\vendor\bin;;%PATH%;"

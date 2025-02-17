@@ -9,14 +9,12 @@
 <script src=""></script>
 <body>
 
-<img src="img_la.jpg" alt="LA" style="width:100%">
-
 <div class="">
- <h1>This is a the home page</h1>
- <h3>Best sellers list</h3>
+ <h1>Tournament Discovery Page</h1>
+ <h3>List of Tournmanets</h3>
  
 <?php 
- $products = array("Prod1","Prod2","Prod3","Prod4","Prod5");
+ $products = array("Generic EU Tournament","Generic NA Tournament","Generic Oceania Tournament","Big Regional","Small Local");
  foreach ($products as $x){
     echo "$x <br>";
 }
