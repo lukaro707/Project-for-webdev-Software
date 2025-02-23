@@ -9,16 +9,22 @@
 <script src=""></script>
 <body>
 
+<?php
+    include("templates\header.php");
+?>
+
 <div class="">
  <h1>Tournament Discovery Page</h1>
  <h3>List of Tournmanets</h3>
+ <input type = "text" placeholder="Search...">
  
-<?php 
- $products = array("Generic EU Tournament","Generic NA Tournament","Generic Oceania Tournament","Big Regional","Small Local");
- foreach ($products as $x){
-    echo "$x <br>";
-}
-?>
+<a href="www.google.com"><h2>Jimmy John's Joust</h2>
+<img width="320em" height="180em"></a>
+<br>
+
+<a href="www.google.com"><h2>Spicy NA</h2>
+<img width="320em" height="180em"></a>
+
 
 </div>
 
