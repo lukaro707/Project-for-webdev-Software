@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="generator" content="Asciidoctor 2.0.23"/>
+<meta name="generator" content="Asciidoctor 2.0.17"/>
 <title>git-worktree(1)</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700"/>
 <style>
@@ -84,10 +84,10 @@ code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;
 ul,ol,dl{line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
 ul,ol{margin-left:1.5em}
 ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0}
+ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
+ul.square{list-style-type:square}
 ul.circle{list-style-type:circle}
 ul.disc{list-style-type:disc}
-ul.square{list-style-type:square}
-ul.circle ul:not([class]),ul.disc ul:not([class]),ul.square ul:not([class]){list-style:inherit}
 ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
 dl dt{margin-bottom:.3125em;font-weight:bold}
 dl dd{margin-bottom:1.25em}
@@ -140,7 +140,7 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #content::before{content:none}
 #header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
 #header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
-#header>h1:only-child{border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
 #header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:flex;flex-flow:row wrap}
 #header .details span:first-child{margin-left:-.125em}
 #header .details span.email a{color:rgba(0,0,0,.85)}
@@ -162,7 +162,6 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #toctitle{color:#7a2518;font-size:1.2em}
 @media screen and (min-width:768px){#toctitle{font-size:1.375em}
 body.toc2{padding-left:15em;padding-right:0}
-body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
 #toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
 #toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
 #toc.toc2>ul{font-size:.9em;margin-bottom:0}
@@ -209,10 +208,13 @@ table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
 .admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
 .admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
 .exampleblock>.content{border:1px solid #e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;border-radius:4px}
+.exampleblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child{margin-bottom:0}
 .sidebarblock{border:1px solid #dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;border-radius:4px}
+.sidebarblock>:first-child{margin-top:0}
+.sidebarblock>:last-child{margin-bottom:0}
 .sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
-.exampleblock>.content>:first-child,.sidebarblock>.content>:first-child{margin-top:0}
-.exampleblock>.content>:last-child,.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
 .literalblock pre,.listingblock>.content>pre{border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
 @media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
 @media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
@@ -328,7 +330,7 @@ a.image{text-decoration:none;display:inline-block}
 a.image object{pointer-events:none}
 sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
 sup.footnote a,sup.footnoteref a{text-decoration:none}
-sup.footnote a:active,sup.footnoteref a:active,#footnotes .footnote a:first-of-type:active{text-decoration:underline}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
 #footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
 #footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
 #footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
@@ -391,7 +393,7 @@ b.conum *{color:inherit!important}
 dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
 h1,h2,p,td.content,span.alt,summary{letter-spacing:-.01em}
 p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
-p,blockquote,dt,td.content,td.hdlist1,span.alt,summary{font-size:1.0625rem}
+p,blockquote,dt,td.content,span.alt,summary{font-size:1.0625rem}
 p{margin-bottom:1.25rem}
 .sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
 .exampleblock>.content{background:#fffef7;border-color:#e0e0dc;box-shadow:0 1px 4px #e0e0dc}
@@ -433,11 +435,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 #footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
-<style>
-pre>code {
-   display: inline;
-}
-</style>
 </head>
 <body class="manpage">
 <div id="header">
@@ -452,8 +449,7 @@ pre>code {
 <h2 id="_synopsis">SYNOPSIS</h2>
 <div class="sectionbody">
 <div class="verseblock">
-<pre class="content"><em>git worktree add</em> [-f] [--detach] [--checkout] [--lock [--reason &lt;string&gt;]]
-                   [--orphan] [(-b | -B) &lt;new-branch&gt;] &lt;path&gt; [&lt;commit-ish&gt;]
+<pre class="content"><em>git worktree add</em> [-f] [--detach] [--checkout] [--lock [--reason &lt;string&gt;]] [-b &lt;new-branch&gt;] &lt;path&gt; [&lt;commit-ish&gt;]
 <em>git worktree list</em> [-v | --porcelain [-z]]
 <em>git worktree lock</em> [--reason &lt;string&gt;] &lt;worktree&gt;
 <em>git worktree move</em> &lt;worktree&gt; &lt;new-path&gt;
@@ -554,17 +550,6 @@ exist, a new branch based on <code>HEAD</code> is automatically created as if
 <code>-b &lt;branch&gt;</code> was given.  If <code>&lt;branch&gt;</code> does exist, it will be checked out
 in the new worktree, if it&#8217;s not checked out anywhere else, otherwise the
 command will refuse to create the worktree (unless <code>--force</code> is used).</p>
-</div>
-<div class="paragraph">
-<p>If <code>&lt;commit-ish&gt;</code> is omitted, neither <code>--detach</code>, or <code>--orphan</code> is
-used, and there are no valid local branches (or remote branches if
-<code>--guess-remote</code> is specified) then, as a convenience, the new worktree is
-associated with a new unborn branch named <code>&lt;branch&gt;</code> (after
-<code>$(basename &lt;path&gt;)</code> if neither <code>-b</code> or <code>-B</code> is used) as if <code>--orphan</code> was
-passed to the command. In the event the repository has a remote and
-<code>--guess-remote</code> is used, but no remote or local branches exist, then the
-command fails with a warning reminding the user to fetch from their remote
-first (or override by using <code>-f/--force</code>).</p>
 </div>
 </dd>
 <dt class="hdlist1">list</dt>
@@ -713,11 +698,6 @@ but without a race condition.</p>
 <p>With <code>prune</code>, do not remove anything; just report what it would
 remove.</p>
 </dd>
-<dt class="hdlist1">--orphan</dt>
-<dd>
-<p>With <code>add</code>, make the new worktree and index empty, associating
-the worktree with a new unborn branch named <code>&lt;new-branch&gt;</code>.</p>
-</dd>
 <dt class="hdlist1">--porcelain</dt>
 <dd>
 <p>With <code>list</code>, output in an easy-to-parse format for scripts.
@@ -785,8 +765,7 @@ rules and how to access refs of one worktree from another.</p>
 <p>In general, all pseudo refs are per-worktree and all refs starting with
 <code>refs/</code> are shared. Pseudo refs are ones like <code>HEAD</code> which are directly
 under <code>$GIT_DIR</code> instead of inside <code>$GIT_DIR/refs</code>. There are exceptions,
-however: refs inside <code>refs/bisect</code>, <code>refs/worktree</code> and <code>refs/rewritten</code> are
-not shared.</p>
+however: refs inside <code>refs/bisect</code> and <code>refs/worktree</code> are not shared.</p>
 </div>
 <div class="paragraph">
 <p>Refs that are per-worktree can still be accessed from another worktree via
@@ -888,8 +867,8 @@ linked worktree <code>git rev-parse --git-path HEAD</code> returns
 <code>/path/other/test-next/.git/HEAD</code> or <code>/path/main/.git/HEAD</code>) while <code>git
 rev-parse --git-path refs/heads/master</code> uses
 <code>$GIT_COMMON_DIR</code> and returns <code>/path/main/.git/refs/heads/master</code>,
-since refs are shared across all worktrees, except <code>refs/bisect</code>,
-<code>refs/worktree</code> and <code>refs/rewritten</code>.</p>
+since refs are shared across all worktrees, except <code>refs/bisect</code> and
+<code>refs/worktree</code>.</p>
 </div>
 <div class="paragraph">
 <p>See <a href="gitrepository-layout.html">gitrepository-layout(5)</a> for more information. The rule of
@@ -1087,7 +1066,7 @@ checkouts of a superproject.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-11-25 12:16:31 UTC
+Last updated 2022-08-30 21:40:02 UTC
 </div>
 </div>
 </body>

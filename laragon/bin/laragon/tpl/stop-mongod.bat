@@ -1,1 +1,1 @@
-mongosh –eval "db.getSiblingDB('admin').shutdownServer()"
+mongo –eval "db.getSiblingDB('admin').shutdownServer()"

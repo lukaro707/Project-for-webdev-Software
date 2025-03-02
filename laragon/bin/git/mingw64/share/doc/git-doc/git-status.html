@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="generator" content="Asciidoctor 2.0.23"/>
+<meta name="generator" content="Asciidoctor 2.0.17"/>
 <title>git-status(1)</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700"/>
 <style>
@@ -84,10 +84,10 @@ code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;
 ul,ol,dl{line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
 ul,ol{margin-left:1.5em}
 ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0}
+ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
+ul.square{list-style-type:square}
 ul.circle{list-style-type:circle}
 ul.disc{list-style-type:disc}
-ul.square{list-style-type:square}
-ul.circle ul:not([class]),ul.disc ul:not([class]),ul.square ul:not([class]){list-style:inherit}
 ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
 dl dt{margin-bottom:.3125em;font-weight:bold}
 dl dd{margin-bottom:1.25em}
@@ -140,7 +140,7 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #content::before{content:none}
 #header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
 #header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
-#header>h1:only-child{border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
 #header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:flex;flex-flow:row wrap}
 #header .details span:first-child{margin-left:-.125em}
 #header .details span.email a{color:rgba(0,0,0,.85)}
@@ -162,7 +162,6 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #toctitle{color:#7a2518;font-size:1.2em}
 @media screen and (min-width:768px){#toctitle{font-size:1.375em}
 body.toc2{padding-left:15em;padding-right:0}
-body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
 #toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
 #toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
 #toc.toc2>ul{font-size:.9em;margin-bottom:0}
@@ -209,10 +208,13 @@ table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
 .admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
 .admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
 .exampleblock>.content{border:1px solid #e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;border-radius:4px}
+.exampleblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child{margin-bottom:0}
 .sidebarblock{border:1px solid #dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;border-radius:4px}
+.sidebarblock>:first-child{margin-top:0}
+.sidebarblock>:last-child{margin-bottom:0}
 .sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
-.exampleblock>.content>:first-child,.sidebarblock>.content>:first-child{margin-top:0}
-.exampleblock>.content>:last-child,.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
 .literalblock pre,.listingblock>.content>pre{border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
 @media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
 @media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
@@ -328,7 +330,7 @@ a.image{text-decoration:none;display:inline-block}
 a.image object{pointer-events:none}
 sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
 sup.footnote a,sup.footnoteref a{text-decoration:none}
-sup.footnote a:active,sup.footnoteref a:active,#footnotes .footnote a:first-of-type:active{text-decoration:underline}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
 #footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
 #footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
 #footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
@@ -391,7 +393,7 @@ b.conum *{color:inherit!important}
 dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
 h1,h2,p,td.content,span.alt,summary{letter-spacing:-.01em}
 p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
-p,blockquote,dt,td.content,td.hdlist1,span.alt,summary{font-size:1.0625rem}
+p,blockquote,dt,td.content,span.alt,summary{font-size:1.0625rem}
 p{margin-bottom:1.25rem}
 .sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
 .exampleblock>.content{background:#fffef7;border-color:#e0e0dc;box-shadow:0 1px 4px #e0e0dc}
@@ -433,11 +435,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 #footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
-<style>
-pre>code {
-   display: inline;
-}
-</style>
 </head>
 <body class="manpage">
 <div id="header">
@@ -452,7 +449,7 @@ pre>code {
 <h2 id="_synopsis">SYNOPSIS</h2>
 <div class="sectionbody">
 <div class="verseblock">
-<pre class="content"><em>git status</em> [&lt;options&gt;] [--] [&lt;pathspec&gt;&#8230;&#8203;]</pre>
+<pre class="content"><em>git status</em> [&lt;options&gt;&#8230;&#8203;] [--] [&lt;pathspec&gt;&#8230;&#8203;]</pre>
 </div>
 </div>
 </div>
@@ -549,9 +546,7 @@ time in a large working tree.
 Consider enabling untracked cache and split index if supported (see
 <code>git update-index --untracked-cache</code> and <code>git update-index
 --split-index</code>), Otherwise you can use <code>no</code> to have <code>git status</code>
-return more quickly without showing untracked files.
-All usual spellings for Boolean value <code>true</code> are taken as <code>normal</code>
-and <code>false</code> as <code>no</code>.</p>
+return more quickly without showing untracked files.</p>
 </div>
 <div class="paragraph">
 <p>The default can be changed using the status.showUntrackedFiles
@@ -787,23 +782,12 @@ U           U    unmerged, both modified
 </div>
 </div>
 <div class="paragraph">
-<p>Submodules have more state and instead report</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><em>M</em> = the submodule has a different HEAD than recorded in the index</p>
-</li>
-<li>
-<p><em>m</em> = the submodule has modified content</p>
-</li>
-<li>
-<p><em>?</em> = the submodule has untracked files</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>This is since modified content or untracked files in a submodule cannot be added
+<p>Submodules have more state and instead report
+		M    the submodule has a different HEAD than
+		     recorded in the index
+		m    the submodule has modified content
+		?    the submodule has untracked files
+since modified content or untracked files in a submodule cannot be added
 via <code>git add</code> in the superproject to prepare a commit.</p>
 </div>
 <div class="paragraph">
@@ -879,7 +863,7 @@ information about the current branch.</p>
 ------------------------------------------------------------
 # branch.oid &lt;commit&gt; | (initial)        Current commit.
 # branch.head &lt;branch&gt; | (detached)      Current branch.
-# branch.upstream &lt;upstream-branch&gt;      If upstream is set.
+# branch.upstream &lt;upstream_branch&gt;      If upstream is set.
 # branch.ab +&lt;ahead&gt; -&lt;behind&gt;           If upstream is set and
                                          the commit is present.
 ------------------------------------------------------------</pre>
@@ -1070,78 +1054,6 @@ using <code>git --no-optional-locks status</code> (see <a href="git.html">git(1)
 </div>
 </div>
 <div class="sect1">
-<h2 id="_untracked_files_and_performance">UNTRACKED FILES AND PERFORMANCE</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><code>git status</code> can be very slow in large worktrees if/when it
-needs to search for untracked files and directories. There are
-many configuration options available to speed this up by either
-avoiding the work or making use of cached results from previous
-Git commands. There is no single optimum set of settings right
-for everyone. We&#8217;ll list a summary of the relevant options to help
-you, but before going into the list, you may want to run <code>git status</code>
-again, because your configuration may already be caching <code>git status</code>
-results, so it could be faster on subsequent runs.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>The <code>--untracked-files=no</code> flag or the
-<code>status.showUntrackedFiles=no</code> config (see above for both):
-indicate that <code>git status</code> should not report untracked
-files. This is the fastest option. <code>git status</code> will not list
-the untracked files, so you need to be careful to remember if
-you create any new files and manually <code>git add</code> them.</p>
-</li>
-<li>
-<p><code>advice.statusUoption=false</code> (see <a href="git-config.html">git-config(1)</a>):
-setting this variable to <code>false</code> disables the warning message
-given when enumerating untracked files takes more than 2
-seconds.  In a large project, it may take longer and the user
-may have already accepted the trade off (e.g. using "-uno" may
-not be an acceptable option for the user), in which case, there
-is no point issuing the warning message, and in such a case,
-disabling the warning may be the best.</p>
-</li>
-<li>
-<p><code>core.untrackedCache=true</code> (see <a href="git-update-index.html">git-update-index(1)</a>):
-enable the untracked cache feature and only search directories
-that have been modified since the previous <code>git status</code> command.
-Git remembers the set of untracked files within each directory
-and assumes that if a directory has not been modified, then
-the set of untracked files within has not changed.  This is much
-faster than enumerating the contents of every directory, but still
-not without cost, because Git still has to search for the set of
-modified directories. The untracked cache is stored in the
-<code>.git/index</code> file. The reduced cost of searching for untracked
-files is offset slightly by the increased size of the index and
-the cost of keeping it up-to-date. That reduced search time is
-usually worth the additional size.</p>
-</li>
-<li>
-<p><code>core.untrackedCache=true</code> and <code>core.fsmonitor=true</code> or
-<code>core.fsmonitor=&lt;hook-command-pathname&gt;</code> (see
-<a href="git-update-index.html">git-update-index(1)</a>): enable both the untracked cache
-and FSMonitor features and only search directories that have
-been modified since the previous <code>git status</code> command.  This
-is faster than using just the untracked cache alone because
-Git can also avoid searching for modified directories.  Git
-only has to enumerate the exact set of directories that have
-changed recently. While the FSMonitor feature can be enabled
-without the untracked cache, the benefits are greatly reduced
-in that case.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Note that after you turn on the untracked cache and/or FSMonitor
-features it may take a few <code>git status</code> commands for the various
-caches to warm up before you see improved command times.  This is
-normal.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
 <h2 id="_see_also">SEE ALSO</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -1160,7 +1072,7 @@ normal.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-11-25 12:16:31 UTC
+Last updated 2022-08-30 21:40:02 UTC
 </div>
 </div>
 </body>

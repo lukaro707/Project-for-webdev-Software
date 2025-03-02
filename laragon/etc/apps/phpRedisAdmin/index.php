@@ -153,7 +153,7 @@ if($redis) {
         return false; // we don't show empty dbs, so return false to tell the caller to continue the loop
       }
 
-      $dbinfo = sprintf("$prefix%'.-{$padding}d", $d);
+      $dbinfo = sprintf("$prefix%'.-${padding}d", $d);
       if ($dbHasData) {
         $dbinfo = sprintf("%s (%d)", $dbinfo, $info['Keyspace'][$db]['keys']);
       }

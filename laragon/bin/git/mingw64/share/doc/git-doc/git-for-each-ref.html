@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="generator" content="Asciidoctor 2.0.23"/>
+<meta name="generator" content="Asciidoctor 2.0.17"/>
 <title>git-for-each-ref(1)</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700"/>
 <style>
@@ -84,10 +84,10 @@ code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;
 ul,ol,dl{line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
 ul,ol{margin-left:1.5em}
 ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0}
+ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
+ul.square{list-style-type:square}
 ul.circle{list-style-type:circle}
 ul.disc{list-style-type:disc}
-ul.square{list-style-type:square}
-ul.circle ul:not([class]),ul.disc ul:not([class]),ul.square ul:not([class]){list-style:inherit}
 ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
 dl dt{margin-bottom:.3125em;font-weight:bold}
 dl dd{margin-bottom:1.25em}
@@ -140,7 +140,7 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #content::before{content:none}
 #header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
 #header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
-#header>h1:only-child{border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
 #header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:flex;flex-flow:row wrap}
 #header .details span:first-child{margin-left:-.125em}
 #header .details span.email a{color:rgba(0,0,0,.85)}
@@ -162,7 +162,6 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #toctitle{color:#7a2518;font-size:1.2em}
 @media screen and (min-width:768px){#toctitle{font-size:1.375em}
 body.toc2{padding-left:15em;padding-right:0}
-body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
 #toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
 #toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
 #toc.toc2>ul{font-size:.9em;margin-bottom:0}
@@ -209,10 +208,13 @@ table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
 .admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
 .admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
 .exampleblock>.content{border:1px solid #e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;border-radius:4px}
+.exampleblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child{margin-bottom:0}
 .sidebarblock{border:1px solid #dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;border-radius:4px}
+.sidebarblock>:first-child{margin-top:0}
+.sidebarblock>:last-child{margin-bottom:0}
 .sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
-.exampleblock>.content>:first-child,.sidebarblock>.content>:first-child{margin-top:0}
-.exampleblock>.content>:last-child,.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
 .literalblock pre,.listingblock>.content>pre{border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
 @media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
 @media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
@@ -328,7 +330,7 @@ a.image{text-decoration:none;display:inline-block}
 a.image object{pointer-events:none}
 sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
 sup.footnote a,sup.footnoteref a{text-decoration:none}
-sup.footnote a:active,sup.footnoteref a:active,#footnotes .footnote a:first-of-type:active{text-decoration:underline}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
 #footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
 #footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
 #footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
@@ -391,7 +393,7 @@ b.conum *{color:inherit!important}
 dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
 h1,h2,p,td.content,span.alt,summary{letter-spacing:-.01em}
 p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
-p,blockquote,dt,td.content,td.hdlist1,span.alt,summary{font-size:1.0625rem}
+p,blockquote,dt,td.content,span.alt,summary{font-size:1.0625rem}
 p{margin-bottom:1.25rem}
 .sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
 .exampleblock>.content{background:#fffef7;border-color:#e0e0dc;box-shadow:0 1px 4px #e0e0dc}
@@ -433,11 +435,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 #footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
-<style>
-pre>code {
-   display: inline;
-}
-</style>
 </head>
 <body class="manpage">
 <div id="header">
@@ -453,12 +450,10 @@ pre>code {
 <div class="sectionbody">
 <div class="verseblock">
 <pre class="content"><em>git for-each-ref</em> [--count=&lt;count&gt;] [--shell|--perl|--python|--tcl]
-                   [(--sort=&lt;key&gt;)&#8230;&#8203;] [--format=&lt;format&gt;]
-                   [--include-root-refs] [ --stdin | &lt;pattern&gt;&#8230;&#8203; ]
+                   [(--sort=&lt;key&gt;)&#8230;&#8203;] [--format=&lt;format&gt;] [&lt;pattern&gt;&#8230;&#8203;]
                    [--points-at=&lt;object&gt;]
                    [--merged[=&lt;object&gt;]] [--no-merged[=&lt;object&gt;]]
-                   [--contains[=&lt;object&gt;]] [--no-contains[=&lt;object&gt;]]
-                   [--exclude=&lt;pattern&gt; &#8230;&#8203;]</pre>
+                   [--contains[=&lt;object&gt;]] [--no-contains[=&lt;object&gt;]]</pre>
 </div>
 </div>
 </div>
@@ -487,11 +482,6 @@ match against at least one pattern, either using fnmatch(3) or
 literally, in the latter case matching completely or from the
 beginning up to a slash.</p>
 </dd>
-<dt class="hdlist1">--stdin</dt>
-<dd>
-<p>If <code>--stdin</code> is supplied, then the list of patterns is read from
-standard input instead of from the argument list.</p>
-</dd>
 <dt class="hdlist1">--count=&lt;count&gt;</dt>
 <dd>
 <p>By default the command shows all refs that match
@@ -508,15 +498,17 @@ key.</p>
 </dd>
 <dt class="hdlist1">--format=&lt;format&gt;</dt>
 <dd>
-<p>A string that interpolates <code>%(fieldname)</code> from a ref being shown and
-the object it points at. In addition, the string literal <code>%%</code>
-renders as <code>%</code> and <code>%xx</code> - where <code>xx</code> are hex digits - renders as
-the character with hex code <code>xx</code>. For example, <code>%00</code> interpolates to
-<code>\0</code> (NUL), <code>%09</code> to <code>\t</code> (TAB), and <code>%0a</code> to <code>\n</code> (LF).</p>
-<div class="paragraph">
-<p>When unspecified, <code>&lt;format&gt;</code> defaults to <code>%(objectname) SPC %(objecttype)
-TAB %(refname)</code>.</p>
-</div>
+<p>A string that interpolates <code>%(fieldname)</code> from a ref being shown
+and the object it points at.  If <code>fieldname</code>
+is prefixed with an asterisk (<code>*</code>) and the ref points
+at a tag object, use the value for the field in the object
+which the tag object refers to (instead of the field in the tag object).
+When unspecified, <code>&lt;format&gt;</code> defaults to
+<code>%(objectname) SPC %(objecttype) TAB %(refname)</code>.
+It also interpolates <code>%%</code> to <code>%</code>, and <code>%xx</code> where <code>xx</code>
+are hex digits interpolates to character with hex code
+<code>xx</code>; for example <code>%00</code> interpolates to <code>\0</code> (NUL),
+<code>%09</code> to <code>\t</code> (TAB) and <code>%0a</code> to <code>\n</code> (LF).</p>
 </dd>
 <dt class="hdlist1">--color[=&lt;when&gt;]</dt>
 <dd>
@@ -561,21 +553,6 @@ if not specified).</p>
 <dt class="hdlist1">--ignore-case</dt>
 <dd>
 <p>Sorting and filtering refs are case insensitive.</p>
-</dd>
-<dt class="hdlist1">--omit-empty</dt>
-<dd>
-<p>Do not print a newline after formatted refs where the format expands
-to the empty string.</p>
-</dd>
-<dt class="hdlist1">--exclude=&lt;pattern&gt;</dt>
-<dd>
-<p>If one or more patterns are given, only refs which do not match
-any excluded pattern(s) are shown. Matching is done using the
-same rules as <code>&lt;pattern&gt;</code> above.</p>
-</dd>
-<dt class="hdlist1">--include-root-refs</dt>
-<dd>
-<p>List root refs (HEAD and pseudorefs) apart from regular refs.</p>
 </dd>
 </dl>
 </div>
@@ -721,137 +698,11 @@ symbolic ref, nothing is printed. Respects the <code>:short</code>,
 <code>:lstrip</code> and <code>:rstrip</code> options in the same way as <code>refname</code>
 above.</p>
 </dd>
-<dt class="hdlist1">signature</dt>
-<dd>
-<p>The GPG signature of a commit.</p>
-</dd>
-<dt class="hdlist1">signature:grade</dt>
-<dd>
-<p>Show "G" for a good (valid) signature, "B" for a bad
-signature, "U" for a good signature with unknown validity, "X"
-for a good signature that has expired, "Y" for a good
-signature made by an expired key, "R" for a good signature
-made by a revoked key, "E" if the signature cannot be
-checked (e.g. missing key) and "N" for no signature.</p>
-</dd>
-<dt class="hdlist1">signature:signer</dt>
-<dd>
-<p>The signer of the GPG signature of a commit.</p>
-</dd>
-<dt class="hdlist1">signature:key</dt>
-<dd>
-<p>The key of the GPG signature of a commit.</p>
-</dd>
-<dt class="hdlist1">signature:fingerprint</dt>
-<dd>
-<p>The fingerprint of the GPG signature of a commit.</p>
-</dd>
-<dt class="hdlist1">signature:primarykeyfingerprint</dt>
-<dd>
-<p>The primary key fingerprint of the GPG signature of a commit.</p>
-</dd>
-<dt class="hdlist1">signature:trustlevel</dt>
-<dd>
-<p>The trust level of the GPG signature of a commit. Possible
-outputs are <code>ultimate</code>, <code>fully</code>, <code>marginal</code>, <code>never</code> and <code>undefined</code>.</p>
-</dd>
 <dt class="hdlist1">worktreepath</dt>
 <dd>
 <p>The absolute path to the worktree in which the ref is checked
 out, if it is checked out in any linked worktree. Empty string
 otherwise.</p>
-</dd>
-<dt class="hdlist1">ahead-behind:&lt;committish&gt;</dt>
-<dd>
-<p>Two integers, separated by a space, demonstrating the number of
-commits ahead and behind, respectively, when comparing the output
-ref to the <code>&lt;committish&gt;</code> specified in the format.</p>
-</dd>
-<dt class="hdlist1">is-base:&lt;committish&gt;</dt>
-<dd>
-<p>In at most one row, <code>(&lt;committish&gt;)</code> will appear to indicate the ref
-that is most likely the ref used as a starting point for the branch
-that produced <code>&lt;committish&gt;</code>. This choice is made using a heuristic:
-choose the ref that minimizes the number of commits in the
-first-parent history of <code>&lt;committish&gt;</code> and not in the first-parent
-history of the ref.</p>
-<div class="paragraph">
-<p>For example, consider the following figure of first-parent histories of
-several refs:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>*--*--*--*--*--* refs/heads/A
-\
- \
-  *--*--*--* refs/heads/B
-   \     \
-    \     \
-     *     * refs/heads/C
-      \
-       \
-        *--* refs/heads/D</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Here, if <code>A</code>, <code>B</code>, and <code>C</code> are the filtered references, and the format
-string is <code>%(refname):%(is-base:D)</code>, then the output would be</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>refs/heads/A:
-refs/heads/B:(D)
-refs/heads/C:</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This is because the first-parent history of <code>D</code> has its earliest
-intersection with the first-parent histories of the filtered refs at a
-common first-parent ancestor of <code>B</code> and <code>C</code> and ties are broken by the
-earliest ref in the sorted order.</p>
-</div>
-<div class="paragraph">
-<p>Note that this token will not appear if the first-parent history of
-<code>&lt;committish&gt;</code> does not intersect the first-parent histories of the
-filtered refs.</p>
-</div>
-</dd>
-<dt class="hdlist1">describe[:options]</dt>
-<dd>
-<p>A human-readable name, like <a href="git-describe.html">git-describe(1)</a>;
-empty string for undescribable commits. The <code>describe</code> string may
-be followed by a colon and one or more comma-separated options.</p>
-<div class="openblock">
-<div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">tags=&lt;bool-value&gt;</dt>
-<dd>
-<p>Instead of only considering annotated tags, consider
-lightweight tags as well; see the corresponding option in
-<a href="git-describe.html">git-describe(1)</a> for details.</p>
-</dd>
-<dt class="hdlist1">abbrev=&lt;number&gt;</dt>
-<dd>
-<p>Use at least &lt;number&gt; hexadecimal digits; see the corresponding
-option in <a href="git-describe.html">git-describe(1)</a> for details.</p>
-</dd>
-<dt class="hdlist1">match=&lt;pattern&gt;</dt>
-<dd>
-<p>Only consider tags matching the given <code>glob(7)</code> pattern,
-excluding the "refs/tags/" prefix; see the corresponding option
-in <a href="git-describe.html">git-describe(1)</a> for details.</p>
-</dd>
-<dt class="hdlist1">exclude=&lt;pattern&gt;</dt>
-<dd>
-<p>Do not consider tags matching the given <code>glob(7)</code> pattern,
-excluding the "refs/tags/" prefix; see the corresponding option
-in <a href="git-describe.html">git-describe(1)</a> for details.</p>
-</dd>
-</dl>
-</div>
-</div>
-</div>
 </dd>
 </dl>
 </div>
@@ -869,21 +720,12 @@ from the <code>committer</code> or <code>tagger</code> fields depending on the o
 These are intended for working on a mix of annotated and lightweight tags.</p>
 </div>
 <div class="paragraph">
-<p>For tag objects, a <code>fieldname</code> prefixed with an asterisk (<code>*</code>) expands to
-the <code>fieldname</code> value of the peeled object, rather than that of the tag
-object itself.</p>
-</div>
-<div class="paragraph">
 <p>Fields that have name-email-date tuple as its value (<code>author</code>,
 <code>committer</code>, and <code>tagger</code>) can be suffixed with <code>name</code>, <code>email</code>,
 and <code>date</code> to extract the named component.  For email fields (<code>authoremail</code>,
 <code>committeremail</code> and <code>taggeremail</code>), <code>:trim</code> can be appended to get the email
 without angle brackets, and <code>:localpart</code> to get the part before the <code>@</code> symbol
-out of the trimmed email. In addition to these, the <code>:mailmap</code> option and the
-corresponding <code>:mailmap,trim</code> and <code>:mailmap,localpart</code> can be used (order does
-not matter) to get values of the name and email according to the .mailmap file
-or according to the file set in the mailmap.file or mailmap.blob configuration
-variable (see <a href="gitmailmap.html">gitmailmap(5)</a>).</p>
+out of the trimmed email.</p>
 </div>
 <div class="paragraph">
 <p>The raw data in an object is <code>raw</code>.</p>
@@ -956,11 +798,9 @@ the object referred by the ref does not cause an error.  It
 returns an empty string instead.</p>
 </div>
 <div class="paragraph">
-<p>As a special case for the date-type fields, you may specify a format for the
-date by adding <code>:</code> followed by date format name (see the values the <code>--date</code>
-option to <a href="git-rev-list.html">git-rev-list(1)</a> takes). If this formatting is provided in
-a <code>--sort</code> key, references will be sorted according to the byte-value of the
-formatted string rather than the numeric value of the underlying timestamp.</p>
+<p>As a special case for the date-type fields, you may specify a format for
+the date by adding <code>:</code> followed by date format name (see the
+values the <code>--date</code> option to <a href="git-rev-list.html">git-rev-list(1)</a> takes).</p>
 </div>
 <div class="paragraph">
 <p>Some atoms like %(align) and %(if) always require a matching %(end).
@@ -1138,7 +978,7 @@ commits and from none of the <code>--no-merged</code> commits are shown.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-11-25 12:16:31 UTC
+Last updated 2022-08-30 21:40:02 UTC
 </div>
 </div>
 </body>

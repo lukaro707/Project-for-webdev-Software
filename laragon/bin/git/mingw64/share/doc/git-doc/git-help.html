@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="generator" content="Asciidoctor 2.0.23"/>
+<meta name="generator" content="Asciidoctor 2.0.17"/>
 <title>git-help(1)</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700"/>
 <style>
@@ -84,10 +84,10 @@ code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;
 ul,ol,dl{line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
 ul,ol{margin-left:1.5em}
 ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0}
+ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
+ul.square{list-style-type:square}
 ul.circle{list-style-type:circle}
 ul.disc{list-style-type:disc}
-ul.square{list-style-type:square}
-ul.circle ul:not([class]),ul.disc ul:not([class]),ul.square ul:not([class]){list-style:inherit}
 ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
 dl dt{margin-bottom:.3125em;font-weight:bold}
 dl dd{margin-bottom:1.25em}
@@ -140,7 +140,7 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #content::before{content:none}
 #header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
 #header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
-#header>h1:only-child{border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
 #header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:flex;flex-flow:row wrap}
 #header .details span:first-child{margin-left:-.125em}
 #header .details span.email a{color:rgba(0,0,0,.85)}
@@ -162,7 +162,6 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #toctitle{color:#7a2518;font-size:1.2em}
 @media screen and (min-width:768px){#toctitle{font-size:1.375em}
 body.toc2{padding-left:15em;padding-right:0}
-body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
 #toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
 #toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
 #toc.toc2>ul{font-size:.9em;margin-bottom:0}
@@ -209,10 +208,13 @@ table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
 .admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
 .admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
 .exampleblock>.content{border:1px solid #e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;border-radius:4px}
+.exampleblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child{margin-bottom:0}
 .sidebarblock{border:1px solid #dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;border-radius:4px}
+.sidebarblock>:first-child{margin-top:0}
+.sidebarblock>:last-child{margin-bottom:0}
 .sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
-.exampleblock>.content>:first-child,.sidebarblock>.content>:first-child{margin-top:0}
-.exampleblock>.content>:last-child,.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
 .literalblock pre,.listingblock>.content>pre{border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
 @media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
 @media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
@@ -328,7 +330,7 @@ a.image{text-decoration:none;display:inline-block}
 a.image object{pointer-events:none}
 sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
 sup.footnote a,sup.footnoteref a{text-decoration:none}
-sup.footnote a:active,sup.footnoteref a:active,#footnotes .footnote a:first-of-type:active{text-decoration:underline}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
 #footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
 #footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
 #footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
@@ -391,7 +393,7 @@ b.conum *{color:inherit!important}
 dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
 h1,h2,p,td.content,span.alt,summary{letter-spacing:-.01em}
 p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
-p,blockquote,dt,td.content,td.hdlist1,span.alt,summary{font-size:1.0625rem}
+p,blockquote,dt,td.content,span.alt,summary{font-size:1.0625rem}
 p{margin-bottom:1.25rem}
 .sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
 .exampleblock>.content{background:#fffef7;border-color:#e0e0dc;box-shadow:0 1px 4px #e0e0dc}
@@ -433,11 +435,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 #footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
-<style>
-pre>code {
-   display: inline;
-}
-</style>
 </head>
 <body class="manpage">
 <div id="header">
@@ -453,11 +450,9 @@ pre>code {
 <div class="sectionbody">
 <div class="verseblock">
 <pre class="content"><em>git help</em> [-a|--all] [--[no-]verbose] [--[no-]external-commands] [--[no-]aliases]
-<em>git help</em> [[-i|--info] [-m|--man] [-w|--web]] [&lt;command&gt;|&lt;doc&gt;]
+<em>git help</em> [[-i|--info] [-m|--man] [-w|--web]] [&lt;command&gt;|&lt;guide&gt;]
 <em>git help</em> [-g|--guides]
-<em>git help</em> [-c|--config]
-<em>git help</em> [--user-interfaces]
-<em>git help</em> [--developer-interfaces]</pre>
+<em>git help</em> [-c|--config]</pre>
 </div>
 </div>
 </div>
@@ -465,7 +460,7 @@ pre>code {
 <h2 id="_description">DESCRIPTION</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>With no options and no <em>&lt;command&gt;</em> or <em>&lt;doc&gt;</em> given, the synopsis of the <em>git</em>
+<p>With no options and no <em>&lt;command&gt;</em> or <em>&lt;guide&gt;</em> given, the synopsis of the <em>git</em>
 command and a list of the most commonly used Git commands are printed
 on the standard output.</p>
 </div>
@@ -478,8 +473,8 @@ printed on the standard output.</p>
 Git concept guides is also printed on the standard output.</p>
 </div>
 <div class="paragraph">
-<p>If a command or other documentation is given, the relevant manual page
-will be brought up. The <em>man</em> program is used by default for this
+<p>If a command, or a guide, is given, a manual page for that command or
+guide is brought up. The <em>man</em> program is used by default for this
 purpose, but this can be overridden by other options or configuration
 variables.</p>
 </div>
@@ -496,7 +491,7 @@ former is internally converted into the latter.</p>
 <p>To display the <a href="git.html">git(1)</a> man page, use <code>git help git</code>.</p>
 </div>
 <div class="paragraph">
-<p>This page can be displayed with <em>git help help</em> or <code>git help --help</code>.</p>
+<p>This page can be displayed with <em>git help help</em> or <code>git help --help</code></p>
 </div>
 </div>
 </div>
@@ -508,7 +503,7 @@ former is internally converted into the latter.</p>
 <dt class="hdlist1">-a</dt>
 <dt class="hdlist1">--all</dt>
 <dd>
-<p>Print all the available commands on the standard output.</p>
+<p>Prints all the available commands on the standard output.</p>
 </dd>
 <dt class="hdlist1">--no-external-commands</dt>
 <dd>
@@ -522,7 +517,7 @@ aliases.</p>
 </dd>
 <dt class="hdlist1">--verbose</dt>
 <dd>
-<p>When used with <code>--all</code>, print description for all recognized
+<p>When used with <code>--all</code> print description for all recognized
 commands. This is the default.</p>
 </dd>
 <dt class="hdlist1">-c</dt>
@@ -534,28 +529,7 @@ summary of the list in <a href="git-config.html">git-config(1)</a>.</p>
 <dt class="hdlist1">-g</dt>
 <dt class="hdlist1">--guides</dt>
 <dd>
-<p>Print a list of the Git concept guides on the standard output.</p>
-</dd>
-<dt class="hdlist1">--user-interfaces</dt>
-<dd>
-<p>Print a list of the repository, command and file interfaces
-documentation on the standard output.</p>
-<div class="paragraph">
-<p>In-repository file interfaces such as <code>.git/info/exclude</code> are
-documented here (see <a href="gitrepository-layout.html">gitrepository-layout(5)</a>), as well as
-in-tree configuration such as <code>.mailmap</code> (see <a href="gitmailmap.html">gitmailmap(5)</a>).</p>
-</div>
-<div class="paragraph">
-<p>This section of the documentation also covers general or widespread
-user-interface conventions (e.g. <a href="gitcli.html">gitcli(7)</a>), and
-pseudo-configuration such as the file-based <code>.git/hooks/*</code> interface
-described in <a href="githooks.html">githooks(5)</a>.</p>
-</div>
-</dd>
-<dt class="hdlist1">--developer-interfaces</dt>
-<dd>
-<p>Print a list of file formats, protocols and other developer
-interfaces documentation on the standard output.</p>
+<p>Prints a list of the Git concept guides on the standard output.</p>
 </dd>
 <dt class="hdlist1">-i</dt>
 <dt class="hdlist1">--info</dt>
@@ -582,7 +556,7 @@ other display programs (see below).</p>
 format. A web browser will be used for that purpose.</p>
 <div class="paragraph">
 <p>The web browser can be specified using the configuration variable
-<code>help.browser</code>, or <code>web.browser</code> if the former is not set. If neither of
+<code>help.browser</code>, or <code>web.browser</code> if the former is not set. If none of
 these config variables is set, the <em>git web&#x2d;&#x2d;browse</em> helper script
 (called by <em>git help</em>) will pick a suitable default. See
 <a href="git-web&#x2d;&#x2d;browse.html">git-web&#x2d;&#x2d;browse(1)</a> for more information about this.</p>
@@ -618,7 +592,7 @@ line option:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_help_browser_web_browser_and_browser_tool_path">help.browser, web.browser, and browser.&lt;tool&gt;.path</h3>
+<h3 id="_help_browser_web_browser_and_browser_tool_path">help.browser, web.browser and browser.&lt;tool&gt;.path</h3>
 <div class="paragraph">
 <p>The <code>help.browser</code>, <code>web.browser</code> and <code>browser.&lt;tool&gt;.path</code> will also
 be checked if the <em>web</em> format is chosen (either by command-line
@@ -753,7 +727,7 @@ See <a href="git-config.html">git-config(1)</a> for more information about this.
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-11-25 12:16:31 UTC
+Last updated 2022-08-30 21:40:02 UTC
 </div>
 </div>
 </body>

@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="generator" content="Asciidoctor 2.0.23"/>
+<meta name="generator" content="Asciidoctor 2.0.17"/>
 <title>git-cat-file(1)</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700"/>
 <style>
@@ -84,10 +84,10 @@ code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;
 ul,ol,dl{line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
 ul,ol{margin-left:1.5em}
 ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0}
+ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
+ul.square{list-style-type:square}
 ul.circle{list-style-type:circle}
 ul.disc{list-style-type:disc}
-ul.square{list-style-type:square}
-ul.circle ul:not([class]),ul.disc ul:not([class]),ul.square ul:not([class]){list-style:inherit}
 ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
 dl dt{margin-bottom:.3125em;font-weight:bold}
 dl dd{margin-bottom:1.25em}
@@ -140,7 +140,7 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #content::before{content:none}
 #header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
 #header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
-#header>h1:only-child{border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
 #header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:flex;flex-flow:row wrap}
 #header .details span:first-child{margin-left:-.125em}
 #header .details span.email a{color:rgba(0,0,0,.85)}
@@ -162,7 +162,6 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #toctitle{color:#7a2518;font-size:1.2em}
 @media screen and (min-width:768px){#toctitle{font-size:1.375em}
 body.toc2{padding-left:15em;padding-right:0}
-body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
 #toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
 #toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
 #toc.toc2>ul{font-size:.9em;margin-bottom:0}
@@ -209,10 +208,13 @@ table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
 .admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
 .admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
 .exampleblock>.content{border:1px solid #e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;border-radius:4px}
+.exampleblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child{margin-bottom:0}
 .sidebarblock{border:1px solid #dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;border-radius:4px}
+.sidebarblock>:first-child{margin-top:0}
+.sidebarblock>:last-child{margin-bottom:0}
 .sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
-.exampleblock>.content>:first-child,.sidebarblock>.content>:first-child{margin-top:0}
-.exampleblock>.content>:last-child,.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
 .literalblock pre,.listingblock>.content>pre{border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
 @media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
 @media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
@@ -328,7 +330,7 @@ a.image{text-decoration:none;display:inline-block}
 a.image object{pointer-events:none}
 sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
 sup.footnote a,sup.footnoteref a{text-decoration:none}
-sup.footnote a:active,sup.footnoteref a:active,#footnotes .footnote a:first-of-type:active{text-decoration:underline}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
 #footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
 #footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
 #footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
@@ -391,7 +393,7 @@ b.conum *{color:inherit!important}
 dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
 h1,h2,p,td.content,span.alt,summary{letter-spacing:-.01em}
 p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
-p,blockquote,dt,td.content,td.hdlist1,span.alt,summary{font-size:1.0625rem}
+p,blockquote,dt,td.content,span.alt,summary{font-size:1.0625rem}
 p{margin-bottom:1.25rem}
 .sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
 .exampleblock>.content{background:#fffef7;border-color:#e0e0dc;box-shadow:0 1px 4px #e0e0dc}
@@ -433,18 +435,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 #footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
-<style>
-pre>code {
-   display: inline;
-}
-</style>
 </head>
 <body class="manpage">
 <div id="header">
 <h1>git-cat-file(1) Manual Page</h1>
 <h2 id="_name">NAME</h2>
 <div class="sectionbody">
-<p>git-cat-file - Provide contents or details of repository objects</p>
+<p>git-cat-file - Provide content or type and size information for repository objects</p>
 </div>
 </div>
 <div id="content">
@@ -455,11 +452,11 @@ pre>code {
 <pre class="content"><em>git cat-file</em> &lt;type&gt; &lt;object&gt;
 <em>git cat-file</em> (-e | -p) &lt;object&gt;
 <em>git cat-file</em> (-t | -s) [--allow-unknown-type] &lt;object&gt;
-<em>git cat-file</em> (--textconv | --filters)
-             [&lt;rev&gt;:&lt;path|tree-ish&gt; | --path=&lt;path|tree-ish&gt; &lt;rev&gt;]
 <em>git cat-file</em> (--batch | --batch-check | --batch-command) [--batch-all-objects]
              [--buffer] [--follow-symlinks] [--unordered]
-             [--textconv | --filters] [-Z]</pre>
+             [--textconv | --filters]
+<em>git cat-file</em> (--textconv | --filters)
+             [&lt;rev&gt;:&lt;path|tree-ish&gt; | --path=&lt;path|tree-ish&gt; &lt;rev&gt;]</pre>
 </div>
 </div>
 </div>
@@ -467,19 +464,18 @@ pre>code {
 <h2 id="_description">DESCRIPTION</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Output the contents or other properties such as size, type or delta
-information of one or more objects.</p>
+<p>In its first form, the command provides the content or the type of an object in
+the repository. The type is required unless <code>-t</code> or <code>-p</code> is used to find the
+object type, or <code>-s</code> is used to find the object size, or <code>--textconv</code> or
+<code>--filters</code> is used (which imply type "blob").</p>
 </div>
 <div class="paragraph">
-<p>This command can operate in two modes, depending on whether an option
-from the <code>--batch</code> family is specified.</p>
-</div>
-<div class="paragraph">
-<p>In non-batch mode, the command provides information on an object
-named on the command line.</p>
-</div>
-<div class="paragraph">
-<p>In batch mode, arguments are read from standard input.</p>
+<p>In the second form, a list of objects (separated by linefeeds) is provided on
+stdin, and the SHA-1, type, and size of each object is printed on stdout. The
+output format can be overridden using the optional <code>&lt;format&gt;</code> argument. If
+either <code>--textconv</code> or <code>--filters</code> was specified, the input is expected to
+list the object names followed by the path name, separated by a single
+whitespace, so that the appropriate drivers can be determined.</p>
 </div>
 </div>
 </div>
@@ -502,15 +498,13 @@ the "SPECIFYING REVISIONS" section in <a href="gitrevisions.html">gitrevisions(7
 <dt class="hdlist1">-s</dt>
 <dd>
 <p>Instead of the content, show the object size identified by
-<code>&lt;object&gt;</code>. If used with <code>--use-mailmap</code> option, will show
-the size of updated object after replacing idents using the
-mailmap mechanism.</p>
+<code>&lt;object&gt;</code>.</p>
 </dd>
 <dt class="hdlist1">-e</dt>
 <dd>
 <p>Exit with zero status if <code>&lt;object&gt;</code> exists and is a valid
-object. If <code>&lt;object&gt;</code> is of an invalid format, exit with non-zero
-status and emit an error on stderr.</p>
+object. If <code>&lt;object&gt;</code> is of an invalid format exit with non-zero and
+emits an error on stderr.</p>
 </dd>
 <dt class="hdlist1">-p</dt>
 <dd>
@@ -524,13 +518,6 @@ for a type that can trivially be dereferenced from the given
 "tree" with <code>&lt;object&gt;</code> being a commit object that contains it,
 or to ask for a "blob" with <code>&lt;object&gt;</code> being a tag object that
 points at it.</p>
-</dd>
-<dt class="hdlist1">--[no-]mailmap</dt>
-<dt class="hdlist1">--[no-]use-mailmap</dt>
-<dd>
-<p>Use mailmap file to map author, committer and tagger names
-and email addresses to canonical real names and email addresses.
-See <a href="git-shortlog.html">git-shortlog(1)</a>.</p>
 </dd>
 <dt class="hdlist1">--textconv</dt>
 <dd>
@@ -556,80 +543,28 @@ the revision from which the blob came.</p>
 <dt class="hdlist1">--batch=&lt;format&gt;</dt>
 <dd>
 <p>Print object information and contents for each object provided
-on stdin. May not be combined with any other options or arguments
-except <code>--textconv</code>, <code>--filters</code>, or <code>--use-mailmap</code>.</p>
-<div class="openblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>When used with <code>--textconv</code> or <code>--filters</code>, the input lines
-must specify the path, separated by whitespace. See the section
-<code>BATCH OUTPUT</code> below for details.</p>
-</li>
-<li>
-<p>When used with <code>--use-mailmap</code>, for commit and tag objects, the
-contents part of the output shows the identities replaced using the
-mailmap mechanism, while the information part of the output shows
-the size of the object as if it actually recorded the replacement
-identities.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
+on stdin.  May not be combined with any other options or arguments
+except <code>--textconv</code> or <code>--filters</code>, in which case the input lines
+also need to specify the path, separated by whitespace.  See the
+section <code>BATCH OUTPUT</code> below for details.</p>
 </dd>
 <dt class="hdlist1">--batch-check</dt>
 <dt class="hdlist1">--batch-check=&lt;format&gt;</dt>
 <dd>
-<p>Print object information for each object provided on stdin. May not be
-combined with any other options or arguments except <code>--textconv</code>, <code>--filters</code>
-or <code>--use-mailmap</code>.</p>
-<div class="openblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>When used with <code>--textconv</code> or <code>--filters</code>, the input lines must
-specify the path, separated by whitespace. See the section
-<code>BATCH OUTPUT</code> below for details.</p>
-</li>
-<li>
-<p>When used with <code>--use-mailmap</code>, for commit and tag objects, the
-printed object information shows the size of the object as if the
-identities recorded in it were replaced by the mailmap mechanism.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
+<p>Print object information for each object provided on stdin.  May
+not be combined with any other options or arguments except
+<code>--textconv</code> or <code>--filters</code>, in which case the input lines also
+need to specify the path, separated by whitespace.  See the
+section <code>BATCH OUTPUT</code> below for details.</p>
 </dd>
 <dt class="hdlist1">--batch-command</dt>
 <dt class="hdlist1">--batch-command=&lt;format&gt;</dt>
 <dd>
 <p>Enter a command mode that reads commands and arguments from stdin. May
-only be combined with <code>--buffer</code>, <code>--textconv</code>, <code>--use-mailmap</code> or
-<code>--filters</code>.</p>
-<div class="openblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>When used with <code>--textconv</code> or <code>--filters</code>, the input lines must
-specify the path, separated by whitespace. See the section
-<code>BATCH OUTPUT</code> below for details.</p>
-</li>
-<li>
-<p>When used with <code>--use-mailmap</code>, for commit and tag objects, the
-<code>contents</code> command shows the identities replaced using the
-mailmap mechanism, while the <code>info</code> command shows the size
-of the object as if it actually recorded the replacement
-identities.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
+only be combined with <code>--buffer</code>, <code>--textconv</code> or <code>--filters</code>. In the
+case of <code>--textconv</code> or <code>--filters</code>, the input lines also need to specify
+the path, separated by whitespace. See the section <code>BATCH OUTPUT</code> below
+for details.</p>
 <div class="paragraph">
 <p><code>--batch-command</code> recognizes the following commands:</p>
 </div>
@@ -778,19 +713,6 @@ respectively print:</p>
 </div>
 </div>
 </dd>
-<dt class="hdlist1">-Z</dt>
-<dd>
-<p>Only meaningful with <code>--batch</code>, <code>--batch-check</code>, or
-<code>--batch-command</code>; input and output is NUL-delimited instead of
-newline-delimited.</p>
-</dd>
-<dt class="hdlist1">-z</dt>
-<dd>
-<p>Only meaningful with <code>--batch</code>, <code>--batch-check</code>, or
-<code>--batch-command</code>; input is NUL-delimited instead of
-newline-delimited. This option is deprecated in favor of
-<code>-Z</code> as the output can otherwise be ambiguous.</p>
-</dd>
 </dl>
 </div>
 </div>
@@ -821,9 +743,9 @@ will be returned.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>If <code>--batch</code> or <code>--batch-check</code> is given, <code>cat-file</code> will read objects
-from stdin, one per line, and print information about them in the same
-order as they have been read. By default, the whole line is
-considered as an object, as if it were fed to <a href="git-rev-parse.html">git-rev-parse(1)</a>.</p>
+from stdin, one per line, and print information about them. By default,
+the whole line is considered as an object, as if it were fed to
+<a href="git-rev-parse.html">git-rev-parse(1)</a>.</p>
 </div>
 <div class="paragraph">
 <p>When <code>--batch-command</code> is given, <code>cat-file</code> will read commands from stdin,
@@ -977,12 +899,6 @@ require more than 40 link resolutions to resolve).</p>
 <p>is printed when, during symlink resolution, a file is used as a
 directory name.</p>
 </div>
-<div class="paragraph">
-<p>Alternatively, when <code>-Z</code> is passed, the line feeds in any of the above examples
-are replaced with NUL terminators. This ensures that output will be parsable if
-the output itself would contain a linefeed and is thus recommended for
-scripting purposes.</p>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -1014,7 +930,7 @@ will be reported.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-11-25 12:16:31 UTC
+Last updated 2022-08-30 21:40:02 UTC
 </div>
 </div>
 </body>

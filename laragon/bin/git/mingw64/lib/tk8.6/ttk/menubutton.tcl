@@ -82,8 +82,10 @@ if {[tk windowingsystem] eq "aqua"} {
 	set bbh [expr {[winfo height $mb]} + $bevelPad]
 	set mw [winfo reqwidth $menu]
 	set bw [winfo width $mb]
+	set dF [expr {[winfo width $mb] - [winfo reqwidth $menu] - $menuPad}]
+	set entry ""
 	set entry [::tk::MenuFindName $menu [$mb cget -text]]
-	if {$entry < 0} {
+	if {$entry eq ""} {
 	    set entry 0
 	}
 	set x [winfo rootx $mb]
@@ -105,7 +107,7 @@ if {[tk windowingsystem] eq "aqua"} {
 		incr y $menuPad
 		incr x $bw
 	    }
-	    default {  # flush
+	    default {
 		incr y $bbh
 	    }
 	}
@@ -117,28 +119,30 @@ if {[tk windowingsystem] eq "aqua"} {
 	set bh [expr {[winfo height $mb]}]
 	set mw [expr {[winfo reqwidth $menu]}]
 	set bw [expr {[winfo width $mb]}]
+	set dF [expr {[winfo width $mb] - [winfo reqwidth $menu]}]
 	if {[tk windowingsystem] eq "win32"} {
 	    incr mh 6
 	    incr mw 16
 	}
+	set entry {}
 	set entry [::tk::MenuFindName $menu [$mb cget -text]]
-	if {$entry < 0} {
+	if {$entry eq {}} {
 	    set entry 0
 	}
 	set x [winfo rootx $mb]
 	set y [winfo rooty $mb]
 	switch [$mb cget -direction] {
 	    above {
-		set entry ""
+		set entry {}
 		incr y -$mh
 		# if we go offscreen to the top, show as 'below'
 		if {$y < [winfo vrooty $mb]} {
 		    set y [expr {[winfo vrooty $mb] + [winfo rooty $mb]\
-			    + [winfo reqheight $mb]}]
+                           + [winfo reqheight $mb]}]
 		}
 	    }
 	    below {
-		set entry ""
+		set entry {}
 		incr y $bh
 		# if we go offscreen to the bottom, show as 'above'
 		if {($y + $mh) > ([winfo vrooty $mb] + [winfo vrootheight $mb])} {
@@ -152,8 +156,13 @@ if {[tk windowingsystem] eq "aqua"} {
 	    right {
 		incr x $bw
 	    }
-	    default {  # flush
-		incr x [expr {([winfo width $mb] - [winfo reqwidth $menu])/ 2}]
+	    default {
+		if {[$mb cget -style] eq ""} {
+		    incr x [expr {([winfo width $mb] - \
+				   [winfo reqwidth $menu])/ 2}]
+		} else {
+		    incr y $bh
+		}
 	    }
 	}
 	return [list $x $y $entry]
@@ -187,7 +196,7 @@ proc ttk::menubutton::Pulldown {mb} {
     $mb state pressed
     $mb configure -cursor [$menu cget -cursor]
     foreach {x y entry} [PostPosition $mb $menu] { break }
-    if {$entry >= 0} {
+    if {$entry ne {}} {
 	$menu post $x $y $entry
     } else {
 	$menu post $x $y
@@ -219,7 +228,7 @@ proc ttk::menubutton::TransferGrab {mb} {
 #
 proc ttk::menubutton::FindMenuEntry {menu s} {
     set last [$menu index last]
-    if {$last eq "none" || $last < 0} {
+    if {$last eq "none" || $last eq ""} {
 	return ""
     }
     for {set i 0} {$i <= $last} {incr i} {

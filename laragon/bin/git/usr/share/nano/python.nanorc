@@ -24,9 +24,6 @@ color brightcyan "\<(exec|print)([[:blank:]]|$)"
 # Special values.
 color brightmagenta "\<(False|None|True)\>"
 
-# Decorators.
-color cyan "@[[:alpha:]_][[:alnum:]_.]*"
-
 # Mono-quoted strings.
 color brightgreen "'([^'\]|\\.)*'|"([^"\]|\\.)*"|'''|""""
 color normal "'''|""""

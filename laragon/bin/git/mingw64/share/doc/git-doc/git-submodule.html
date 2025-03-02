@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="generator" content="Asciidoctor 2.0.23"/>
+<meta name="generator" content="Asciidoctor 2.0.17"/>
 <title>git-submodule(1)</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700"/>
 <style>
@@ -84,10 +84,10 @@ code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;
 ul,ol,dl{line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
 ul,ol{margin-left:1.5em}
 ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0}
+ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
+ul.square{list-style-type:square}
 ul.circle{list-style-type:circle}
 ul.disc{list-style-type:disc}
-ul.square{list-style-type:square}
-ul.circle ul:not([class]),ul.disc ul:not([class]),ul.square ul:not([class]){list-style:inherit}
 ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
 dl dt{margin-bottom:.3125em;font-weight:bold}
 dl dd{margin-bottom:1.25em}
@@ -140,7 +140,7 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #content::before{content:none}
 #header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
 #header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
-#header>h1:only-child{border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
 #header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:flex;flex-flow:row wrap}
 #header .details span:first-child{margin-left:-.125em}
 #header .details span.email a{color:rgba(0,0,0,.85)}
@@ -162,7 +162,6 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #toctitle{color:#7a2518;font-size:1.2em}
 @media screen and (min-width:768px){#toctitle{font-size:1.375em}
 body.toc2{padding-left:15em;padding-right:0}
-body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
 #toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
 #toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
 #toc.toc2>ul{font-size:.9em;margin-bottom:0}
@@ -209,10 +208,13 @@ table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
 .admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
 .admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
 .exampleblock>.content{border:1px solid #e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;border-radius:4px}
+.exampleblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child{margin-bottom:0}
 .sidebarblock{border:1px solid #dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;border-radius:4px}
+.sidebarblock>:first-child{margin-top:0}
+.sidebarblock>:last-child{margin-bottom:0}
 .sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
-.exampleblock>.content>:first-child,.sidebarblock>.content>:first-child{margin-top:0}
-.exampleblock>.content>:last-child,.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
 .literalblock pre,.listingblock>.content>pre{border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
 @media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
 @media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
@@ -328,7 +330,7 @@ a.image{text-decoration:none;display:inline-block}
 a.image object{pointer-events:none}
 sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
 sup.footnote a,sup.footnoteref a{text-decoration:none}
-sup.footnote a:active,sup.footnoteref a:active,#footnotes .footnote a:first-of-type:active{text-decoration:underline}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
 #footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
 #footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
 #footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
@@ -391,7 +393,7 @@ b.conum *{color:inherit!important}
 dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
 h1,h2,p,td.content,span.alt,summary{letter-spacing:-.01em}
 p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
-p,blockquote,dt,td.content,td.hdlist1,span.alt,summary{font-size:1.0625rem}
+p,blockquote,dt,td.content,span.alt,summary{font-size:1.0625rem}
 p{margin-bottom:1.25rem}
 .sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
 .exampleblock>.content{background:#fffef7;border-color:#e0e0dc;box-shadow:0 1px 4px #e0e0dc}
@@ -432,11 +434,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 #footer{background:none}
 #footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
-</style>
-<style>
-pre>code {
-   display: inline;
-}
 </style>
 </head>
 <body class="manpage">
@@ -487,7 +484,7 @@ subcommands are available to perform operations on the submodules.</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">add [-b &lt;branch&gt;] [-f|--force] [--name &lt;name&gt;] [--reference &lt;repository&gt;] [--ref-format &lt;format&gt;] [--depth &lt;depth&gt;] [--] &lt;repository&gt; [&lt;path&gt;]</dt>
+<dt class="hdlist1">add [-b &lt;branch&gt;] [-f|--force] [--name &lt;name&gt;] [--reference &lt;repository&gt;] [--depth &lt;depth&gt;] [--] &lt;repository&gt; [&lt;path&gt;]</dt>
 <dd>
 <p>Add the given repository as a submodule at the given path
 to the changeset to be committed next to the current
@@ -529,10 +526,6 @@ location, and only the superproject&#8217;s URL needs to be provided.
 git-submodule will correctly locate the submodule using the relative
 URL in <code>.gitmodules</code>.</p>
 </div>
-<div class="paragraph">
-<p>If <code>--ref-format &lt;format&gt;</code>  is specified, the ref storage format of newly
-cloned submodules will be set accordingly.</p>
-</div>
 </dd>
 <dt class="hdlist1">status [--cached] [--recursive] [--] [&lt;path&gt;&#8230;&#8203;]</dt>
 <dd>
@@ -562,7 +555,7 @@ too (and can also report changes to a submodule&#8217;s work tree).</p>
 <dd>
 <p>Initialize the submodules recorded in the index (which were
 added and committed elsewhere) by setting <code>submodule.$name.url</code>
-in <code>.git/config</code>, using the same setting from <code>.gitmodules</code> as
+in .git/config. It uses the same setting from <code>.gitmodules</code> as
 a template. If the URL is relative, it will be resolved using
 the default remote. If there is no default remote, the current
 repository will be assumed to be upstream.</p>
@@ -573,13 +566,9 @@ configured to be active will be initialized, otherwise all submodules are
 initialized.</p>
 </div>
 <div class="paragraph">
-<p>It will also copy the value of <code>submodule.$name.update</code>, if present in
-the <code>.gitmodules</code> file, to <code>.git/config</code>, but (1) this command does not
-alter existing information in <code>.git/config</code>, and (2) <code>submodule.$name.update</code>
-that is set to a custom command is <strong>not</strong> copied for security reasons.</p>
-</div>
-<div class="paragraph">
-<p>You can then customize the submodule clone URLs in <code>.git/config</code>
+<p>When present, it will also copy the value of <code>submodule.$name.update</code>.
+This command does not alter existing information in .git/config.
+You can then customize the submodule clone URLs in .git/config
 for your local setup and proceed to <code>git submodule update</code>;
 you can also just use <code>git submodule update --init</code> without
 the explicit <em>init</em> step if you do not intend to customize
@@ -611,7 +600,7 @@ that use <a href="git-rm.html">git-rm(1)</a> instead. See <a href="gitsubmodules
 options.</p>
 </div>
 </dd>
-<dt class="hdlist1">update [--init] [--remote] [-N|--no-fetch] [--[no-]recommend-shallow] [-f|--force] [--checkout|--rebase|--merge] [--reference &lt;repository&gt;] [--ref-format &lt;format&gt;] [--depth &lt;depth&gt;] [--recursive] [--jobs &lt;n&gt;] [--[no-]single-branch] [--filter &lt;filter-spec&gt;] [--] [&lt;path&gt;&#8230;&#8203;]</dt>
+<dt class="hdlist1">update [--init] [--remote] [-N|--no-fetch] [--[no-]recommend-shallow] [-f|--force] [--checkout|--rebase|--merge] [--reference &lt;repository&gt;] [--depth &lt;depth&gt;] [--recursive] [--jobs &lt;n&gt;] [--[no-]single-branch] [--filter &lt;filter spec&gt;] [--] [&lt;path&gt;&#8230;&#8203;]</dt>
 <dd>
 <div class="openblock">
 <div class="content">
@@ -623,8 +612,6 @@ the submodules. The "updating" can be done in several ways depending
 on command line options and the value of <code>submodule.&lt;name&gt;.update</code>
 configuration variable. The command line option takes precedence over
 the configuration variable. If neither is given, a <em>checkout</em> is performed.
-(note: what is in <code>.gitmodules</code> file is irrelevant at this point;
-see <code>git submodule init</code> above for how <code>.gitmodules</code> is used).
 The <em>update</em> procedures supported both from the command line as well as
 through the <code>submodule.&lt;name&gt;.update</code> configuration are:</p>
 </div>
@@ -654,24 +641,22 @@ into the current branch in the submodule.</p>
 </dl>
 </div>
 <div class="paragraph">
-<p>The following update procedures have additional limitations:</p>
+<p>The following <em>update</em> procedures are only available via the
+<code>submodule.&lt;name&gt;.update</code> configuration variable:</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">custom command</dt>
 <dd>
-<p>mechanism for running arbitrary commands with the
-commit ID as an argument. Specifically, if the
-<code>submodule.&lt;name&gt;.update</code> configuration variable is set to
-<code>!custom command</code>, the object name of the commit recorded in the
-superproject for the submodule is appended to the <code>custom command</code>
-string and executed. Note that this mechanism is not supported in
-the <code>.gitmodules</code> file or on the command line.</p>
+<p>arbitrary shell command that takes a single
+argument (the sha1 of the commit recorded in the
+superproject) is executed. When <code>submodule.&lt;name&gt;.update</code>
+is set to <em>!command</em>, the remainder after the exclamation mark
+is the custom command.</p>
 </dd>
 <dt class="hdlist1">none</dt>
 <dd>
-<p>the submodule is not updated. This update procedure is not
-allowed on the command line.</p>
+<p>the submodule is not updated.</p>
 </dd>
 </dl>
 </div>
@@ -685,11 +670,7 @@ submodule with the <code>--init</code> option.</p>
 registered submodules, and update any nested submodules within.</p>
 </div>
 <div class="paragraph">
-<p>If <code>--ref-format &lt;format&gt;</code>  is specified, the ref storage format of newly
-cloned submodules will be set accordingly.</p>
-</div>
-<div class="paragraph">
-<p>If <code>--filter &lt;filter-spec&gt;</code> is specified, the given partial clone filter will be
+<p>If <code>--filter &lt;filter spec&gt;</code> is specified, the given partial clone filter will be
 applied to the submodule. See <a href="git-rev-list.html">git-rev-list(1)</a> for details on filter
 specifications.</p>
 </div>
@@ -1040,7 +1021,7 @@ for details.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-11-25 12:16:31 UTC
+Last updated 2022-08-30 21:40:02 UTC
 </div>
 </div>
 </body>

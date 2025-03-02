@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="generator" content="Asciidoctor 2.0.23"/>
+<meta name="generator" content="Asciidoctor 2.0.17"/>
 <title>My First Object Walk</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700"/>
 <style>
@@ -84,10 +84,10 @@ code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;
 ul,ol,dl{line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
 ul,ol{margin-left:1.5em}
 ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0}
+ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
+ul.square{list-style-type:square}
 ul.circle{list-style-type:circle}
 ul.disc{list-style-type:disc}
-ul.square{list-style-type:square}
-ul.circle ul:not([class]),ul.disc ul:not([class]),ul.square ul:not([class]){list-style:inherit}
 ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
 dl dt{margin-bottom:.3125em;font-weight:bold}
 dl dd{margin-bottom:1.25em}
@@ -140,7 +140,7 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #content::before{content:none}
 #header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
 #header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
-#header>h1:only-child{border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
 #header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:flex;flex-flow:row wrap}
 #header .details span:first-child{margin-left:-.125em}
 #header .details span.email a{color:rgba(0,0,0,.85)}
@@ -162,7 +162,6 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #toctitle{color:#7a2518;font-size:1.2em}
 @media screen and (min-width:768px){#toctitle{font-size:1.375em}
 body.toc2{padding-left:15em;padding-right:0}
-body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
 #toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
 #toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
 #toc.toc2>ul{font-size:.9em;margin-bottom:0}
@@ -209,10 +208,13 @@ table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
 .admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
 .admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
 .exampleblock>.content{border:1px solid #e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;border-radius:4px}
+.exampleblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child{margin-bottom:0}
 .sidebarblock{border:1px solid #dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;border-radius:4px}
+.sidebarblock>:first-child{margin-top:0}
+.sidebarblock>:last-child{margin-bottom:0}
 .sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
-.exampleblock>.content>:first-child,.sidebarblock>.content>:first-child{margin-top:0}
-.exampleblock>.content>:last-child,.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
 .literalblock pre,.listingblock>.content>pre{border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
 @media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
 @media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
@@ -328,7 +330,7 @@ a.image{text-decoration:none;display:inline-block}
 a.image object{pointer-events:none}
 sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
 sup.footnote a,sup.footnoteref a{text-decoration:none}
-sup.footnote a:active,sup.footnoteref a:active,#footnotes .footnote a:first-of-type:active{text-decoration:underline}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
 #footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
 #footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
 #footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
@@ -391,7 +393,7 @@ b.conum *{color:inherit!important}
 dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
 h1,h2,p,td.content,span.alt,summary{letter-spacing:-.01em}
 p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
-p,blockquote,dt,td.content,td.hdlist1,span.alt,summary{font-size:1.0625rem}
+p,blockquote,dt,td.content,span.alt,summary{font-size:1.0625rem}
 p{margin-bottom:1.25rem}
 .sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
 .exampleblock>.content{background:#fffef7;border-color:#e0e0dc;box-shadow:0 1px 4px #e0e0dc}
@@ -433,18 +435,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 #footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
-<style>
-pre>code {
-   display: inline;
-}
-</style>
 </head>
 <body class="article">
 <div id="header">
 <h1>My First Object Walk</h1>
-<div class="details">
-<span id="revdate">2018-06-07</span>
-</div>
 </div>
 <div id="content">
 <div class="sect1">
@@ -508,7 +502,6 @@ Open up a new file <code>builtin/walken.c</code> and set up the command handler:
  */
 
 #include "builtin.h"
-#include "trace.h"
 
 int cmd_walken(int argc, const char **argv, const char *prefix)
 {
@@ -524,13 +517,12 @@ int cmd_walken(int argc, const char **argv, const char *prefix)
 <div class="title">Note</div>
 </td>
 <td class="content">
-<code>trace_printf()</code>, defined in <code>trace.h</code>, differs from <code>printf()</code> in
-that it can be turned on or off at runtime. For the purposes of this
-tutorial, we will write <code>walken</code> as though it is intended for use as
-a "plumbing" command: that is, a command which is used primarily in
-scripts, rather than interactively by humans (a "porcelain" command).
-So we will send our debug output to <code>trace_printf()</code> instead.
-When running, enable trace output by setting the environment variable <code>GIT_TRACE</code>.
+<code>trace_printf()</code> differs from <code>printf()</code> in that it can be turned on or
+off at runtime. For the purposes of this tutorial, we will write <code>walken</code> as
+though it is intended for use as a "plumbing" command: that is, a command which
+is used primarily in scripts, rather than interactively by humans (a "porcelain"
+command). So we will send our debug output to <code>trace_printf()</code> instead. When
+running, enable trace output by setting the environment variable <code>GIT_TRACE</code>.
 </td>
 </tr>
 </table>
@@ -637,7 +629,7 @@ parameters provided by the user over the CLI.</p>
 <p><code>nr</code> represents the number of <code>rev_cmdline_entry</code> present in the array.</p>
 </div>
 <div class="paragraph">
-<p><code>alloc</code> is used by the <code>ALLOC_GROW</code> macro. Check <code>alloc.h</code> - this variable is
+<p><code>alloc</code> is used by the <code>ALLOC_GROW</code> macro. Check <code>cache.h</code> - this variable is
 used to track the allocated size of the list.</p>
 </div>
 <div class="paragraph">
@@ -757,14 +749,13 @@ We&#8217;ll also need to include the <code>config.h</code> header:</p>
 
 ...
 
-static int git_walken_config(const char *var, const char *value,
-                             const struct config_context *ctx, void *cb)
+static int git_walken_config(const char *var, const char *value, void *cb)
 {
         /*
          * For now, we don't have any custom configuration, so fall back to
          * the default config.
          */
-        return git_default_config(var, value, ctx, cb);
+        return git_default_config(var, value, cb);
 }</pre>
 </div>
 </div>
@@ -932,11 +923,7 @@ the walk loop below the <code>prepare_revision_walk()</code> call within your
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>#include "pretty.h"
-
-...
-
-static void walken_commit_walk(struct rev_info *rev)
+<pre>static void walken_commit_walk(struct rev_info *rev)
 {
         struct commit *commit;
         struct strbuf prettybuf = STRBUF_INIT;
@@ -996,11 +983,10 @@ modifying <code>rev_info.grep_filter</code>, which is a <code>struct grep_opt</c
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>static int git_walken_config(const char *var, const char *value,
-                             const struct config_context *ctx, void *cb)
+<pre>static int git_walken_config(const char *var, const char *value, void *cb)
 {
-        grep_config(var, value, ctx, cb);
-        return git_default_config(var, value, ctx, cb);
+        grep_config(var, value, cb);
+        return git_default_config(var, value, cb);
 }</pre>
 </div>
 </div>
@@ -1177,7 +1163,7 @@ about each one.</p>
 <div class="paragraph">
 <p>We can base our work on an example. <code>git pack-objects</code> prepares all kinds of
 objects for packing into a bitmap or packfile. The work we are interested in
-resides in <code>builtin/pack-objects.c:get_object_list()</code>; examination of that
+resides in <code>builtins/pack-objects.c:get_object_list()</code>; examination of that
 function shows that the all-object walk is being performed by
 <code>traverse_commit_list()</code> or <code>traverse_commit_list_filtered()</code>. Those two
 functions reside in <code>list-objects.c</code>; examining the source shows that, despite
@@ -1206,7 +1192,7 @@ and <code>show_object</code>.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>In addition, <code>traverse_commit_list_filtered()</code> has an additional parameter:</p>
+<p>In addition, <code>traverse_commit_list_filtered()</code> has an additional paramter:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1457,8 +1443,8 @@ walk we&#8217;ve just performed:</p>
         } else {
                 trace_printf(
                         _("Filtered object walk with filterspec 'tree:1'.\n"));
-
-                parse_list_objects_filter(&amp;rev-&gt;filter, "tree:1");
+                CALLOC_ARRAY(rev-&gt;filter, 1);
+                parse_list_objects_filter(rev-&gt;filter, "tree:1");
         }
         traverse_commit_list(rev, walken_show_commit,
                              walken_show_object, NULL);</pre>
@@ -1481,23 +1467,17 @@ points to the same tree object as its grandparent.)</p>
 <h3 id="_counting_omitted_objects">Counting Omitted Objects</h3>
 <div class="paragraph">
 <p>We also have the capability to enumerate all objects which were omitted by a
-filter, like with <code>git log --filter=&lt;spec&gt; --filter-print-omitted</code>. To do this,
-change <code>traverse_commit_list()</code> to <code>traverse_commit_list_filtered()</code>, which is
-able to populate an <code>omitted</code> list.  Asking for this list of filtered objects
-may cause performance degradations, however, because in this case, despite
-filtering objects, the possibly much larger set of all reachable objects must
-be processed in order to populate that list.</p>
+filter, like with <code>git log --filter=&lt;spec&gt; --filter-print-omitted</code>. Asking
+<code>traverse_commit_list_filtered()</code> to populate the <code>omitted</code> list means that our
+object walk does not perform any better than an unfiltered object walk; all
+reachable objects are walked in order to populate the list.</p>
 </div>
 <div class="paragraph">
 <p>First, add the <code>struct oidset</code> and related items we will use to iterate it:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>#include "oidset.h"
-
-...
-
-static void walken_object_walk(
+<pre>static void walken_object_walk(
         ...
 
         struct oidset omitted;
@@ -1510,9 +1490,8 @@ static void walken_object_walk(
 </div>
 </div>
 <div class="paragraph">
-<p>Replace the call to <code>traverse_commit_list()</code> with
-<code>traverse_commit_list_filtered()</code> and pass a pointer to the <code>omitted</code> oidset
-defined and initialized above:</p>
+<p>Modify the call to <code>traverse_commit_list_filtered()</code> to include your <code>omitted</code>
+object:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1557,11 +1536,7 @@ go:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>#include "hex.h"
-
-...
-
-static void walken_show_commit(struct commit *cmt, void *buf)
+<pre>static void walken_show_commit(struct commit *cmt, void *buf)
 {
         trace_printf("commit: %s\n", oid_to_hex(&amp;cmt-&gt;object.oid));
         commit_count++;
@@ -1598,7 +1573,7 @@ those lines without having to recompile.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>$ GIT_TRACE=1 ./bin-wrappers/git walken 2&gt;&amp;1 | head -n 10</pre>
+<pre>$ GIT_TRACE=1 ./bin-wrappers/git walken | head -n 10</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1631,7 +1606,7 @@ of the first handful:</p>
 <div class="listingblock">
 <div class="content">
 <pre>$ make
-$ GIT_TRACE=1 ./bin-wrappers/git walken 2&gt;&amp;1 | tail -n 10</pre>
+$ GIT_TRACE=1 ./bin-wrappers git walken | tail -n 10</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1678,7 +1653,7 @@ initial commit, <code>e83c5163</code>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-11-25 12:16:31 UTC
+Last updated 2022-08-30 21:40:02 UTC
 </div>
 </div>
 </body>

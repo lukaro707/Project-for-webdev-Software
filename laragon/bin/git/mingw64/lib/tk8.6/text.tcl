@@ -292,23 +292,22 @@ bind Text <<PasteSelection>> {
 bind Text <Insert> {
     catch {tk::TextInsert %W [::tk::GetSelection %W PRIMARY]}
 }
-bind Text <Key> {
+bind Text <KeyPress> {
     tk::TextInsert %W %A
 }
 
 # Ignore all Alt, Meta, and Control keypresses unless explicitly bound.
 # Otherwise, if a widget binding for one of these is defined, the
-# <Key> class binding will also fire and insert the character,
+# <KeyPress> class binding will also fire and insert the character,
 # which is wrong.  Ditto for <Escape>.
 
-bind Text <Alt-Key> {# nothing }
-bind Text <Meta-Key> {# nothing}
-bind Text <Control-Key> {# nothing}
+bind Text <Alt-KeyPress> {# nothing }
+bind Text <Meta-KeyPress> {# nothing}
+bind Text <Control-KeyPress> {# nothing}
 bind Text <Escape> {# nothing}
 bind Text <KP_Enter> {# nothing}
 if {[tk windowingsystem] eq "aqua"} {
-    bind Text <Command-Key> {# nothing}
-    bind Text <Mod4-Key> {# nothing}
+    bind Text <Command-KeyPress> {# nothing}
 }
 
 # Additional emacs-like bindings:
@@ -500,7 +499,7 @@ if {[tk windowingsystem] eq "x11"} {
     # Support for mousewheels on Linux/Unix commonly comes through mapping
     # the wheel to the extended buttons.  If you have a mousewheel, find
     # Linux configuration info at:
-    #	https://linuxreviews.org/HOWTO_change_the_mouse_speed_in_X
+    #	http://linuxreviews.org/howtos/xfree/mouse/
     bind Text <4> {
 	if {!$tk_strictMotif} {
 	    %W yview scroll -50 pixels

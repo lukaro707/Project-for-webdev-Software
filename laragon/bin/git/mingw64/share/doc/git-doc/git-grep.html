@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="generator" content="Asciidoctor 2.0.23"/>
+<meta name="generator" content="Asciidoctor 2.0.17"/>
 <title>git-grep(1)</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700"/>
 <style>
@@ -84,10 +84,10 @@ code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;
 ul,ol,dl{line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
 ul,ol{margin-left:1.5em}
 ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0}
+ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
+ul.square{list-style-type:square}
 ul.circle{list-style-type:circle}
 ul.disc{list-style-type:disc}
-ul.square{list-style-type:square}
-ul.circle ul:not([class]),ul.disc ul:not([class]),ul.square ul:not([class]){list-style:inherit}
 ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
 dl dt{margin-bottom:.3125em;font-weight:bold}
 dl dd{margin-bottom:1.25em}
@@ -140,7 +140,7 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #content::before{content:none}
 #header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
 #header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
-#header>h1:only-child{border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
 #header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:flex;flex-flow:row wrap}
 #header .details span:first-child{margin-left:-.125em}
 #header .details span.email a{color:rgba(0,0,0,.85)}
@@ -162,7 +162,6 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #toctitle{color:#7a2518;font-size:1.2em}
 @media screen and (min-width:768px){#toctitle{font-size:1.375em}
 body.toc2{padding-left:15em;padding-right:0}
-body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
 #toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
 #toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
 #toc.toc2>ul{font-size:.9em;margin-bottom:0}
@@ -209,10 +208,13 @@ table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
 .admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
 .admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
 .exampleblock>.content{border:1px solid #e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;border-radius:4px}
+.exampleblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child{margin-bottom:0}
 .sidebarblock{border:1px solid #dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;border-radius:4px}
+.sidebarblock>:first-child{margin-top:0}
+.sidebarblock>:last-child{margin-bottom:0}
 .sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
-.exampleblock>.content>:first-child,.sidebarblock>.content>:first-child{margin-top:0}
-.exampleblock>.content>:last-child,.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
 .literalblock pre,.listingblock>.content>pre{border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
 @media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
 @media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
@@ -328,7 +330,7 @@ a.image{text-decoration:none;display:inline-block}
 a.image object{pointer-events:none}
 sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
 sup.footnote a,sup.footnoteref a{text-decoration:none}
-sup.footnote a:active,sup.footnoteref a:active,#footnotes .footnote a:first-of-type:active{text-decoration:underline}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
 #footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
 #footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
 #footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
@@ -391,7 +393,7 @@ b.conum *{color:inherit!important}
 dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
 h1,h2,p,td.content,span.alt,summary{letter-spacing:-.01em}
 p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
-p,blockquote,dt,td.content,td.hdlist1,span.alt,summary{font-size:1.0625rem}
+p,blockquote,dt,td.content,span.alt,summary{font-size:1.0625rem}
 p{margin-bottom:1.25rem}
 .sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
 .exampleblock>.content{background:#fffef7;border-color:#e0e0dc;box-shadow:0 1px 4px #e0e0dc}
@@ -433,11 +435,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 #footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
-<style>
-pre>code {
-   display: inline;
-}
-</style>
 </head>
 <body class="manpage">
 <div id="header">
@@ -466,12 +463,11 @@ pre>code {
            [--break] [--heading] [-p | --show-function]
            [-A &lt;post-context&gt;] [-B &lt;pre-context&gt;] [-C &lt;context&gt;]
            [-W | --function-context]
-           [(-m | --max-count) &lt;num&gt;]
            [--threads &lt;num&gt;]
            [-f &lt;file&gt;] [-e] &lt;pattern&gt;
            [--and|--or|--not|(|)|-e &lt;pattern&gt;&#8230;&#8203;]
            [--recurse-submodules] [--parent-basename &lt;basename&gt;]
-           [ [--[no-]exclude-standard] [--cached | --untracked | --no-index] | &lt;tree&gt;&#8230;&#8203;]
+           [ [--[no-]exclude-standard] [--cached | --no-index | --untracked] | &lt;tree&gt;&#8230;&#8203;]
            [--] [&lt;pathspec&gt;&#8230;&#8203;]</pre>
 </div>
 </div>
@@ -497,23 +493,14 @@ characters.  An empty string as search expression matches all lines.</p>
 <p>Instead of searching tracked files in the working tree, search
 blobs registered in the index file.</p>
 </dd>
+<dt class="hdlist1">--no-index</dt>
+<dd>
+<p>Search files in the current directory that is not managed by Git.</p>
+</dd>
 <dt class="hdlist1">--untracked</dt>
 <dd>
 <p>In addition to searching in the tracked files in the working
 tree, search also in untracked files.</p>
-</dd>
-<dt class="hdlist1">--no-index</dt>
-<dd>
-<p>Search files in the current directory that is not managed by Git,
-or by ignoring that the current directory is managed by Git.  This
-is rather similar to running the regular <code>grep(1)</code> utility with its
-<code>-r</code> option specified, but with some additional benefits, such as
-using pathspec patterns to limit paths;  see the <em>pathspec</em> entry
-in <a href="gitglossary.html">gitglossary(7)</a> for more information.</p>
-<div class="paragraph">
-<p>This option cannot be used together with <code>--cached</code> or <code>--untracked</code>.
-See also <code>grep.fallbackToNoIndex</code> in <em>CONFIGURATION</em> below.</p>
-</div>
 </dd>
 <dt class="hdlist1">--no-exclude-standard</dt>
 <dd>
@@ -530,9 +517,9 @@ with <code>--no-index</code>.</p>
 <dd>
 <p>Recursively search in each submodule that is active and
 checked out in the repository.  When used in combination with the
-<em>&lt;tree&gt;</em> option the prefix of all submodule output will be the name of
-the parent project&#8217;s <em>&lt;tree&gt;</em> object.  This option cannot be used together
-with <code>--untracked</code>, and it has no effect if <code>--no-index</code> is specified.</p>
+&lt;tree&gt; option the prefix of all submodule output will be the name of
+the parent project&#8217;s &lt;tree&gt; object. This option has no effect
+if <code>--no-index</code> is given.</p>
 </dd>
 <dt class="hdlist1">-a</dt>
 <dt class="hdlist1">--text</dt>
@@ -665,7 +652,7 @@ will be used (see <code>core.pager</code> in <a href="git-config.html">git-confi
 <p>Use \0 as the delimiter for pathnames in the output, and print
 them verbatim. Without this option, pathnames with "unusual"
 characters are quoted as explained for the configuration
-variable <code>core.quotePath</code> (see <a href="git-config.html">git-config(1)</a>).</p>
+variable core.quotePath (see <a href="git-config.html">git-config(1)</a>).</p>
 </dd>
 <dt class="hdlist1">-o</dt>
 <dt class="hdlist1">--only-matching</dt>
@@ -737,19 +724,10 @@ found. The function names are determined in the same way as
 <code>git diff</code> works out patch hunk headers (see <em>Defining a
 custom hunk-header</em> in <a href="gitattributes.html">gitattributes(5)</a>).</p>
 </dd>
-<dt class="hdlist1">-m &lt;num&gt;</dt>
-<dt class="hdlist1">--max-count &lt;num&gt;</dt>
-<dd>
-<p>Limit the amount of matches per file. When using the <code>-v</code> or
-<code>--invert-match</code> option, the search stops after the specified
-number of non-matches. A value of -1 will return unlimited
-results (the default). A value of 0 will exit immediately with
-a non-zero status.</p>
-</dd>
 <dt class="hdlist1">--threads &lt;num&gt;</dt>
 <dd>
-<p>Number of <code>grep</code> worker threads to use.  See <em>NOTES ON THREADS</em>
-and <code>grep.threads</code> in <em>CONFIGURATION</em> for more information.</p>
+<p>Number of grep worker threads to use.
+See <code>grep.threads</code> in <em>CONFIGURATION</em> for more information.</p>
 </dd>
 <dt class="hdlist1">-f &lt;file&gt;</dt>
 <dd>
@@ -860,25 +838,20 @@ files that have lines that match both.</p>
 <h2 id="_notes_on_threads">NOTES ON THREADS</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <code>--threads</code> option (and the <code>grep.threads</code> configuration) will be ignored when
+<p>The <code>--threads</code> option (and the grep.threads configuration) will be ignored when
 <code>--open-files-in-pager</code> is used, forcing a single-threaded execution.</p>
 </div>
 <div class="paragraph">
 <p>When grepping the object store (with <code>--cached</code> or giving tree objects), running
-with multiple threads might perform slower than single-threaded if <code>--textconv</code>
-is given and there are too many text conversions.  Thus, if low performance is
-experienced in this case, it might be desirable to use <code>--threads=1</code>.</p>
+with multiple threads might perform slower than single threaded if <code>--textconv</code>
+is given and there&#8217;re too many text conversions. So if you experience low
+performance in this case, it might be desirable to use <code>--threads=1</code>.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_configuration">CONFIGURATION</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>Everything below this line in this section is selectively included
-from the <a href="git-config.html">git-config(1)</a> documentation. The content is the same
-as what&#8217;s found there:</p>
-</div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">grep.lineNumber</dt>
@@ -894,8 +867,7 @@ as what&#8217;s found there:</p>
 <p>Set the default matching behavior. Using a value of <em>basic</em>, <em>extended</em>,
 <em>fixed</em>, or <em>perl</em> will enable the <code>--basic-regexp</code>, <code>--extended-regexp</code>,
 <code>--fixed-strings</code>, or <code>--perl-regexp</code> option accordingly, while the
-value <em>default</em> will use the <code>grep.extendedRegexp</code> option to choose
-between <em>basic</em> and <em>extended</em>.</p>
+value <em>default</em> will return to the default matching behavior.</p>
 </dd>
 <dt class="hdlist1">grep.extendedRegexp</dt>
 <dd>
@@ -914,7 +886,7 @@ use as many threads as the number of logical cores available.</p>
 </dd>
 <dt class="hdlist1">grep.fallbackToNoIndex</dt>
 <dd>
-<p>If set to true, fall back to <code>git grep --no-index</code> if <code>git grep</code>
+<p>If set to true, fall back to git grep --no-index if git grep
 is executed outside of a git repository.  Defaults to false.</p>
 </dd>
 </dl>
@@ -932,7 +904,7 @@ is executed outside of a git repository.  Defaults to false.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-11-25 12:16:31 UTC
+Last updated 2022-08-30 21:40:02 UTC
 </div>
 </div>
 </body>

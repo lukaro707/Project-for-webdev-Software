@@ -1,5 +1,9 @@
-# SPDX-License-Identifier: 0BSD
+#
 # Author: Lasse Collin
+#
+# This file has been put into the public domain.
+# You can do whatever you want with this file.
+#
 
 CC = c99
 CFLAGS = -g
@@ -9,8 +13,7 @@ PROGS = \
 	01_compress_easy \
 	02_decompress \
 	03_compress_custom \
-	04_compress_easy_mt \
-	11_file_info
+	04_compress_easy_mt
 
 all: $(PROGS)
 

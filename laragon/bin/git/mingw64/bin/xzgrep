@@ -1,5 +1,4 @@
 #!/bin/sh
-# SPDX-License-Identifier: GPL-2.0-or-later
 
 # xzgrep -- a wrapper around a grep program that decompresses files as needed
 # Adapted from a version sent by Charles Levert <charles@comm.polymtl.ca>
@@ -35,7 +34,7 @@ case ${0##*/} in
   *)       prog=xzgrep; grep=${GREP:-grep};;
 esac
 
-version="$prog (XZ Utils) 5.6.3"
+version="$prog (XZ Utils) 5.2.6"
 
 usage="Usage: ${0##*/} [OPTION]... [-e] PATTERN [FILE]...
 Look for instances of PATTERN in the input FILEs, using their
@@ -43,7 +42,7 @@ uncompressed contents if they are compressed.
 
 OPTIONs are the same as for '$grep'.
 
-Report bugs to <xz@tukaani.org>."
+Report bugs to <lasse.collin@tukaani.org>."
 
 # sed script to escape all ' for the shell, and then (to handle trailing
 # newlines correctly) turn trailing X on last line into '.
@@ -157,7 +156,7 @@ done
 eval "set -- $operands "'${1+"$@"}'
 
 if test $have_pat -eq 0; then
-  case ${1?"Missing pattern; try '${0##*/} --help' for help"} in
+  case ${1?"Missing pattern; try \`${0##*/} --help' for help"} in
   (*\'*)
     grep="$grep -e '"$(printf '%sX\n' "$1" | LC_ALL=C sed "$escape");;
   (*)
@@ -181,8 +180,7 @@ for i; do
     *[-.]bz2 | *[-.]tbz | *.tbz2) uncompress="bzip2 -cdf";;
     *[-.]lzo | *[-.]tzo) uncompress="lzop -cdf";;
     *[-.]zst | *[-.]tzst) uncompress="zstd -cdfq";; # zstd needs -q.
-    *[-.]lz4) uncompress="lz4 -cdf";;
-    *) uncompress="$xz -cdfqQ";; # -qQ to ignore warnings like unsupp. check.
+    *) uncompress="$xz -cdf";;
   esac
   # xz_status will hold the decompressor's exit status.
   # Exit status of grep (and in rare cases, printf or sed) is
@@ -211,7 +209,7 @@ for i; do
       # which prints "binary file matches" to stderr instead of stdout.
       #
       # If reading from stdin, let grep use whatever name it prefers for
-      # stdin. With GNU grep it is a locale-specific translated string.
+      # stdin. With GNU grep it's a locale-specific translated string.
       if test "x$i" = "x-"; then
         eval "$grep -H"
       else
@@ -228,12 +226,12 @@ for i; do
       (*'
 '* | *'&'* | *'\'* | *'|'*)
         # If sed fails, set i to a known safe string to ensure that
-        # failing sed did not create a half-escaped dangerous string.
+        # failing sed didn't create a half-escaped dangerous string.
         i=$(printf '%s\n' "$i" | LC_ALL=C sed 's/[&\|]/\\&/g; $!s/$/\\/') ||
             i='(unknown filename):';;
       esac
 
-      # $i already ends with a colon so do not add it here.
+      # $i already ends with a colon so don't add it here.
       sed_script="s|^|$i|"
 
       # If grep or sed fails, pick the larger value of the two exit statuses.
@@ -277,7 +275,7 @@ for i; do
     test "$(kill -l "$xz_status" 2> /dev/null)" != "PIPE" && exit "$xz_status"
   elif test "$xz_status" -gt 0; then
     # Decompression failed but we will continue with the remaining
-    # files anyway. Set exit status to at least 2 to indicate an error.
+    # files anwyway. Set exit status to at least 2 to indicate an error.
     test "$r" -lt 2 && r=2
   fi
 

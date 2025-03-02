@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="generator" content="Asciidoctor 2.0.23"/>
+<meta name="generator" content="Asciidoctor 2.0.17"/>
 <title>My First Contribution to the Git Project</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700"/>
 <style>
@@ -84,10 +84,10 @@ code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;
 ul,ol,dl{line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
 ul,ol{margin-left:1.5em}
 ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0}
+ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
+ul.square{list-style-type:square}
 ul.circle{list-style-type:circle}
 ul.disc{list-style-type:disc}
-ul.square{list-style-type:square}
-ul.circle ul:not([class]),ul.disc ul:not([class]),ul.square ul:not([class]){list-style:inherit}
 ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
 dl dt{margin-bottom:.3125em;font-weight:bold}
 dl dd{margin-bottom:1.25em}
@@ -140,7 +140,7 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #content::before{content:none}
 #header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
 #header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
-#header>h1:only-child{border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
 #header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:flex;flex-flow:row wrap}
 #header .details span:first-child{margin-left:-.125em}
 #header .details span.email a{color:rgba(0,0,0,.85)}
@@ -162,7 +162,6 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #toctitle{color:#7a2518;font-size:1.2em}
 @media screen and (min-width:768px){#toctitle{font-size:1.375em}
 body.toc2{padding-left:15em;padding-right:0}
-body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
 #toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
 #toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
 #toc.toc2>ul{font-size:.9em;margin-bottom:0}
@@ -209,10 +208,13 @@ table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
 .admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
 .admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
 .exampleblock>.content{border:1px solid #e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;border-radius:4px}
+.exampleblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child{margin-bottom:0}
 .sidebarblock{border:1px solid #dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;border-radius:4px}
+.sidebarblock>:first-child{margin-top:0}
+.sidebarblock>:last-child{margin-bottom:0}
 .sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
-.exampleblock>.content>:first-child,.sidebarblock>.content>:first-child{margin-top:0}
-.exampleblock>.content>:last-child,.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
 .literalblock pre,.listingblock>.content>pre{border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
 @media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
 @media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
@@ -328,7 +330,7 @@ a.image{text-decoration:none;display:inline-block}
 a.image object{pointer-events:none}
 sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
 sup.footnote a,sup.footnoteref a{text-decoration:none}
-sup.footnote a:active,sup.footnoteref a:active,#footnotes .footnote a:first-of-type:active{text-decoration:underline}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
 #footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
 #footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
 #footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
@@ -391,7 +393,7 @@ b.conum *{color:inherit!important}
 dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
 h1,h2,p,td.content,span.alt,summary{letter-spacing:-.01em}
 p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
-p,blockquote,dt,td.content,td.hdlist1,span.alt,summary{font-size:1.0625rem}
+p,blockquote,dt,td.content,span.alt,summary{font-size:1.0625rem}
 p{margin-bottom:1.25rem}
 .sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
 .exampleblock>.content{background:#fffef7;border-color:#e0e0dc;box-shadow:0 1px 4px #e0e0dc}
@@ -433,18 +435,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 #footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
-<style>
-pre>code {
-   display: inline;
-}
-</style>
 </head>
 <body class="article">
 <div id="header">
 <h1>My First Contribution to the Git Project</h1>
-<div class="details">
-<span id="revdate">2018-06-07</span>
-</div>
 </div>
 <div id="content">
 <div class="sect1">
@@ -491,9 +485,8 @@ announcements, design discussions, and more take place. Those interested in
 contributing are welcome to post questions here. The Git list requires
 plain-text-only emails and prefers inline and bottom-posting when replying to
 mail; you will be CC&#8217;d in all replies to you. Optionally, you can subscribe to
-the list by sending an email to &lt;<a href="mailto:git+subscribe@vger.kernel.org">git+subscribe@vger.kernel.org</a>&gt;
-(see <a href="https://subspace.kernel.org/subscribing.html" class="bare">https://subspace.kernel.org/subscribing.html</a> for details).
-The <a href="https://lore.kernel.org/git">archive</a> of this mailing list is
+the list by sending an email to <a href="mailto:majordomo@vger.kernel.org">majordomo@vger.kernel.org</a> with "subscribe git"
+in the body. The <a href="https://lore.kernel.org/git">archive</a> of this mailing list is
 available to view in a browser.</p>
 </div>
 </div>
@@ -659,12 +652,11 @@ in order to keep the declarations alphabetically sorted:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Be sure to <code>#include "builtin.h"</code> in your <code>psuh.c</code>. You&#8217;ll also need to
-<code>#include "gettext.h"</code> to use functions related to printing output text.</p>
+<p>Be sure to <code>#include "builtin.h"</code> in your <code>psuh.c</code>.</p>
 </div>
 <div class="paragraph">
-<p>Go ahead and add some throwaway printf to the <code>cmd_psuh</code> function. This is a
-decent starting point as we can now add build rules and register the command.</p>
+<p>Go ahead and add some throwaway printf to that function. This is a decent
+starting point as we can now add build rules and register the command.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1397,7 +1389,7 @@ the <a href="https://lore.kernel.org/git/">Git mailing list archive</a>:</p>
 2022-02-21  1:43     ` John Cai
 2022-02-21  1:50       ` Taylor Blau
 2022-02-23 19:50         ` John Cai
-2022-02-18 20:00   ` // other replies elided
+2022-02-18 20:00   ` // other replies ellided
 2022-02-18 18:40 ` [PATCH 2/3] reflog: call reflog_delete from reflog.c John Cai via GitGitGadget
 2022-02-18 19:15   ` Ævar Arnfjörð Bjarmason
 2022-02-18 20:26     ` Junio C Hamano
@@ -1526,7 +1518,7 @@ Johannes Schindelin to make life as a Git contributor easier for those used to
 the GitHub PR workflow. It allows contributors to open pull requests against its
 mirror of the Git project, and does some magic to turn the PR into a set of
 emails and send them out for you. It also runs the Git continuous integration
-suite for you. It&#8217;s documented at <a href="https://gitgitgadget.github.io/" class="bare">https://gitgitgadget.github.io/</a>.</p>
+suite for you. It&#8217;s documented at <a href="http://gitgitgadget.github.io" class="bare">http://gitgitgadget.github.io</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="create-fork"><a class="anchor" href="#create-fork"></a>Forking <code>git/git</code> on GitHub</h3>
@@ -1898,21 +1890,6 @@ valuable, such as changing the Reply-to address or adding more CC and BCC lines.
 <div class="title">Note</div>
 </td>
 <td class="content">
-If you&#8217;re not sure whom to CC, running <code>contrib/contacts/git-contacts</code> can
-list potential reviewers. In addition, you can do <code>git send-email
---cc-cmd='perl contrib/contacts/git-contacts' feature/*.patch</code><sup class="footnote" id="_footnote_contrib-scripts">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup> to
-automatically pass this list of emails to <code>send-email</code>.
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
 When you are sending a real patch, it will go to <a href="mailto:git@vger.kernel.org">git@vger.kernel.org</a> - but
 please don&#8217;t send your patchset from the tutorial to the real mailing list! For
 now, you can send it to yourself, to make sure you understand how it will look.
@@ -1972,11 +1949,11 @@ your patches by prefixing them with "[PATCH v2]" instead of "[PATCH]",
 and your range-diff will be prefaced with "Range-diff against v1".</p>
 </div>
 <div class="paragraph">
-<p>After you run this command, <code>format-patch</code> will output the patches to the <code>psuh/</code>
+<p>Afer you run this command, <code>format-patch</code> will output the patches to the <code>psuh/</code>
 directory, alongside the v1 patches. Using a single directory makes it easy to
 refer to the old v1 patches while proofreading the v2 patches, but you will need
 to be careful to send out only the v2 patches. We will use a pattern like
-<code>psuh/v2-*.patch</code> (not <code>psuh/*.patch</code>, which would match v1 and v2 patches).</p>
+"psuh/v2-<strong>.patch" (not "psuh/</strong>.patch", which would match v1 and v2 patches).</p>
 </div>
 <div class="paragraph">
 <p>Edit your cover letter again. Now is a good time to mention what&#8217;s different
@@ -1985,23 +1962,23 @@ need the exact same body in your second cover letter; focus on explaining to
 reviewers the changes you&#8217;ve made that may not be as visible.</p>
 </div>
 <div class="paragraph">
-<p>You will also need to go and find the Message-ID of your previous cover letter.
+<p>You will also need to go and find the Message-Id of your previous cover letter.
 You can either note it when you send the first series, from the output of <code>git
 send-email</code>, or you can look it up on the
 <a href="https://lore.kernel.org/git">mailing list</a>. Find your cover letter in the
-archives, click on it, then click "permalink" or "raw" to reveal the Message-ID
+archives, click on it, then click "permalink" or "raw" to reveal the Message-Id
 header. It should match:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>Message-ID: &lt;foo.12345.author@example.com&gt;</pre>
+<pre>Message-Id: &lt;foo.12345.author@example.com&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Your Message-ID is <code>&lt;foo.12345.author@example.com&gt;</code>. This example will be used
-below as well; make sure to replace it with the correct Message-ID for your
-<strong>previous cover letter</strong> - that is, if you&#8217;re sending v2, use the Message-ID
-from v1; if you&#8217;re sending v3, use the Message-ID from v2.</p>
+<p>Your Message-Id is <code>&lt;foo.12345.author@example.com&gt;</code>. This example will be used
+below as well; make sure to replace it with the correct Message-Id for your
+<strong>previous cover letter</strong> - that is, if you&#8217;re sending v2, use the Message-Id
+from v1; if you&#8217;re sending v3, use the Message-Id from v2.</p>
 </div>
 <div class="paragraph">
 <p>While you&#8217;re looking at the email, you should also note who is CC&#8217;d, as it&#8217;s
@@ -2081,47 +2058,6 @@ index 88f126184c..38da593a60 100644
 <div class="sect1">
 <h2 id="now-what"><a class="anchor" href="#now-what"></a>My Patch Got Emailed - Now What?</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>Please give reviewers enough time to process your initial patch before
-sending an updated version. That is, resist the temptation to send a new
-version immediately, because others may have already started reviewing
-your initial version.</p>
-</div>
-<div class="paragraph">
-<p>While waiting for review comments, you may find mistakes in your initial
-patch, or perhaps realize a different and better way to achieve the goal
-of the patch. In this case you may communicate your findings to other
-reviewers as follows:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>If the mistakes you found are minor, send a reply to your patch as if
-you were a reviewer and mention that you will fix them in an
-updated version.</p>
-</li>
-<li>
-<p>On the other hand, if you think you want to change the course so
-drastically that reviews on the initial patch would be a waste of
-time (for everyone involved), retract the patch immediately with
-a reply like "I am working on a much better approach, so please
-ignore this patch and wait for the updated version."</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Now, the above is a good practice if you sent your initial patch
-prematurely without polish.  But a better approach of course is to avoid
-sending your patch prematurely in the first place.</p>
-</div>
-<div class="paragraph">
-<p>Please be considerate of the time needed by reviewers to examine each
-new version of your patch. Rather than seeing the initial version right
-now (followed by several "oops, I like this version better than the
-previous one" patches over 2 days), reviewers would strongly prefer if a
-single polished version came 2 days later instead, and that version with
-fewer mistakes were the only one they would need to review.</p>
-</div>
 <div class="sect2">
 <h3 id="reviewing"><a class="anchor" href="#reviewing"></a>Responding to Reviews</h3>
 <div class="paragraph">
@@ -2234,15 +2170,9 @@ should generate your diffs from <code>&lt;topic&gt;..&lt;mybranch&gt;</code> and
 </div>
 </div>
 </div>
-<div id="footnotes">
-<hr/>
-<div class="footnote" id="_footnotedef_1">
-<a href="#_footnoteref_1">1</a>. Scripts under `contrib/` are not part of the core `git` binary and must be called directly. Clone the Git codebase and run `perl contrib/contacts/git-contacts`.
-</div>
-</div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-11-25 12:16:31 UTC
+Last updated 2022-08-30 21:40:02 UTC
 </div>
 </div>
 </body>

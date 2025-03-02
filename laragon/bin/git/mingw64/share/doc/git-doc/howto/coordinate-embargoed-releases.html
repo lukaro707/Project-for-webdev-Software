@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="generator" content="Asciidoctor 2.0.23"/>
+<meta name="generator" content="Asciidoctor 2.0.17"/>
 <title>How we coordinate embargoed releases</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700"/>
 <style>
@@ -84,10 +84,10 @@ code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;
 ul,ol,dl{line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
 ul,ol{margin-left:1.5em}
 ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0}
+ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
+ul.square{list-style-type:square}
 ul.circle{list-style-type:circle}
 ul.disc{list-style-type:disc}
-ul.square{list-style-type:square}
-ul.circle ul:not([class]),ul.disc ul:not([class]),ul.square ul:not([class]){list-style:inherit}
 ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
 dl dt{margin-bottom:.3125em;font-weight:bold}
 dl dd{margin-bottom:1.25em}
@@ -140,7 +140,7 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #content::before{content:none}
 #header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
 #header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
-#header>h1:only-child{border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
 #header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:flex;flex-flow:row wrap}
 #header .details span:first-child{margin-left:-.125em}
 #header .details span.email a{color:rgba(0,0,0,.85)}
@@ -162,7 +162,6 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #toctitle{color:#7a2518;font-size:1.2em}
 @media screen and (min-width:768px){#toctitle{font-size:1.375em}
 body.toc2{padding-left:15em;padding-right:0}
-body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
 #toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
 #toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
 #toc.toc2>ul{font-size:.9em;margin-bottom:0}
@@ -209,10 +208,13 @@ table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
 .admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
 .admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
 .exampleblock>.content{border:1px solid #e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;border-radius:4px}
+.exampleblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child{margin-bottom:0}
 .sidebarblock{border:1px solid #dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;border-radius:4px}
+.sidebarblock>:first-child{margin-top:0}
+.sidebarblock>:last-child{margin-bottom:0}
 .sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
-.exampleblock>.content>:first-child,.sidebarblock>.content>:first-child{margin-top:0}
-.exampleblock>.content>:last-child,.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
 .literalblock pre,.listingblock>.content>pre{border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
 @media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
 @media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
@@ -328,7 +330,7 @@ a.image{text-decoration:none;display:inline-block}
 a.image object{pointer-events:none}
 sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
 sup.footnote a,sup.footnoteref a{text-decoration:none}
-sup.footnote a:active,sup.footnoteref a:active,#footnotes .footnote a:first-of-type:active{text-decoration:underline}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
 #footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
 #footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
 #footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
@@ -391,7 +393,7 @@ b.conum *{color:inherit!important}
 dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
 h1,h2,p,td.content,span.alt,summary{letter-spacing:-.01em}
 p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
-p,blockquote,dt,td.content,td.hdlist1,span.alt,summary{font-size:1.0625rem}
+p,blockquote,dt,td.content,span.alt,summary{font-size:1.0625rem}
 p{margin-bottom:1.25rem}
 .sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
 .exampleblock>.content{background:#fffef7;border-color:#e0e0dc;box-shadow:0 1px 4px #e0e0dc}
@@ -433,18 +435,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 #footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
-<style>
-pre>code {
-   display: inline;
-}
-</style>
 </head>
 <body class="article">
 <div id="header">
+<h1>How we coordinate embargoed releases</h1>
 </div>
 <div id="content">
-<div class="sect1">
-<h2 id="_how_we_coordinate_embargoed_releases">How we coordinate embargoed releases</h2>
+<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>To protect Git users from critical vulnerabilities, we do not just release
@@ -456,180 +453,40 @@ what Operating System or distribution they run.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_the_git_security_mailing_list">The <code>git-security</code> mailing list</h2>
+<h2 id="_open_a_security_advisory_draft">Open a Security Advisory draft</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Responsible disclosures of vulnerabilities, analysis, proposed fixes as
-well as the orchestration of coordinated embargoed releases all happen on the
-<code>git-security</code> mailing list at &lt;<a href="mailto:git-security@googlegroups.com">git-security@googlegroups.com</a>&gt;.</p>
-</div>
-<div class="paragraph">
-<p>In this context, the term "embargo" refers to the time period that information
-about a vulnerability is kept under wraps and only shared on a need-to-know
-basis. This is necessary to protect Git&#8217;s users from bad actors who would
-otherwise be made aware of attack vectors that could be exploited. "Lifting the
-embargo" refers to publishing the version that fixes the vulnerabilities.</p>
-</div>
-<div class="sect2">
-<h3 id="_audience_of_the_git_security_mailing_list">Audience of the <code>git-security</code> mailing list</h3>
-<div class="paragraph">
-<p>Anybody may contact the <code>git-security</code> mailing list by sending an email
-to &lt;<a href="mailto:git-security@googlegroups.com">git-security@googlegroups.com</a>&gt;, though the archive is closed to the
-public and only accessible to subscribed members.</p>
-</div>
-<div class="paragraph">
-<p>There are a few dozen subscribed members: core Git developers who are trusted
-with addressing vulnerabilities, and stakeholders (i.e. owners of products
-affected by security vulnerabilities in Git).</p>
-</div>
-<div class="paragraph">
-<p>Most of the discussions revolve around assessing the severity of the reported
-issue (including the decision whether the report is security-relevant or can be
-redirected to the public mailing list), how to remediate the issue, determining
-the timeline of the disclosure as well as aligning priorities and
-requirements.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_communications">Communications</h3>
-<div class="paragraph">
-<p>If you are a stakeholder, it is a good idea to pay close attention to the
-discussions, as pertinent information may be buried in the middle of a lively
-conversation that might not look relevant to your interests. For example, the
-tentative timeline might be agreed upon in the middle of discussing code
-comment formatting in one of the patches and whether or not to combine fixes
-for multiple, separate vulnerabilities into the same embargoed release. Most
-mail threads are not usually structured specifically to communicate
-agreements, assessments or timelines.</p>
-</div>
+<p>The first step is to <a href="https://github.com/git/git/security/advisories/new">open an
+advisory</a>. Technically, it is not necessary, but it is convenient and saves a
+bit of hassle. This advisory can also be used to obtain the CVE number and it
+will give us a private fork associated with it that can be used to collaborate
+on a fix.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_typical_timeline">Typical timeline</h2>
+<h2 id="_release_date_of_the_embargoed_version">Release date of the embargoed version</h2>
 <div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>A potential vulnerability is reported to the <code>git-security</code> mailing list.</p>
-</li>
-<li>
-<p>The members of the git-security list start a discussion to give an initial
-assessment of the severity of the reported potential vulnerability.
-We aspire to do so within a few days.</p>
-</li>
-<li>
-<p>After discussion, if consensus is reached that it is not critical enough
-to warrant any embargo, the reporter is redirected to the public Git mailing
-list. This ends the reporter&#8217;s interaction with the <code>git-security</code> list.</p>
-</li>
-<li>
-<p>If it is deemed critical enough for an embargo, ideas are presented on how to
-address the vulnerability.</p>
-</li>
-<li>
-<p>Usually around that time, the Git maintainer or their delegate(s) open a draft
-security advisory in the <code>git/git</code> repository on GitHub (see below for more
-details).</p>
-</li>
-<li>
-<p>Code review can take place in a variety of different locations,
-depending on context. These are: patches sent inline on the git-security list,
-a private fork on GitHub associated with the draft security advisory, or the
-git/cabal repository.</p>
-</li>
-<li>
-<p>Contributors working on a fix should consider beginning by sending
-patches to the git-security list (inline with the original thread), since they
-are accessible to all subscribers, along with the original reporter.</p>
-</li>
-<li>
-<p>Once the review has settled and everyone involved in the review agrees that
-the patches are nearing the finish line, the Git maintainer, and others
-determine a release date as well as the release trains that are serviced. The
-decision regarding which versions need a backported fix is based on input from
-the reporter, the contributor who worked on the patches, and from
-stakeholders. Operators of hosting sites who may want to analyze whether the
-given issue is exploited via any of the repositories they host, and binary
-packagers who want to make sure their product gets patched adequately against
-the vulnerability, for example, may want to give their input at this stage.</p>
-</li>
-<li>
-<p>While the Git community does its best to accommodate the specific timeline
-requests of the various binary packagers, the nature of the issue may preclude
-a prolonged release schedule. For fixes deemed urgent, it may be in the best
-interest of the Git users community to shorten the disclosure and release
-timeline, and packagers may need to adapt accordingly.</p>
-</li>
-<li>
-<p>Subsequently, branches with the fixes are pushed to the git/cabal repository.</p>
-</li>
-<li>
-<p>The tags are created by the Git maintainer and pushed to the same repository.</p>
-</li>
-<li>
-<p>The Git for Windows, Git for macOS, BSD, Debian, etc. maintainers prepare the
-corresponding release artifacts, based on the tags created that have been
-prepared by the Git maintainer.</p>
-</li>
-<li>
-<p>The release artifacts prepared by various binary packagers can be
-made available to stakeholders under embargo via a mail to the
-<code>git-security</code> list.</p>
-</li>
-<li>
-<p>Less than a week before the release, a mail with the relevant information is
-sent to &lt;<a href="mailto:distros@vs.openwall.org">distros@vs.openwall.org</a>&gt; (see below), a list used to pre-announce
-embargoed releases of open source projects to the stakeholders of all major
-distributions of Linux as well as other OSes.</p>
-</li>
-<li>
-<p>Public communication is then prepared in advance of the release date. This
-includes blog posts and mails to the Git and Git for Windows mailing lists.</p>
-</li>
-<li>
-<p>On the day of the release, at around 10am Pacific Time, the Git maintainer
-pushes the tag and the <code>master</code> branch to the public repository, then sends
-out an announcement mail.</p>
-</li>
-<li>
-<p>Once the tag is pushed, the Git for Windows maintainer publishes the
-corresponding tag and creates a GitHub Release with the associated release
-artifacts (Git for Windows installer, Portable Git, MinGit, etc).</p>
-</li>
-<li>
-<p>Git for Windows release is then announced via a mail to the public Git and
-Git for Windows mailing lists as well as via a tweet.</p>
-</li>
-<li>
-<p>Ditto for distribution packagers for Linux and other platforms:
-their releases are announced via their preferred channels.</p>
-</li>
-<li>
-<p>A mail to &lt;<a href="mailto:oss-security@lists.openwall.org">oss-security@lists.openwall.org</a>&gt; (see below for details) is sent
-as a follow-up to the &lt;<a href="mailto:distros@vs.openwall.org">distros@vs.openwall.org</a>&gt; one, describing the
-vulnerability in detail, often including a proof of concept of an exploit.</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>If the vulnerability affects Windows users, we want to have our friends over at
+Visual Studio on board. This means we need to target a "Patch Tuesday" (i.e. a
+second Tuesday of the month), at the minimum three weeks from heads-up to
+coordinated release.</p>
 </div>
 <div class="paragraph">
-<p>Note: The Git project makes no guarantees about timelines, but aims to keep
-embargoes reasonably short in the interest of keeping Git&#8217;s users safe.</p>
-</div>
-<div class="sect2">
-<h3 id="_opening_a_security_advisory_draft">Opening a Security Advisory draft</h3>
-<div class="paragraph">
-<p>The first step is to <a href="https://github.com/git/git/security/advisories/new">open
-an advisory</a>. Technically, this is not necessary. However, it is the most
-convenient way to obtain the CVE number and it gives us a private repository
-associated with it that can be used to collaborate on a fix.</p>
+<p>If the vulnerability affects the server side, or can benefit from scans on the
+server side (i.e. if <code>git fsck</code> can detect an attack), it is important to give
+all involved Git repository hosting sites enough time to scan all of those
+repositories.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_notifying_the_linux_distributions">Notifying the Linux distributions</h3>
+</div>
+<div class="sect1">
+<h2 id="_notifying_the_linux_distributions">Notifying the Linux distributions</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>At most two weeks before release date, we need to send a notification to
-&lt;<a href="mailto:distros@vs.openwall.org">distros@vs.openwall.org</a>&gt;, preferably less than 7 days before the release date.
+<a href="mailto:distros@vs.openwall.org">distros@vs.openwall.org</a>, preferably less than 7 days before the release date.
 This will reach most (all?) Linux distributions. See an example below, and the
 guidelines for this mailing list at
 <a href="https://oss-security.openwall.org/wiki/mailing-lists/distros#how-to-use-the-lists">here</a>.</p>
@@ -664,8 +521,10 @@ tar cJvf cve-xxx.bundle.tar.xz cve-xxx.bundle</pre>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_example_mail_to_distrosvs_openwall_org">Example mail to <a href="mailto:distros@vs.openwall.org">distros@vs.openwall.org</a></h3>
+</div>
+<div class="sect1">
+<h2 id="_example_mail_to_distrosvs_openwall_org">Example mail to <a href="mailto:distros@vs.openwall.org">distros@vs.openwall.org</a></h2>
+<div class="sectionbody">
 <div class="literalblock">
 <div class="content">
 <pre>To: distros@vs.openwall.org
@@ -700,8 +559,10 @@ Thanks,
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_example_mail_to_oss_securitylists_openwall_com">Example mail to <a href="mailto:oss-security@lists.openwall.com">oss-security@lists.openwall.com</a></h3>
+</div>
+<div class="sect1">
+<h2 id="_example_mail_to_oss_securitylists_openwall_com">Example mail to <a href="mailto:oss-security@lists.openwall.com">oss-security@lists.openwall.com</a></h2>
+<div class="sectionbody">
 <div class="literalblock">
 <div class="content">
 <pre>To: oss-security@lists.openwall.com
@@ -733,10 +594,9 @@ Thanks,
 </div>
 </div>
 </div>
-</div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-11-25 12:16:31 UTC
+Last updated 2022-08-30 21:40:02 UTC
 </div>
 </div>
 </body>

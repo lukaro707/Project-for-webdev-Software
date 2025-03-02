@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="generator" content="Asciidoctor 2.0.23"/>
+<meta name="generator" content="Asciidoctor 2.0.17"/>
 <title>git-maintenance(1)</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700"/>
 <style>
@@ -84,10 +84,10 @@ code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;
 ul,ol,dl{line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
 ul,ol{margin-left:1.5em}
 ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0}
+ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
+ul.square{list-style-type:square}
 ul.circle{list-style-type:circle}
 ul.disc{list-style-type:disc}
-ul.square{list-style-type:square}
-ul.circle ul:not([class]),ul.disc ul:not([class]),ul.square ul:not([class]){list-style:inherit}
 ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
 dl dt{margin-bottom:.3125em;font-weight:bold}
 dl dd{margin-bottom:1.25em}
@@ -140,7 +140,7 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #content::before{content:none}
 #header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
 #header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
-#header>h1:only-child{border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
 #header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:flex;flex-flow:row wrap}
 #header .details span:first-child{margin-left:-.125em}
 #header .details span.email a{color:rgba(0,0,0,.85)}
@@ -162,7 +162,6 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #toctitle{color:#7a2518;font-size:1.2em}
 @media screen and (min-width:768px){#toctitle{font-size:1.375em}
 body.toc2{padding-left:15em;padding-right:0}
-body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
 #toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
 #toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
 #toc.toc2>ul{font-size:.9em;margin-bottom:0}
@@ -209,10 +208,13 @@ table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
 .admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
 .admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
 .exampleblock>.content{border:1px solid #e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;border-radius:4px}
+.exampleblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child{margin-bottom:0}
 .sidebarblock{border:1px solid #dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;border-radius:4px}
+.sidebarblock>:first-child{margin-top:0}
+.sidebarblock>:last-child{margin-bottom:0}
 .sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
-.exampleblock>.content>:first-child,.sidebarblock>.content>:first-child{margin-top:0}
-.exampleblock>.content>:last-child,.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
 .literalblock pre,.listingblock>.content>pre{border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
 @media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
 @media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
@@ -328,7 +330,7 @@ a.image{text-decoration:none;display:inline-block}
 a.image object{pointer-events:none}
 sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
 sup.footnote a,sup.footnoteref a{text-decoration:none}
-sup.footnote a:active,sup.footnoteref a:active,#footnotes .footnote a:first-of-type:active{text-decoration:underline}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
 #footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
 #footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
 #footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
@@ -391,7 +393,7 @@ b.conum *{color:inherit!important}
 dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
 h1,h2,p,td.content,span.alt,summary{letter-spacing:-.01em}
 p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
-p,blockquote,dt,td.content,td.hdlist1,span.alt,summary{font-size:1.0625rem}
+p,blockquote,dt,td.content,span.alt,summary{font-size:1.0625rem}
 p{margin-bottom:1.25rem}
 .sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
 .exampleblock>.content{background:#fffef7;border-color:#e0e0dc;box-shadow:0 1px 4px #e0e0dc}
@@ -433,11 +435,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 #footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
-<style>
-pre>code {
-   display: inline;
-}
-</style>
 </head>
 <body class="manpage">
 <div id="header">
@@ -454,7 +451,7 @@ pre>code {
 <div class="verseblock">
 <pre class="content"><em>git maintenance</em> run [&lt;options&gt;]
 <em>git maintenance</em> start [--scheduler=&lt;scheduler&gt;]
-<em>git maintenance</em> (stop|register|unregister) [&lt;options&gt;]</pre>
+<em>git maintenance</em> (stop|register|unregister)</pre>
 </div>
 </div>
 </div>
@@ -506,13 +503,13 @@ the background maintenance is restarted later.</p>
 </dd>
 <dt class="hdlist1">register</dt>
 <dd>
-<p>Initialize Git config values so any scheduled maintenance will start
-running on this repository. This adds the repository to the
-<code>maintenance.repo</code> config variable in the current user&#8217;s global config,
-or the config specified by --config-file option, and enables some
-recommended configuration values for <code>maintenance.&lt;task&gt;.schedule</code>. The
-tasks that are enabled are safe for running in the background without
-disrupting foreground processes.</p>
+<p>Initialize Git config values so any scheduled maintenance will
+start running on this repository. This adds the repository to the
+<code>maintenance.repo</code> config variable in the current user&#8217;s global
+config and enables some recommended configuration values for
+<code>maintenance.&lt;task&gt;.schedule</code>. The tasks that are enabled are safe
+for running in the background without disrupting foreground
+processes.</p>
 <div class="paragraph">
 <p>The <code>register</code> subcommand will also set the <code>maintenance.strategy</code> config
 value to <code>incremental</code>, if this value is not previously set. The
@@ -553,11 +550,6 @@ setting will remain after a <code>git maintenance unregister</code> command.</p>
 <p>Remove the current repository from background maintenance. This
 only removes the repository from the configured list. It does not
 stop the background maintenance processes from running.</p>
-<div class="paragraph">
-<p>The <code>unregister</code> subcommand will report an error if the current repository
-is not already registered. Use the <code>--force</code> option to return success even
-when the current repository is not registered.</p>
-</div>
 </dd>
 </dl>
 </div>
@@ -585,15 +577,11 @@ command is run. The configured refspec is modified to place all
 requested refs within <code>refs/prefetch/</code>. Also, tags are not updated.</p>
 <div class="paragraph">
 <p>This is done to avoid disrupting the remote-tracking branches. The end users
-expect these refs to stay unmoved unless they initiate a fetch.  However,
-with the prefetch task, the objects necessary to complete a later real fetch
-would already be obtained, making the real fetch faster.  In the ideal case,
+expect these refs to stay unmoved unless they initiate a fetch.  With prefetch
+task, however, the objects necessary to complete a later real fetch would
+already be obtained, so the real fetch would go faster.  In the ideal case,
 it will just become an update to a bunch of remote-tracking branches without
 any object transfer.</p>
-</div>
-<div class="paragraph">
-<p>The <code>remote.&lt;name&gt;.skipFetchAll</code> configuration can be used to
-exclude a particular remote from getting prefetched.</p>
 </div>
 </dd>
 <dt class="hdlist1">gc</dt>
@@ -728,9 +716,7 @@ on an hourly basis. Each run executes the "hourly" tasks. At midnight,
 that process also executes the "daily" tasks. At midnight on the first day
 of the week, that process also executes the "weekly" tasks. A single
 process iterates over each registered repository, performing the scheduled
-tasks for that frequency. The processes are scheduled to a random minute of
-the hour per client to spread out the load that multiple clients might
-generate (e.g. from prefetching). Depending on the number of registered
+tasks for that frequency. Depending on the number of registered
 repositories and their sizes, this process may take longer than an hour.
 In this case, multiple <code>git maintenance run</code> commands may run on the same
 repository at the same time, colliding on the object database lock. This
@@ -951,108 +937,6 @@ custom tasks.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_configuration">CONFIGURATION</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Everything below this line in this section is selectively included
-from the <a href="git-config.html">git-config(1)</a> documentation. The content is the same
-as what&#8217;s found there:</p>
-</div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">maintenance.auto</dt>
-<dd>
-<p>This boolean config option controls whether some commands run
-<code>git maintenance run --auto</code> after doing their normal work. Defaults
-to true.</p>
-</dd>
-<dt class="hdlist1">maintenance.autoDetach</dt>
-<dd>
-<p>Many Git commands trigger automatic maintenance after they have
-written data into the repository. This boolean config option
-controls whether this automatic maintenance shall happen in the
-foreground or whether the maintenance process shall detach and
-continue to run in the background.</p>
-<div class="paragraph">
-<p>If unset, the value of <code>gc.autoDetach</code> is used as a fallback. Defaults
-to true if both are unset, meaning that the maintenance process will
-detach.</p>
-</div>
-</dd>
-<dt class="hdlist1">maintenance.strategy</dt>
-<dd>
-<p>This string config option provides a way to specify one of a few
-recommended schedules for background maintenance. This only affects
-which tasks are run during <code>git maintenance run --schedule=X</code>
-commands, provided no <code>--task=&lt;task&gt;</code> arguments are provided.
-Further, if a <code>maintenance.&lt;task&gt;.schedule</code> config value is set,
-then that value is used instead of the one provided by
-<code>maintenance.strategy</code>. The possible strategy strings are:</p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>none</code>: This default setting implies no tasks are run at any schedule.</p>
-</li>
-<li>
-<p><code>incremental</code>: This setting optimizes for performing small maintenance
-activities that do not delete any data. This does not schedule the <code>gc</code>
-task, but runs the <code>prefetch</code> and <code>commit-graph</code> tasks hourly, the
-<code>loose-objects</code> and <code>incremental-repack</code> tasks daily, and the <code>pack-refs</code>
-task weekly.</p>
-</li>
-</ul>
-</div>
-</dd>
-<dt class="hdlist1">maintenance.&lt;task&gt;.enabled</dt>
-<dd>
-<p>This boolean config option controls whether the maintenance task
-with name <code>&lt;task&gt;</code> is run when no <code>--task</code> option is specified to
-<code>git maintenance run</code>. These config values are ignored if a
-<code>--task</code> option exists. By default, only <code>maintenance.gc.enabled</code>
-is true.</p>
-</dd>
-<dt class="hdlist1">maintenance.&lt;task&gt;.schedule</dt>
-<dd>
-<p>This config option controls whether or not the given <code>&lt;task&gt;</code> runs
-during a <code>git maintenance run --schedule=&lt;frequency&gt;</code> command. The
-value must be one of "hourly", "daily", or "weekly".</p>
-</dd>
-<dt class="hdlist1">maintenance.commit-graph.auto</dt>
-<dd>
-<p>This integer config option controls how often the <code>commit-graph</code> task
-should be run as part of <code>git maintenance run --auto</code>. If zero, then
-the <code>commit-graph</code> task will not run with the <code>--auto</code> option. A
-negative value will force the task to run every time. Otherwise, a
-positive value implies the command should run when the number of
-reachable commits that are not in the commit-graph file is at least
-the value of <code>maintenance.commit-graph.auto</code>. The default value is
-100.</p>
-</dd>
-<dt class="hdlist1">maintenance.loose-objects.auto</dt>
-<dd>
-<p>This integer config option controls how often the <code>loose-objects</code> task
-should be run as part of <code>git maintenance run --auto</code>. If zero, then
-the <code>loose-objects</code> task will not run with the <code>--auto</code> option. A
-negative value will force the task to run every time. Otherwise, a
-positive value implies the command should run when the number of
-loose objects is at least the value of <code>maintenance.loose-objects.auto</code>.
-The default value is 100.</p>
-</dd>
-<dt class="hdlist1">maintenance.incremental-repack.auto</dt>
-<dd>
-<p>This integer config option controls how often the <code>incremental-repack</code>
-task should be run as part of <code>git maintenance run --auto</code>. If zero,
-then the <code>incremental-repack</code> task will not run with the <code>--auto</code>
-option. A negative value will force the task to run every time.
-Otherwise, a positive value implies the command should run when the
-number of pack-files not in the multi-pack-index is at least the value
-of <code>maintenance.incremental-repack.auto</code>. The default value is 10.</p>
-</dd>
-</dl>
-</div>
-</div>
-</div>
-<div class="sect1">
 <h2 id="_git">GIT</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -1063,7 +947,7 @@ of <code>maintenance.incremental-repack.auto</code>. The default value is 10.</p
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-11-25 12:16:31 UTC
+Last updated 2022-08-30 21:40:02 UTC
 </div>
 </div>
 </body>

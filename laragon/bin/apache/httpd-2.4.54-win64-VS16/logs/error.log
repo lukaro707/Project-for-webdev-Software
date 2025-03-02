@@ -1,0 +1,9 @@
+[Sun Mar 02 20:42:49.249784 2025] [ssl:notice] [pid 36720:tid 432] AH10227: Init: Logging SSL private key material to \\\\.\\aswMonFltProxy\\FFFFDC86B3D0F4F0
+[Sun Mar 02 20:42:49.280327 2025] [ssl:notice] [pid 36720:tid 432] AH10227: Init: Logging SSL private key material to \\\\.\\aswMonFltProxy\\FFFFDC86B3D0F4F0
+[Sun Mar 02 20:42:49.502260 2025] [mpm_winnt:notice] [pid 36720:tid 432] AH00455: Apache/2.4.54 (Win64) OpenSSL/1.1.1q PHP/8.1.10 configured -- resuming normal operations
+[Sun Mar 02 20:42:49.502260 2025] [mpm_winnt:notice] [pid 36720:tid 432] AH00456: Apache Lounge VS16 Server built: Jun 22 2022 09:58:15
+[Sun Mar 02 20:42:49.502260 2025] [core:notice] [pid 36720:tid 432] AH00094: Command line: 'C:\\Project-for-webdev-Software\\laragon\\bin\\apache\\httpd-2.4.54-win64-VS16\\bin\\httpd -d C:/Project-for-webdev-Software/laragon/bin/apache/httpd-2.4.54-win64-VS16'
+[Sun Mar 02 20:42:49.506016 2025] [mpm_winnt:notice] [pid 36720:tid 432] AH00418: Parent: Created child process 31800
+[Sun Mar 02 20:42:49.846760 2025] [ssl:notice] [pid 31800:tid 384] AH10227: Init: Logging SSL private key material to \\\\.\\aswMonFltProxy\\FFFFDC86B3D0F4F0
+[Sun Mar 02 20:42:49.871110 2025] [ssl:notice] [pid 31800:tid 384] AH10227: Init: Logging SSL private key material to \\\\.\\aswMonFltProxy\\FFFFDC86B3D0F4F0
+[Sun Mar 02 20:42:49.901612 2025] [mpm_winnt:notice] [pid 31800:tid 384] AH00354: Child: Starting 64 worker threads.

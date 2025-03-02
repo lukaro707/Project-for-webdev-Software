@@ -1,7 +1,5 @@
 ## Syntax highlighting for Guile Scheme.
 
-## Original author:  Mark Oteiza
-
 syntax guile "\.scm$"
 header "^#!.*guile"
 comment ";"

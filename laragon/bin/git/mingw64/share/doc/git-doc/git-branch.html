@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="generator" content="Asciidoctor 2.0.23"/>
+<meta name="generator" content="Asciidoctor 2.0.17"/>
 <title>git-branch(1)</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700"/>
 <style>
@@ -84,10 +84,10 @@ code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;
 ul,ol,dl{line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
 ul,ol{margin-left:1.5em}
 ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0}
+ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
+ul.square{list-style-type:square}
 ul.circle{list-style-type:circle}
 ul.disc{list-style-type:disc}
-ul.square{list-style-type:square}
-ul.circle ul:not([class]),ul.disc ul:not([class]),ul.square ul:not([class]){list-style:inherit}
 ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
 dl dt{margin-bottom:.3125em;font-weight:bold}
 dl dd{margin-bottom:1.25em}
@@ -140,7 +140,7 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #content::before{content:none}
 #header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
 #header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
-#header>h1:only-child{border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
 #header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:flex;flex-flow:row wrap}
 #header .details span:first-child{margin-left:-.125em}
 #header .details span.email a{color:rgba(0,0,0,.85)}
@@ -162,7 +162,6 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #toctitle{color:#7a2518;font-size:1.2em}
 @media screen and (min-width:768px){#toctitle{font-size:1.375em}
 body.toc2{padding-left:15em;padding-right:0}
-body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
 #toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
 #toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
 #toc.toc2>ul{font-size:.9em;margin-bottom:0}
@@ -209,10 +208,13 @@ table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
 .admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
 .admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
 .exampleblock>.content{border:1px solid #e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;border-radius:4px}
+.exampleblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child{margin-bottom:0}
 .sidebarblock{border:1px solid #dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;border-radius:4px}
+.sidebarblock>:first-child{margin-top:0}
+.sidebarblock>:last-child{margin-bottom:0}
 .sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
-.exampleblock>.content>:first-child,.sidebarblock>.content>:first-child{margin-top:0}
-.exampleblock>.content>:last-child,.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
 .literalblock pre,.listingblock>.content>pre{border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
 @media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
 @media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
@@ -328,7 +330,7 @@ a.image{text-decoration:none;display:inline-block}
 a.image object{pointer-events:none}
 sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
 sup.footnote a,sup.footnoteref a{text-decoration:none}
-sup.footnote a:active,sup.footnoteref a:active,#footnotes .footnote a:first-of-type:active{text-decoration:underline}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
 #footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
 #footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
 #footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
@@ -391,7 +393,7 @@ b.conum *{color:inherit!important}
 dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
 h1,h2,p,td.content,span.alt,summary{letter-spacing:-.01em}
 p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
-p,blockquote,dt,td.content,td.hdlist1,span.alt,summary{font-size:1.0625rem}
+p,blockquote,dt,td.content,span.alt,summary{font-size:1.0625rem}
 p{margin-bottom:1.25rem}
 .sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
 .exampleblock>.content{background:#fffef7;border-color:#e0e0dc;box-shadow:0 1px 4px #e0e0dc}
@@ -432,11 +434,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 #footer{background:none}
 #footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
-</style>
-<style>
-pre>code {
-   display: inline;
-}
 </style>
 </head>
 <body class="manpage">
@@ -581,18 +578,13 @@ The negated form <code>--no-create-reflog</code> only overrides an earlier
 <dt class="hdlist1">-f</dt>
 <dt class="hdlist1">--force</dt>
 <dd>
-<p>Reset &lt;branchname&gt; to &lt;start-point&gt;, even if &lt;branchname&gt; exists
+<p>Reset &lt;branchname&gt; to &lt;startpoint&gt;, even if &lt;branchname&gt; exists
 already. Without <code>-f</code>, <em>git branch</em> refuses to change an existing branch.
 In combination with <code>-d</code> (or <code>--delete</code>), allow deleting the
 branch irrespective of its merged status, or whether it even
 points to a valid commit. In combination with
 <code>-m</code> (or <code>--move</code>), allow renaming the branch even if the new
 branch name already exists, the same applies for <code>-c</code> (or <code>--copy</code>).</p>
-<div class="paragraph">
-<p>Note that <em>git branch -f &lt;branchname&gt; [&lt;start-point&gt;]</em>, even with <em>-f</em>,
-refuses to change an existing branch <code>&lt;branchname&gt;</code> that is checked out
-in another worktree linked to the same repository.</p>
-</div>
 </dd>
 <dt class="hdlist1">-m</dt>
 <dt class="hdlist1">--move</dt>
@@ -628,11 +620,6 @@ Same as <code>--color=never</code>.</p>
 <dt class="hdlist1">--ignore-case</dt>
 <dd>
 <p>Sorting and filtering branches are case insensitive.</p>
-</dd>
-<dt class="hdlist1">--omit-empty</dt>
-<dd>
-<p>Do not print a newline after formatted refs where the format expands
-to the empty string.</p>
 </dd>
 <dt class="hdlist1">--column[=&lt;options&gt;]</dt>
 <dt class="hdlist1">--no-column</dt>
@@ -815,8 +802,7 @@ option is omitted, the current HEAD will be used instead.</p>
 </dd>
 <dt class="hdlist1">&lt;oldbranch&gt;</dt>
 <dd>
-<p>The name of an existing branch.  If this option is omitted,
-the name of the current branch will be used instead.</p>
+<p>The name of an existing branch to rename.</p>
 </dd>
 <dt class="hdlist1">&lt;newbranch&gt;</dt>
 <dd>
@@ -830,7 +816,7 @@ order of the value. You may use the --sort=&lt;key&gt; option
 multiple times, in which case the last key becomes the primary
 key. The keys supported are the same as those in <code>git
 for-each-ref</code>. Sort order defaults to the value configured for the
-<code>branch.sort</code> variable if it exists, or to sorting based on the
+<code>branch.sort</code> variable if exists, or to sorting based on the
 full refname (including <code>refs/...</code> prefix). This lists
 detached HEAD (if present) first, then local branches and
 finally remote-tracking branches. See <a href="git-config.html">git-config(1)</a>.</p>
@@ -856,130 +842,6 @@ that of <a href="git-for-each-ref.html">git-for-each-ref(1)</a>.</p>
 <p><code>pager.branch</code> is only respected when listing branches, i.e., when
 <code>--list</code> is used or implied. The default is to use a pager.
 See <a href="git-config.html">git-config(1)</a>.</p>
-</div>
-<div class="paragraph">
-<p>Everything above this line in this section isn&#8217;t included from the
-<a href="git-config.html">git-config(1)</a> documentation. The content that follows is the
-same as what&#8217;s found there:</p>
-</div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">branch.autoSetupMerge</dt>
-<dd>
-<p>Tells <em>git branch</em>, <em>git switch</em> and <em>git checkout</em> to set up new branches
-so that <a href="git-pull.html">git-pull(1)</a> will appropriately merge from the
-starting point branch. Note that even if this option is not set,
-this behavior can be chosen per-branch using the <code>--track</code>
-and <code>--no-track</code> options. The valid settings are: <code>false</code>&#8201;&#8212;&#8201;no
-automatic setup is done; <code>true</code>&#8201;&#8212;&#8201;automatic setup is done when the
-starting point is a remote-tracking branch; <code>always</code>&#8201;&#8212;&#8201;automatic setup is done when the starting point is either a
-local branch or remote-tracking branch; <code>inherit</code>&#8201;&#8212;&#8201;if the starting point
-has a tracking configuration, it is copied to the new
-branch; <code>simple</code>&#8201;&#8212;&#8201;automatic setup is done only when the starting point
-is a remote-tracking branch and the new branch has the same name as the
-remote branch. This option defaults to true.</p>
-</dd>
-<dt class="hdlist1">branch.autoSetupRebase</dt>
-<dd>
-<p>When a new branch is created with <em>git branch</em>, <em>git switch</em> or <em>git checkout</em>
-that tracks another branch, this variable tells Git to set
-up pull to rebase instead of merge (see "branch.&lt;name&gt;.rebase").
-When <code>never</code>, rebase is never automatically set to true.
-When <code>local</code>, rebase is set to true for tracked branches of
-other local branches.
-When <code>remote</code>, rebase is set to true for tracked branches of
-remote-tracking branches.
-When <code>always</code>, rebase will be set to true for all tracking
-branches.
-See "branch.autoSetupMerge" for details on how to set up a
-branch to track another branch.
-This option defaults to never.</p>
-</dd>
-<dt class="hdlist1">branch.sort</dt>
-<dd>
-<p>This variable controls the sort ordering of branches when displayed by
-<a href="git-branch.html">git-branch(1)</a>. Without the "--sort=&lt;value&gt;" option provided, the
-value of this variable will be used as the default.
-See <a href="git-for-each-ref.html">git-for-each-ref(1)</a> field names for valid values.</p>
-</dd>
-<dt class="hdlist1">branch.&lt;name&gt;.remote</dt>
-<dd>
-<p>When on branch &lt;name&gt;, it tells <em>git fetch</em> and <em>git push</em>
-which remote to fetch from or push to.  The remote to push to
-may be overridden with <code>remote.pushDefault</code> (for all branches).
-The remote to push to, for the current branch, may be further
-overridden by <code>branch.&lt;name&gt;.pushRemote</code>.  If no remote is
-configured, or if you are not on any branch and there is more than
-one remote defined in the repository, it defaults to <code>origin</code> for
-fetching and <code>remote.pushDefault</code> for pushing.
-Additionally, <code>.</code> (a period) is the current local repository
-(a dot-repository), see <code>branch.&lt;name&gt;.merge</code>'s final note below.</p>
-</dd>
-<dt class="hdlist1">branch.&lt;name&gt;.pushRemote</dt>
-<dd>
-<p>When on branch &lt;name&gt;, it overrides <code>branch.&lt;name&gt;.remote</code> for
-pushing.  It also overrides <code>remote.pushDefault</code> for pushing
-from branch &lt;name&gt;.  When you pull from one place (e.g. your
-upstream) and push to another place (e.g. your own publishing
-repository), you would want to set <code>remote.pushDefault</code> to
-specify the remote to push to for all branches, and use this
-option to override it for a specific branch.</p>
-</dd>
-<dt class="hdlist1">branch.&lt;name&gt;.merge</dt>
-<dd>
-<p>Defines, together with branch.&lt;name&gt;.remote, the upstream branch
-for the given branch. It tells <em>git fetch</em>/<em>git pull</em>/<em>git rebase</em> which
-branch to merge and can also affect <em>git push</em> (see push.default).
-When in branch &lt;name&gt;, it tells <em>git fetch</em> the default
-refspec to be marked for merging in FETCH_HEAD. The value is
-handled like the remote part of a refspec, and must match a
-ref which is fetched from the remote given by
-"branch.&lt;name&gt;.remote".
-The merge information is used by <em>git pull</em> (which first calls
-<em>git fetch</em>) to lookup the default branch for merging. Without
-this option, <em>git pull</em> defaults to merge the first refspec fetched.
-Specify multiple values to get an octopus merge.
-If you wish to setup <em>git pull</em> so that it merges into &lt;name&gt; from
-another branch in the local repository, you can point
-branch.&lt;name&gt;.merge to the desired branch, and use the relative path
-setting <code>.</code> (a period) for branch.&lt;name&gt;.remote.</p>
-</dd>
-<dt class="hdlist1">branch.&lt;name&gt;.mergeOptions</dt>
-<dd>
-<p>Sets default options for merging into branch &lt;name&gt;. The syntax and
-supported options are the same as those of <a href="git-merge.html">git-merge(1)</a>, but
-option values containing whitespace characters are currently not
-supported.</p>
-</dd>
-<dt class="hdlist1">branch.&lt;name&gt;.rebase</dt>
-<dd>
-<p>When true, rebase the branch &lt;name&gt; on top of the fetched branch,
-instead of merging the default branch from the default remote when
-"git pull" is run. See "pull.rebase" for doing this in a non
-branch-specific manner.</p>
-<div class="paragraph">
-<p>When <code>merges</code> (or just <em>m</em>), pass the <code>--rebase-merges</code> option to <em>git rebase</em>
-so that the local merge commits are included in the rebase (see
-<a href="git-rebase.html">git-rebase(1)</a> for details).</p>
-</div>
-<div class="paragraph">
-<p>When the value is <code>interactive</code> (or just <em>i</em>), the rebase is run in interactive
-mode.</p>
-</div>
-<div class="paragraph">
-<p><strong>NOTE</strong>: this is a possibly dangerous operation; do <strong>not</strong> use
-it unless you understand the implications (see <a href="git-rebase.html">git-rebase(1)</a>
-for details).</p>
-</div>
-</dd>
-<dt class="hdlist1">branch.&lt;name&gt;.description</dt>
-<dd>
-<p>Branch description, can be edited with
-<code>git branch --edit-description</code>. Branch description is
-automatically added to the format-patch cover letter or
-request-pull summary.</p>
-</dd>
-</dl>
 </div>
 </div>
 </div>
@@ -1126,7 +988,7 @@ a branch?&#8221;</a> in the Git User&#8217;s Manual.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-11-25 12:16:31 UTC
+Last updated 2022-08-30 21:40:02 UTC
 </div>
 </div>
 </body>
