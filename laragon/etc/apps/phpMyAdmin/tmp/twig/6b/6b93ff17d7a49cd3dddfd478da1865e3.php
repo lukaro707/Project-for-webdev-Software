@@ -781,6 +781,6 @@ yield _gettext("Query results operations");
 
     public function getSourceContext()
     {
-        return new Source("", "display/results/table.twig", "C:\\Project-for-webdev-Software\\laragon\\etc\\apps\\phpMyAdmin\\templates\\display\\results\\table.twig");
+        return new Source("", "display/results/table.twig", "C:\\Users\\chine\\OneDrive\\Documents\\Project-for-webdev-Software\\laragon\\etc\\apps\\phpMyAdmin\\templates\\display\\results\\table.twig");
     }
 }

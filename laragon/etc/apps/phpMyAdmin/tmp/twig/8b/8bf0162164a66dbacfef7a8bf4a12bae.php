@@ -90,6 +90,6 @@ yield _gettext("With selected:");
 
     public function getSourceContext()
     {
-        return new Source("", "select_all.twig", "C:\\Project-for-webdev-Software\\laragon\\etc\\apps\\phpMyAdmin\\templates\\select_all.twig");
+        return new Source("", "select_all.twig", "C:\\Users\\chine\\OneDrive\\Documents\\Project-for-webdev-Software\\laragon\\etc\\apps\\phpMyAdmin\\templates\\select_all.twig");
     }
 }

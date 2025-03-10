@@ -424,6 +424,6 @@ yield _gettext("Close");
 
     public function getSourceContext()
     {
-        return new Source("", "columns_definitions/column_definitions_form.twig", "C:\\Project-for-webdev-Software\\laragon\\etc\\apps\\phpMyAdmin\\templates\\columns_definitions\\column_definitions_form.twig");
+        return new Source("", "columns_definitions/column_definitions_form.twig", "C:\\Users\\chine\\OneDrive\\Documents\\Project-for-webdev-Software\\laragon\\etc\\apps\\phpMyAdmin\\templates\\columns_definitions\\column_definitions_form.twig");
     }
 }

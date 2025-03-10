@@ -161,6 +161,6 @@ yield _gettext("Pick from Central Columns");
 
     public function getSourceContext()
     {
-        return new Source("", "columns_definitions/column_name.twig", "C:\\Project-for-webdev-Software\\laragon\\etc\\apps\\phpMyAdmin\\templates\\columns_definitions\\column_name.twig");
+        return new Source("", "columns_definitions/column_name.twig", "C:\\Users\\chine\\OneDrive\\Documents\\Project-for-webdev-Software\\laragon\\etc\\apps\\phpMyAdmin\\templates\\columns_definitions\\column_name.twig");
     }
 }

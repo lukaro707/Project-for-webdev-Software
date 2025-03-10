@@ -523,6 +523,6 @@ yield _gettext("Preview SQL");
 
     public function getSourceContext()
     {
-        return new Source("", "table/index_form.twig", "C:\\Project-for-webdev-Software\\laragon\\etc\\apps\\phpMyAdmin\\templates\\table\\index_form.twig");
+        return new Source("", "table/index_form.twig", "C:\\Users\\chine\\OneDrive\\Documents\\Project-for-webdev-Software\\laragon\\etc\\apps\\phpMyAdmin\\templates\\table\\index_form.twig");
     }
 }

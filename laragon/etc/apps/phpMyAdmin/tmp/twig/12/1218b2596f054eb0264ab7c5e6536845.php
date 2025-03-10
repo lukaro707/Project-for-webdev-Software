@@ -96,6 +96,6 @@ yield _gettext("Close");
 
     public function getSourceContext()
     {
-        return new Source("", "modals/preview_sql_confirmation.twig", "C:\\Project-for-webdev-Software\\laragon\\etc\\apps\\phpMyAdmin\\templates\\modals\\preview_sql_confirmation.twig");
+        return new Source("", "modals/preview_sql_confirmation.twig", "C:\\Users\\chine\\OneDrive\\Documents\\Project-for-webdev-Software\\laragon\\etc\\apps\\phpMyAdmin\\templates\\modals\\preview_sql_confirmation.twig");
     }
 }

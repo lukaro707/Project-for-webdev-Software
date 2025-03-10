@@ -89,6 +89,6 @@ yield _gettext("Continue");
 
     public function getSourceContext()
     {
-        return new Source("", "database/structure/bulk_action_modal.twig", "C:\\Project-for-webdev-Software\\laragon\\etc\\apps\\phpMyAdmin\\templates\\database\\structure\\bulk_action_modal.twig");
+        return new Source("", "database/structure/bulk_action_modal.twig", "C:\\Users\\chine\\OneDrive\\Documents\\Project-for-webdev-Software\\laragon\\etc\\apps\\phpMyAdmin\\templates\\database\\structure\\bulk_action_modal.twig");
     }
 }

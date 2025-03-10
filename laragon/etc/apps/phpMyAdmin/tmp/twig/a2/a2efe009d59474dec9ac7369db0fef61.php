@@ -109,6 +109,6 @@ yield _gettext("Query results operations");
 
     public function getSourceContext()
     {
-        return new Source("", "sql/no_results_returned.twig", "C:\\Project-for-webdev-Software\\laragon\\etc\\apps\\phpMyAdmin\\templates\\sql\\no_results_returned.twig");
+        return new Source("", "sql/no_results_returned.twig", "C:\\Users\\chine\\OneDrive\\Documents\\Project-for-webdev-Software\\laragon\\etc\\apps\\phpMyAdmin\\templates\\sql\\no_results_returned.twig");
     }
 }

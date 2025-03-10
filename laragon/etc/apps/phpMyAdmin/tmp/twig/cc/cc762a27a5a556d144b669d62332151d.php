@@ -1522,6 +1522,6 @@ yield _gettext("Partitions");
 
     public function getSourceContext()
     {
-        return new Source("", "table/structure/display_structure.twig", "C:\\Project-for-webdev-Software\\laragon\\etc\\apps\\phpMyAdmin\\templates\\table\\structure\\display_structure.twig");
+        return new Source("", "table/structure/display_structure.twig", "C:\\Users\\chine\\OneDrive\\Documents\\Project-for-webdev-Software\\laragon\\etc\\apps\\phpMyAdmin\\templates\\table\\structure\\display_structure.twig");
     }
 }

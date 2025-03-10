@@ -126,6 +126,6 @@ yield _gettext("Go back");
 
     public function getSourceContext()
     {
-        return new Source("", "modals/index_dialog_modal.twig", "C:\\Project-for-webdev-Software\\laragon\\etc\\apps\\phpMyAdmin\\templates\\modals\\index_dialog_modal.twig");
+        return new Source("", "modals/index_dialog_modal.twig", "C:\\Users\\chine\\OneDrive\\Documents\\Project-for-webdev-Software\\laragon\\etc\\apps\\phpMyAdmin\\templates\\modals\\index_dialog_modal.twig");
     }
 }

@@ -495,6 +495,6 @@ yield _gettext("Close");
 
     public function getSourceContext()
     {
-        return new Source("", "sql/query.twig", "C:\\Project-for-webdev-Software\\laragon\\etc\\apps\\phpMyAdmin\\templates\\sql\\query.twig");
+        return new Source("", "sql/query.twig", "C:\\Users\\chine\\OneDrive\\Documents\\Project-for-webdev-Software\\laragon\\etc\\apps\\phpMyAdmin\\templates\\sql\\query.twig");
     }
 }
