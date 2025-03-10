@@ -254,3 +254,92 @@
 ::1 - - [02/Mar/2025:21:13:22 +0000] "GET /databaseConnection.php HTTP/1.1" 200 11
 ::1 - - [02/Mar/2025:21:15:35 +0000] "GET /databaseConnection.php HTTP/1.1" 200 177
 ::1 - - [02/Mar/2025:21:16:02 +0000] "GET /databaseConnection.php HTTP/1.1" 200 23
+::1 - - [06/Mar/2025:13:48:16 +0000] "GET / HTTP/1.1" 200 691
+::1 - - [06/Mar/2025:13:48:17 +0000] "GET /favicon.ico HTTP/1.1" 404 196
+::1 - - [06/Mar/2025:13:49:16 +0000] "-" 408 -
+::1 - - [09/Mar/2025:22:48:02 +0000] "GET /phpmyadmin/ HTTP/1.1" 200 4515
+::1 - - [09/Mar/2025:22:48:09 +0000] "GET /phpmyadmin/themes/pmahomme/jquery/jquery-ui.css HTTP/1.1" 200 37878
+127.0.0.1 - - [09/Mar/2025:22:48:09 +0000] "GET /phpmyadmin/js/vendor/codemirror/addon/hint/show-hint.css?v=5.2.2 HTTP/1.1" 200 686
+::1 - - [09/Mar/2025:22:48:09 +0000] "GET /phpmyadmin/js/vendor/codemirror/lib/codemirror.css?v=5.2.2 HTTP/1.1" 200 9064
+::1 - - [09/Mar/2025:22:48:09 +0000] "GET /phpmyadmin/themes/pmahomme/css/theme.css?v=5.2.2 HTTP/1.1" 200 401478
+::1 - - [09/Mar/2025:22:48:09 +0000] "GET /phpmyadmin/js/vendor/codemirror/addon/lint/lint.css?v=5.2.2 HTTP/1.1" 200 3114
+127.0.0.1 - - [09/Mar/2025:22:48:09 +0000] "GET /phpmyadmin/js/vendor/sprintf.js?v=5.2.2 HTTP/1.1" 200 7572
+::1 - - [09/Mar/2025:22:48:09 +0000] "GET /phpmyadmin/js/dist/keyhandler.js?v=5.2.2 HTTP/1.1" 200 2150
+::1 - - [09/Mar/2025:22:48:09 +0000] "GET /phpmyadmin/js/dist/ajax.js?v=5.2.2 HTTP/1.1" 200 30894
+::1 - - [09/Mar/2025:22:48:09 +0000] "GET /phpmyadmin/js/vendor/jquery/jquery-migrate.min.js?v=5.2.2 HTTP/1.1" 200 13994
+::1 - - [09/Mar/2025:22:48:09 +0000] "GET /phpmyadmin/js/dist/name-conflict-fixes.js?v=5.2.2 HTTP/1.1" 200 43
+::1 - - [09/Mar/2025:22:48:09 +0000] "GET /phpmyadmin/js/vendor/js.cookie.js?v=5.2.2 HTTP/1.1" 200 4046
+::1 - - [09/Mar/2025:22:48:09 +0000] "GET /phpmyadmin/js/vendor/jquery/jquery.min.js?v=5.2.2 HTTP/1.1" 200 87535
+::1 - - [09/Mar/2025:22:48:09 +0000] "GET /phpmyadmin/js/vendor/jquery/jquery.validate.min.js?v=5.2.2 HTTP/1.1" 200 25311
+127.0.0.1 - - [09/Mar/2025:22:48:09 +0000] "GET /phpmyadmin/js/vendor/bootstrap/bootstrap.bundle.min.js?v=5.2.2 HTTP/1.1" 200 80727
+::1 - - [09/Mar/2025:22:48:09 +0000] "GET /phpmyadmin/js/vendor/jquery/jquery-ui-timepicker-addon.js?v=5.2.2 HTTP/1.1" 200 80766
+::1 - - [09/Mar/2025:22:48:09 +0000] "GET /phpmyadmin/js/vendor/jquery/jquery.debounce-1.0.6.js?v=5.2.2 HTTP/1.1" 200 1689
+::1 - - [09/Mar/2025:22:48:09 +0000] "GET /phpmyadmin/js/dist/menu_resizer.js?v=5.2.2 HTTP/1.1" 200 5919
+::1 - - [09/Mar/2025:22:48:09 +0000] "GET /phpmyadmin/js/dist/cross_framing_protection.js?v=5.2.2 HTTP/1.1" 200 417
+::1 - - [09/Mar/2025:22:48:09 +0000] "GET /phpmyadmin/js/dist/config.js?v=5.2.2 HTTP/1.1" 200 24893
+::1 - - [09/Mar/2025:22:48:09 +0000] "GET /phpmyadmin/js/vendor/jquery/jquery-ui.min.js?v=5.2.2 HTTP/1.1" 200 254968
+::1 - - [09/Mar/2025:22:48:09 +0000] "GET /phpmyadmin/js/dist/navigation.js?v=5.2.2 HTTP/1.1" 200 53310
+::1 - - [09/Mar/2025:22:48:09 +0000] "GET /phpmyadmin/js/dist/functions.js?v=5.2.2 HTTP/1.1" 200 154199
+::1 - - [09/Mar/2025:22:48:09 +0000] "GET /phpmyadmin/js/dist/doclinks.js?v=5.2.2 HTTP/1.1" 200 18640
+::1 - - [09/Mar/2025:22:48:09 +0000] "GET /phpmyadmin/js/dist/indexes.js?v=5.2.2 HTTP/1.1" 200 27928
+::1 - - [09/Mar/2025:22:48:09 +0000] "GET /phpmyadmin/js/dist/common.js?v=5.2.2 HTTP/1.1" 200 4686
+::1 - - [09/Mar/2025:22:48:09 +0000] "GET /phpmyadmin/js/dist/page_settings.js?v=5.2.2 HTTP/1.1" 200 1881
+::1 - - [09/Mar/2025:22:48:09 +0000] "GET /phpmyadmin/js/vendor/codemirror/mode/sql/sql.js?v=5.2.2 HTTP/1.1" 200 60092
+::1 - - [09/Mar/2025:22:48:09 +0000] "GET /phpmyadmin/js/vendor/codemirror/addon/runmode/runmode.js?v=5.2.2 HTTP/1.1" 200 2853
+::1 - - [09/Mar/2025:22:48:09 +0000] "GET /phpmyadmin/js/vendor/codemirror/addon/hint/show-hint.js?v=5.2.2 HTTP/1.1" 200 20315
+::1 - - [09/Mar/2025:22:48:09 +0000] "GET /phpmyadmin/js/vendor/codemirror/addon/hint/sql-hint.js?v=5.2.2 HTTP/1.1" 200 9864
+::1 - - [09/Mar/2025:22:48:09 +0000] "GET /phpmyadmin/js/dist/codemirror/addon/lint/sql-lint.js?v=5.2.2 HTTP/1.1" 200 1001
+::1 - - [09/Mar/2025:22:48:09 +0000] "GET /phpmyadmin/js/vendor/codemirror/addon/lint/lint.js?v=5.2.2 HTTP/1.1" 200 10278
+::1 - - [09/Mar/2025:22:48:09 +0000] "GET /phpmyadmin/js/vendor/tracekit.js?v=5.2.2 HTTP/1.1" 200 48455
+::1 - - [09/Mar/2025:22:48:09 +0000] "GET /phpmyadmin/js/dist/drag_drop_import.js?v=5.2.2 HTTP/1.1" 200 12779
+::1 - - [09/Mar/2025:22:48:09 +0000] "GET /phpmyadmin/js/dist/error_report.js?v=5.2.2 HTTP/1.1" 200 9548
+::1 - - [09/Mar/2025:22:48:09 +0000] "GET /phpmyadmin/js/dist/shortcuts_handler.js?v=5.2.2 HTTP/1.1" 200 3413
+::1 - - [09/Mar/2025:22:48:09 +0000] "GET /phpmyadmin/themes/pmahomme/img/logo_right.png HTTP/1.1" 200 4306
+::1 - - [09/Mar/2025:22:48:09 +0000] "GET /phpmyadmin/themes/dot.gif HTTP/1.1" 200 43
+::1 - - [09/Mar/2025:22:48:09 +0000] "GET /phpmyadmin/js/dist/console.js?v=5.2.2 HTTP/1.1" 200 51077
+127.0.0.1 - - [09/Mar/2025:22:48:09 +0000] "GET /phpmyadmin/js/messages.php?l=en&v=5.2.2&lang=en HTTP/1.1" 200 7946
+::1 - - [09/Mar/2025:22:48:09 +0000] "GET /phpmyadmin/js/vendor/codemirror/lib/codemirror.js?v=5.2.2 HTTP/1.1" 200 411525
+::1 - - [09/Mar/2025:22:48:10 +0000] "GET /phpmyadmin/themes/pmahomme/img/b_help.png HTTP/1.1" 200 705
+::1 - - [09/Mar/2025:22:48:10 +0000] "GET /phpmyadmin/favicon.ico HTTP/1.1" 200 22486
+::1 - - [09/Mar/2025:22:49:06 +0000] "GET / HTTP/1.1" 200 691
+::1 - - [09/Mar/2025:22:49:07 +0000] "GET /favicon.ico HTTP/1.1" 404 196
+::1 - - [09/Mar/2025:22:50:06 +0000] "-" 408 -
+::1 - - [09/Mar/2025:23:06:05 +0000] "POST /phpmyadmin/index.php?route=/ HTTP/1.1" 200 4623
+::1 - - [09/Mar/2025:23:06:09 +0000] "GET /phpmyadmin/js/messages.php?l=en&v=5.2.2 HTTP/1.1" 200 7946
+::1 - - [09/Mar/2025:23:06:10 +0000] "GET /phpmyadmin/themes/pmahomme/img/s_error.png HTTP/1.1" 200 614
+::1 - - [09/Mar/2025:23:07:05 +0000] "-" 408 -
+::1 - - [09/Mar/2025:23:22:25 +0000] "GET / HTTP/1.1" 200 691
+::1 - - [09/Mar/2025:23:22:33 +0000] "GET /index.php HTTP/1.1" 200 691
+::1 - - [09/Mar/2025:23:22:34 +0000] "GET /tournament.php HTTP/1.1" 200 684
+::1 - - [09/Mar/2025:23:22:44 +0000] "GET /index.php HTTP/1.1" 200 691
+::1 - - [09/Mar/2025:23:22:45 +0000] "GET /tournament.php HTTP/1.1" 200 684
+::1 - - [09/Mar/2025:23:23:44 +0000] "-" 408 -
+::1 - - [09/Mar/2025:23:24:12 +0000] "GET /tournament.php HTTP/1.1" 200 684
+::1 - - [09/Mar/2025:23:25:12 +0000] "-" 408 -
+::1 - - [09/Mar/2025:23:33:43 +0000] "GET /tournament.php HTTP/1.1" 200 781
+::1 - - [09/Mar/2025:23:33:46 +0000] "GET /tournament.php HTTP/1.1" 200 781
+::1 - - [09/Mar/2025:23:33:47 +0000] "GET /tournament.php HTTP/1.1" 200 781
+::1 - - [09/Mar/2025:23:33:49 +0000] "GET /index.php HTTP/1.1" 200 691
+::1 - - [09/Mar/2025:23:33:50 +0000] "GET /tournament.php HTTP/1.1" 200 781
+::1 - - [09/Mar/2025:23:34:43 +0000] "-" 408 -
+::1 - - [09/Mar/2025:23:36:43 +0000] "GET /tournament.php HTTP/1.1" 200 781
+::1 - - [09/Mar/2025:23:36:46 +0000] "GET /tournament.php HTTP/1.1" 200 781
+::1 - - [09/Mar/2025:23:36:47 +0000] "GET /index.php HTTP/1.1" 200 691
+::1 - - [09/Mar/2025:23:36:48 +0000] "GET /tournament.php HTTP/1.1" 200 781
+::1 - - [09/Mar/2025:23:36:55 +0000] "GET /tournament.php HTTP/1.1" 200 1163
+::1 - - [09/Mar/2025:23:37:55 +0000] "-" 408 -
+::1 - - [09/Mar/2025:23:40:24 +0000] "GET /tournament.php HTTP/1.1" 200 2088
+::1 - - [09/Mar/2025:23:41:24 +0000] "-" 408 -
+::1 - - [09/Mar/2025:23:47:07 +0000] "GET /tournament.php HTTP/1.1" 200 2178
+::1 - - [09/Mar/2025:23:48:07 +0000] "-" 408 -
+::1 - - [09/Mar/2025:23:57:35 +0000] "POST /register.php HTTP/1.1" 404 196
+::1 - - [10/Mar/2025:08:56:28 +0000] "GET /index.php HTTP/1.1" 200 691
+::1 - - [10/Mar/2025:08:56:29 +0000] "GET /tournament.php HTTP/1.1" 200 2178
+::1 - - [10/Mar/2025:08:57:28 +0000] "-" 408 -
+::1 - - [10/Mar/2025:08:57:52 +0000] "POST /register.php HTTP/1.1" 404 196
+::1 - - [10/Mar/2025:09:02:51 +0000] "POST /phpmyadmin/index.php?route=/ HTTP/1.1" 200 4620
+::1 - - [10/Mar/2025:09:03:04 +0000] "GET /phpmyadmin/js/messages.php?l=en&v=5.2.2 HTTP/1.1" 200 7946
+::1 - - [10/Mar/2025:09:03:36 +0000] "POST /phpmyadmin/index.php?route=/ HTTP/1.1" 200 4619
+::1 - - [10/Mar/2025:09:05:50 +0000] "GET /phpmyadmin/index.php?route=/ HTTP/1.1" 200 4494
+::1 - - [10/Mar/2025:09:05:58 +0000] "POST /phpmyadmin/index.php?route=/ HTTP/1.1" 200 4622
+::1 - - [10/Mar/2025:09:06:58 +0000] "-" 408 -
