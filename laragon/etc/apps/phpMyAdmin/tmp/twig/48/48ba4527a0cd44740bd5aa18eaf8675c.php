@@ -103,6 +103,6 @@ class __TwigTemplate_07a0bc1ae106e9db23dd914921791050 extends Template
 
     public function getSourceContext()
     {
-        return new Source("", "login/header.twig", "C:\\Users\\chine\\OneDrive\\Documents\\2nd Year Semesteer 2\\Softarc\\Project-for-webdev-Software\\laragon\\etc\\apps\\phpMyAdmin\\templates\\login\\header.twig");
+        return new Source("", "login/header.twig", "C:\\Project-for-webdev-Software\\laragon\\etc\\apps\\phpMyAdmin\\templates\\login\\header.twig");
     }
 }

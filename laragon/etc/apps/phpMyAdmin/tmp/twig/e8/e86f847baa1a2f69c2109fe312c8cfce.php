@@ -1628,6 +1628,6 @@ yield _gettext("Cancel");
 
     public function getSourceContext()
     {
-        return new Source("", "database/designer/main.twig", "C:\\Users\\chine\\OneDrive\\Documents\\Project-for-webdev-Software\\laragon\\etc\\apps\\phpMyAdmin\\templates\\database\\designer\\main.twig");
+        return new Source("", "database/designer/main.twig", "C:\\Project-for-webdev-Software\\laragon\\etc\\apps\\phpMyAdmin\\templates\\database\\designer\\main.twig");
     }
 }
