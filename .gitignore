@@ -1,6 +1,6 @@
 /laragon/laragon.exe
-/laragon/usr
-/laragon/tmp
-/laragon/etc
-/laragon/data
-/laragon/bin
+/laragon/usr/
+/laragon/tmp/
+/laragon/etc/
+/laragon/data/
+/laragon/bin/
