@@ -1,2 +1,20 @@
 <?php
-    $connection = new PDO("mysql:dbname=tournament_database;host=localhost", "root", "", array(PDO::ATTR_ERRMOD => PDO::ERRMOD_EXCEPTION));
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "tournament";   
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    
+  if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+   }
+  else
+   {
+     echo "Successfully Connected to Database<br/><br/>";
+   }
+
+    
+
+    ?>
