@@ -1,86 +1,155 @@
+<?php
+session_start();
+include("templates/header.php");
+include 'databaseConnection.php';
+include 'tournamentClass.php';
+
+$playerID = $_SESSION['userID'] ?? null;
+
+// Fetch all tournaments
+$sql = "SELECT * FROM tournament";
+$result = mysqli_query($conn, $sql);
+
+// Get list of tournaments this player has already joined
+$joinedTournaments = [];
+if ($playerID && $_SESSION['role'] === 'player') {
+    $joinedQuery = "SELECT TournamentID FROM tournament_player WHERE PlayerID = $playerID";
+    $joinedResult = mysqli_query($conn, $joinedQuery);
+    while ($row = mysqli_fetch_assoc($joinedResult)) {
+        $joinedTournaments[] = $row['TournamentID'];
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Tournament Page</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .tournament-list {
+            margin-top: 20px;
+        }
+
+        .tournament-item {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        .tournament-item h2 {
+            margin: 0;
+        }
+
+        .tournament-item p {
+            margin: 5px 0;
+        }
+
+        form {
+            margin-top: 10px;
+        }
+
+        button {
+            padding: 8px 14px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .message {
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .success {
+            color: green;
+            background-color: #e0ffe0;
+        }
+
+        .error {
+            color: red;
+            background-color: #ffe0e0;
+        }
+    </style>
 </head>
 <body>
 
-<?php
-    include("templates/header.php");
+<div class="tournament-list">
+    <h1>Tournament Discovery Page</h1>
+    <h3>List of Tournaments</h3>
 
-    // Sample data for players and matches
-    $players = ["Player 1", "Player 2", "Player 3", "Player 4"];
-    $matches = [
-        ["Player 1", "Player 2"],
-        ["Player 3", "Player 4"],
-        ["Winner of Match 1", "Winner of Match 2"]
-    ];
-?>
+    <!-- Feedback Messages -->
+    <?php if (isset($_GET['joined'])): ?>
+        <div class="message <?php echo $_GET['joined'] === 'success' ? 'success' : 'error'; ?>">
+            <?php
+            if ($_GET['joined'] === 'success') echo "You’ve successfully joined the tournament!";
+            elseif ($_GET['joined'] === 'already') echo "You’ve already joined this tournament.";
+            else echo "Something went wrong. Please try again.";
+            ?>
+        </div>
+    <?php endif; ?>
 
-<div>
-    <h1>Tournament Page</h1>
-    <p>View Tournament Bracket and Report Scores</p>
-</div>
-<br>
-<strong>Start Time:</strong> 2.00 PM <br>
-<strong>Location: </strong> Europe<br><br>
-
-<!-- Registration Form -->
-<form action="register.php" method="post">
-    <label for="playerName">Player Name:</label>
-    <input type="text" id="playerName" name="playerName" required><br><br>
-    <button type="submit">Register for Tournament</button>
-</form>
-<br>
-
-<!-- Player List -->
-<div>
-    <h2>Registered Players</h2>
-    <ul>
-        <?php foreach ($players as $player): ?>
-            <li><?php echo htmlspecialchars($player); ?></li>
-        <?php endforeach; ?>
-    </ul>
-</div>
-<br>
-
-<!-- Simple Tournament Bracket -->
-<div style="height:40vh;width:100%;overflow:scroll;border-style:solid">
-    <h2>Tournament Bracket</h2>
-    <ul>
-        <?php foreach ($matches as $match): ?>
-            <li><?php echo htmlspecialchars($match[0]) . " vs " . htmlspecialchars($match[1]); ?></li>
-        <?php endforeach; ?>
-    </ul>
-</div>
-
-<!-- Match Results Form -->
-<div>
-    <h2>Report Match Results</h2>
-    <form action="report_results.php" method="post">
-        <label for="match">Match:</label>
-        <select id="match" name="match">
-            <?php foreach ($matches as $index => $match): ?>
-                <option value="<?php echo $index; ?>"><?php echo htmlspecialchars($match[0]) . " vs " . htmlspecialchars($match[1]); ?></option>
-            <?php endforeach; ?>
-        </select><br><br>
-        <label for="winner">Winner:</label>
-        <input type="text" id="winner" name="winner" required><br><br>
-        <button type="submit">Submit Result</button>
-    </form>
-</div>
-
-<div>
-    <h2>Tournament Winner</h2>
     <?php
-        if (isset($matches[2][2])) {
-            echo "<p>Congratulations to " . htmlspecialchars($matches[2][2]) . " for winning the tournament!</p>";
-        } else {
-            echo "<p>The tournament is still ongoing.</p>";
-        }
+    if (mysqli_num_rows($result) > 0):
+        while ($row = mysqli_fetch_assoc($result)):
+            $tournament = new Tournament();
+            $tournament->setTournamentID($row['TournamentID']);
+            $tournament->setOrganizerUsername($row['OrganizerUsername']);
+            $tournament->setStartTime($row['StartTime']);
+            $tournament->setAgeRequirements($row['AgeRequirements']);
+            $tournament->setRules($row['Rules']);
+            $tournament->setHasBorderRestriction($row['HasBorderRestriction']);
+            $tournament->setPrizePool($row['PrizePool']);
+            $tournament->setEntryFee($row['EntryFee']);
+            $tournamentID = $tournament->getTournamentID();
+            ?>
+
+            <div class="tournament-item">
+                <h2><?php echo $tournament->getOrganizerUsername(); ?>'s Tournament</h2>
+                <p>Start Time: <?php echo $tournament->getStartTime(); ?></p>
+                <p>Age Requirements: <?php echo $tournament->getAgeRequirements(); ?>+</p>
+                <p>Rules: <?php echo $tournament->getRules(); ?></p>
+                <p>Border Restriction: <?php echo $tournament->getHasBorderRestriction() ? "Yes" : "No"; ?></p>
+                <p>Prize Pool: $<?php echo $tournament->getPrizePool(); ?></p>
+                <p>Entry Fee: $<?php echo $tournament->getEntryFee(); ?></p>
+
+                <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'player'): ?>
+                    <?php if (in_array($tournamentID, $joinedTournaments)): ?>
+                        <button disabled>Already Joined</button>
+                    <?php else: ?>
+                        <form method="POST" action="join_tournament.php">
+                            <input type="hidden" name="tournamentID" value="<?php echo $tournamentID; ?>">
+                            <button type="submit">Join Tournament</button>
+                        </form>
+                    <?php endif; ?>
+                <?php endif; ?>
+            </div>
+
+        <?php endwhile;
+    else:
+        echo "<p>No tournaments found.</p>";
+    endif;
+
+    mysqli_close($conn);
     ?>
 </div>
+
 </body>
 </html>

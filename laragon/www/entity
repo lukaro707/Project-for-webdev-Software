@@ -1,0 +1,30 @@
+<?php
+abstract class SimpleEntity {
+    protected $id;
+    
+    public function __construct($id = null) {
+        $this->id = $id;
+    }
+    
+    public function __call($name, $arguments) {
+        $prefix = substr($name, 0, 3);
+        $property = lcfirst(substr($name, 3));
+        
+        if (property_exists($this, $property)) {
+            if ($prefix === 'get') {
+                return $this->$property;
+            } elseif ($prefix === 'set') {
+                $this->$property = $arguments[0];
+                return $this; // For method chaining
+            }
+        }
+        throw new Exception("Method $name doesn't exist");
+    }
+    
+    public function save($conn) {
+        return $this->id ? $this->update($conn) : $this->create($conn);
+    }
+    
+    abstract protected function create($conn);
+    abstract protected function update($conn);
+}

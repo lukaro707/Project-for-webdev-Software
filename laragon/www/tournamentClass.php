@@ -1,6 +1,5 @@
 <?php
 class Tournament {
-    // Properties
     private $tournamentID;
     private $organizerUsername;
     private $startTime;
@@ -10,7 +9,6 @@ class Tournament {
     private $prizePool;
     private $entryFee;
 
-    // Constructor (optional)
     public function __construct(
         $tournamentID = null,
         $organizerUsername = null,
@@ -31,7 +29,7 @@ class Tournament {
         $this->entryFee = $entryFee;
     }
 
-    // Getters
+
     public function getTournamentID() {
         return $this->tournamentID;
     }
