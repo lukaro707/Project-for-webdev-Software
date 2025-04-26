@@ -4,42 +4,131 @@ include 'databaseConnection.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = mysqli_real_escape_string($conn, $_POST['username']);
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    
-    $sql = "INSERT INTO player (Username, Password, EntryFeePermissions, IsBanned, CreatedAt)
-            VALUES ('$username', '$password', 1, 0, NOW())";
 
-    $_SESSION['userID'] = mysqli_insert_id($conn); 
-    $_SESSION['username'] = $username;
-    $_SESSION['role'] = 'player';
-    header("Location: dashboard.php");
-    exit();
+    $checkUsernameSql = "SELECT * FROM player WHERE Username = '$username'";
+    $checkResult = mysqli_query($conn, $checkUsernameSql);
 
-
-    if (mysqli_query($conn, $sql)) {
-        echo "Player registered successfully.";
+    if (mysqli_num_rows($checkResult) > 0) {
+        $error = "Username already exists. Please choose another.";
     } else {
-        echo "Error: " . mysqli_error($conn);
+        $sql = "INSERT INTO player (Username, Password, EntryFeePermissions, IsBanned, CreatedAt)
+                VALUES ('$username', '$password', 1, 0, NOW())";
+
+        if (mysqli_query($conn, $sql)) {
+            header("Location: login.php?registered=1");
+            exit;
+        } else {
+            $error = "Registration failed. Please try again.";
+        }
     }
 }
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Register as Player</title>
+    <meta charset="UTF-8">
+    <title>Register - CompeteNow</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f7fa;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .register-container {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 26px;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            background: #f9f9f9;
+            transition: border 0.2s;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            font-weight: bold;
+            font-size: 16px;
+            border-radius: 6px;
+            margin-top: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .error {
+            color: red;
+            margin-bottom: 15px;
+        }
+
+        .login-link {
+            margin-top: 15px;
+            display: block;
+            font-size: 14px;
+        }
+
+        .login-link a {
+            text-decoration: none;
+            color: #4CAF50;
+        }
+    </style>
 </head>
 <body>
 
-<h1>Register - Player</h1>
-<form method="POST">
-    <label>Username:</label><br>
-    <input type="text" name="username" required><br><br>
+<div class="register-container">
+    <h1>Create Account</h1>
 
-    <label>Password:</label><br>
-    <input type="password" name="password" required><br><br>
+    <?php if (isset($error)): ?>
+        <div class="error"><?php echo $error; ?></div>
+    <?php endif; ?>
 
-    <button type="submit">Register</button>
-</form>
+    <form method="POST" action="register_player.php">
+        <input type="text" name="username" placeholder="Choose a Username" required>
+
+        <input type="password" name="password" placeholder="Choose a Password" required>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <div class="login-link">
+        Already have an account? <a href="login.php">Login here</a>
+    </div>
+</div>
 
 </body>
 </html>
