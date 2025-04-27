@@ -1,4 +1,5 @@
 <?php
+include("templates/header.php");
 include 'databaseConnection.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -23,37 +24,46 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 ?>
+<?php
+include("templates/header.php");?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register - CompeteNow</title>
     <style>
         body {
+            background-image: url("img/backgrounf.avif");
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f5f7fa;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            background-size: cover;
         }
 
         .register-container {
-            background: #ffffff;
+            margin: 20px;
+            background: rgba(34, 34, 34, 0.7);
             padding: 40px;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             width: 350px;
             text-align: center;
+            color: #ffff;
+            
+            
         }
 
         h1 {
             margin-bottom: 20px;
             font-size: 26px;
-            color: #333;
+            color: #ffff;
         }
 
         input[type="text"],
@@ -110,8 +120,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
 
+<main>
 <div class="register-container">
-    <h1>Create Account</h1>
+    <h1 color="#ffff">Create Account</h1>
 
     <?php if (isset($error)): ?>
         <div class="error"><?php echo $error; ?></div>
@@ -129,6 +140,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         Already have an account? <a href="login.php">Login here</a>
     </div>
 </div>
+</main>
 
+<?php include("templates/footer.php"); ?>
 </body>
 </html>

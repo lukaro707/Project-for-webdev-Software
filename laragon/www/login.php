@@ -1,6 +1,8 @@
 <?php
 session_start();
 include 'databaseConnection.php';
+include('templates/header.php');
+
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = mysqli_real_escape_string($conn, $_POST['username']);
@@ -44,9 +46,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Login - CompeteNow</title>
+
+    
     <style>
         body {
+            color: #ffff;
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -58,8 +65,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
         .login-container {
-            background: #ffffff;
-            padding: 40px;
+            color: #ffff;
+            background: rgba(34, 34, 34, 0.7);
+            padding: 30px;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             width: 350px;
@@ -69,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         h1 {
             margin-bottom: 20px;
             font-size: 26px;
-            color: #333;
+            color: #ffff;
         }
 
         input[type="text"],
@@ -127,6 +135,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </style>
 </head>
 <body>
+    <div class="hero">
+        <div class="textBox">
 
 <div class="login-container">
     <h1>CompeteNow Login</h1>
@@ -154,6 +164,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         New here? <a href="register_player.php">Register as a Player</a>
     </div>
 </div>
-
+    </div>
+    </div>
 </body>
+<div class="footer">
+    <?php include('templates/footer.php'); ?>    </div>
 </html>

@@ -27,73 +27,21 @@ if ($playerID && $_SESSION['role'] === 'player') {
     <meta charset="UTF-8">
     <title>Tournament Page</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="style.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-
-        .tournament-list {
-            margin-top: 20px;
-        }
-
-        .tournament-item {
-            border: 1px solid #ccc;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 8px;
-            background-color: #f9f9f9;
-        }
-
-        .tournament-item h2 {
-            margin: 0;
-        }
-
-        .tournament-item p {
-            margin: 5px 0;
-        }
-
-        form {
-            margin-top: 10px;
-        }
-
-        button {
-            padding: 8px 14px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        button:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-        }
-
-        .message {
-            padding: 10px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-
-        .success {
-            color: green;
-            background-color: #e0ffe0;
-        }
-
-        .error {
-            color: red;
-            background-color: #ffe0e0;
-        }
+        
     </style>
 </head>
 <body>
+    <div class="hero">
+    
 
 <div class="tournament-list">
     <h1>Tournament Discovery Page</h1>
     <h3>List of Tournaments</h3>
+    <p>Here, you can find a list of currently available tournaments.
+        Do you have what it takes to win?
+    </p>
 
     <!-- Feedback Messages -->
     <?php if (isset($_GET['joined'])): ?>
@@ -140,8 +88,8 @@ if ($playerID && $_SESSION['role'] === 'player') {
                         </form>
                     <?php endif; ?>
                 <?php endif; ?>
-            </div>
-
+            
+</div>
         <?php endwhile;
     else:
         echo "<p>No tournaments found.</p>";
@@ -149,7 +97,12 @@ if ($playerID && $_SESSION['role'] === 'player') {
 
     mysqli_close($conn);
     ?>
-</div>
+    </div>
+
+
+
+    
 
 </body>
+<?php include("templates/footer.php"); ?>
 </html>
