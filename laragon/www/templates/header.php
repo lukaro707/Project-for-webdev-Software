@@ -4,7 +4,6 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 ?>
 
-
 <style>
     .navbar {
         display: flex;
@@ -45,6 +44,13 @@ if (session_status() === PHP_SESSION_NONE) {
     .nav-links a:hover, .nav-auth a:hover {
         background-color: #444c56;
     }
+
+    /* Move this outside hover */
+    .active-link {
+        background-color: #4CAF50;
+        padding: 6px 12px;
+        border-radius: 5px;
+    }
 </style>
 
 <div class="navbar">
@@ -52,16 +58,19 @@ if (session_status() === PHP_SESSION_NONE) {
     <div class="navbar-left">
         <h1>CompeteNow</h1>
         <div class="nav-links">
-            <a href="index.php">Home</a>
-            <a href="tournament.php">Tournaments</a>
+            <a href="index.php" class="<?php echo (isset($currentPage) && $currentPage == 'home') ? 'active-link' : ''; ?>">Home</a>
+            <a href="tournament.php" class="<?php echo (isset($currentPage) && $currentPage == 'tournaments') ? 'active-link' : ''; ?>">Tournaments</a>
 
             <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'organizer'): ?>
-                <a href="tournamentCreation.php">Create</a>
+                <a href="tournamentCreation.php" class="<?php echo (isset($currentPage) && $currentPage == 'create') ? 'active-link' : ''; ?>">Create</a>
             <?php endif; ?>
 
             <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin'): ?>
-                <a href="adminPanel.php">Admin</a>
+                <a href="adminPanel.php" class="<?php echo (isset($currentPage) && $currentPage == 'admin') ? 'active-link' : ''; ?>">Admin</a>
             <?php endif; ?>
+
+            <li><a href="leaderboard.php" class="<?= $currentPage === 'leaderboard' ? 'active' : '' ?>">Leaderboard</a></li>
+
         </div>
     </div>
 
@@ -69,11 +78,11 @@ if (session_status() === PHP_SESSION_NONE) {
     <div class="nav-auth">
         <?php if (isset($_SESSION['userID'])): ?>
             <span>👤 <?php echo htmlspecialchars($_SESSION['username']); ?></span>
-            <a href="dashboard.php">Dashboard</a>
+            <a href="dashboard.php" class="<?php echo (isset($currentPage) && $currentPage == 'dashboard') ? 'active-link' : ''; ?>">Dashboard</a>
             <a href="logout.php">Logout</a>
         <?php else: ?>
-            <a href="login.php">Login</a>
-            <a href="register_player.php">Register</a>
+            <a href="login.php" class="<?php echo (isset($currentPage) && $currentPage == 'login') ? 'active-link' : ''; ?>">Login</a>
+            <a href="register_player.php" class="<?php echo (isset($currentPage) && $currentPage == 'register') ? 'active-link' : ''; ?>">Register</a>
         <?php endif; ?>
     </div>
 </div>

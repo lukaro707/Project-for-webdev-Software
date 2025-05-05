@@ -8,11 +8,11 @@ class Admin {
 }
 
 $admin = new Admin();
-$admin->setPassword("adminPass");
+$admin->setPassword("adminPass");//saves the password
 
 $testInput = "adminPass";
 
-if ($admin->verifyPassword($testInput)) {
+if ($admin->verifyPassword($testInput)) { //this checks if an entered password matches the stored one
     echo "Password verification passed.<br>";
 } else {
     echo "Password verification failed.<br>";

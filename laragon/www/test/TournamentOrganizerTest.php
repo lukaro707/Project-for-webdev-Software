@@ -19,4 +19,4 @@ $organizer->createTournament("Summer Cup");
 foreach ($organizer->getCreatedTournaments() as $tournament) {
     echo "Created Tournament: $tournament<br>";
 }
-?>
+?>  

@@ -13,7 +13,10 @@ session_start();
 </head>
 
 
-<?php include('templates/header.php'); ?>
+<?php 
+$currentPage = 'home';
+include('templates/header.php');
+ ?>
 
 
 <div class="hero">

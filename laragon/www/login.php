@@ -1,11 +1,11 @@
+
 <?php
 session_start();
 include 'databaseConnection.php';
 include('templates/header.php');
 
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = mysqli_real_escape_string($conn, $_POST['username']);
+    $username = $_POST['username'];
     $password = $_POST['password'];
     $role = $_POST['role'];
 
@@ -13,34 +13,53 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         case 'player':
             $table = 'player';
             $idField = 'PlayerID';
+            $usernameField = 'Username';
             break;
         case 'admin':
             $table = 'admin';
             $idField = 'AdminID';
+            $usernameField = 'AdminNumber';
             break;
         case 'organizer':
             $table = 'tournamentorganizer';
             $idField = 'OrganizationID';
+            $usernameField = 'Username';
             break;
         default:
             die("Invalid role selected.");
     }
 
-    $sql = "SELECT * FROM $table WHERE Username = '$username'";
-    $result = mysqli_query($conn, $sql);
-    $user = mysqli_fetch_assoc($result);
+    $stmt = $conn->prepare("SELECT * FROM $table WHERE $usernameField = :username");
+    $stmt->execute(['username' => $username]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($user && password_verify($password, $user['Password'])) {
+    if ($user && (
+        ($role === 'admin' && $password === $user['Password']) ||
+        (($role === 'player' || $role === 'organizer') &&
+            (password_verify($password, $user['Password']) || $password === $user['Password']))
+    )) {
         $_SESSION['userID'] = $user[$idField];
-        $_SESSION['username'] = $user['Username'];
+        $_SESSION['username'] = $user[$usernameField];
         $_SESSION['role'] = $role;
-        header("Location: dashboard.php");
+
+        switch ($role) {
+            case 'player':
+                header("Location: dashboard.php");
+                break;
+            case 'organizer':
+                header("Location: dashboard_organizer.php");
+                break;
+            case 'admin':
+                header("Location: dashboard_admin.php");
+                break;
+        }
         exit;
     } else {
         $error = "Invalid login credentials.";
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -160,7 +179,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <button type="submit">Login</button>
     </form>
 
-    <div class="register-link">
         New here? <a href="register_player.php">Register as a Player</a>
     </div>
 </div>

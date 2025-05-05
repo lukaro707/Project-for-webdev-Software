@@ -1,20 +1,14 @@
 <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "tournament";   
+$host = 'localhost';
+$db = 'tournament';
+$user = 'root';
+$pass = '';
 
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    
-  if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-   }
-  else
-   {
-     echo "Successfully Connected to Database<br/><br/>";
-   }
-
-    
-
-    ?>
+try {
+    $conn = new PDO("mysql:host=$host;dbname=$db;charset=utf8mb4", $user, $pass);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Successfully Connected to Database<br/><br/>";
+} catch (PDOException $e) {
+    die("Connection failed: " . $e->getMessage());
+}
+?>

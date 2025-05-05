@@ -1,11 +1,13 @@
 <?php
 session_start();
+include 'databaseConnection.php';
+
 if (!isset($_SESSION['userID']) || $_SESSION['role'] !== 'player') {
     header("Location: login.php");
     exit;
 }
 
-include 'databaseConnection.php';
+$currentPage = 'dashboard';
 
 // 1. Fetch tournaments the player is registered in
 $playerID = $_SESSION['userID'];
@@ -13,9 +15,11 @@ $tournamentSql = "
     SELECT t.TournamentID, t.StartTime, t.OrganizerUsername
     FROM tournament_player tp
     INNER JOIN tournament t ON tp.TournamentID = t.TournamentID
-    WHERE tp.PlayerID = $playerID
+    WHERE tp.PlayerID = :playerID
 ";
-$tournamentResult = mysqli_query($conn, $tournamentSql);
+$tournamentStmt = $conn->prepare($tournamentSql);
+$tournamentStmt->execute([':playerID' => $playerID]);
+$tournamentResult = $tournamentStmt->fetchAll(PDO::FETCH_ASSOC);
 
 // 2. Fetch upcoming matches
 $matchSql = "
@@ -23,10 +27,12 @@ $matchSql = "
     FROM tournament_match tm
     JOIN tournament_player tp ON tm.TournamentID = tp.TournamentID
     JOIN tournament t ON tm.TournamentID = t.TournamentID
-    WHERE tp.PlayerID = $playerID AND tm.IsHeld = 0
+    WHERE tp.PlayerID = :playerID AND tm.IsHeld = 0
     ORDER BY t.StartTime ASC
 ";
-$matchResult = mysqli_query($conn, $matchSql);
+$matchStmt = $conn->prepare($matchSql);
+$matchStmt->execute([':playerID' => $playerID]);
+$matchResult = $matchStmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -41,41 +47,34 @@ $matchResult = mysqli_query($conn, $matchSql);
             padding: 0;
             background-color: #f5f7fa;
         }
-
         .dashboard-container {
             max-width: 1000px;
             margin: auto;
             padding: 30px;
         }
-
         h2 {
             color: #222;
         }
-
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
             margin-top: 30px;
         }
-
         .card {
             background: #fff;
             border-radius: 10px;
             padding: 20px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
-
         .card h3 {
             margin-top: 0;
             color: #333;
         }
-
         ul {
             list-style: none;
             padding-left: 0;
         }
-
         .button {
             display: inline-block;
             background-color: #4CAF50;
@@ -86,28 +85,31 @@ $matchResult = mysqli_query($conn, $matchSql);
             font-weight: bold;
             transition: background-color 0.2s;
         }
-
         .button:hover {
             background-color: #45a049;
         }
-
         .stat {
             font-size: 20px;
             font-weight: bold;
             margin-bottom: 10px;
         }
-
         .empty {
             color: #999;
             font-style: italic;
         }
-
         .tournament-card {
             margin-bottom: 15px;
             padding: 10px;
             border: 1px solid #eee;
             border-radius: 8px;
             background-color: #fdfdfd;
+        }
+        input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
         }
     </style>
 </head>
@@ -123,8 +125,8 @@ $matchResult = mysqli_query($conn, $matchSql);
         <div class="card">
             <h3>Registered Tournaments</h3>
             <ul>
-                <?php if (mysqli_num_rows($tournamentResult) > 0): ?>
-                    <?php while ($row = mysqli_fetch_assoc($tournamentResult)): ?>
+                <?php if (count($tournamentResult) > 0): ?>
+                    <?php foreach ($tournamentResult as $row): ?>
                         <li class="tournament-card">
                             <strong>Tournament #<?php echo htmlspecialchars($row['TournamentID']); ?></strong><br>
                             Organized by: <em><?php echo htmlspecialchars($row['OrganizerUsername']); ?></em><br>
@@ -132,7 +134,7 @@ $matchResult = mysqli_query($conn, $matchSql);
                                 🕒 Starts: <?php echo date('M d, Y @ H:i', strtotime($row['StartTime'])); ?>
                             </span>
                         </li>
-                    <?php endwhile; ?>
+                    <?php endforeach; ?>
                 <?php else: ?>
                     <li class="empty">You're not registered in any tournaments yet.</li>
                 <?php endif; ?>
@@ -141,22 +143,28 @@ $matchResult = mysqli_query($conn, $matchSql);
 
         <!-- Upcoming Matches -->
         <div class="card">
-            <h3>Upcoming Matches</h3>
-            <ul>
-                <?php if (mysqli_num_rows($matchResult) > 0): ?>
-                    <?php while ($match = mysqli_fetch_assoc($matchResult)): ?>
-                        <li class="tournament-card">
-                            Match #<?php echo $match['MatchID']; ?> — Tournament <?php echo $match['TournamentID']; ?><br>
-                            <span style="color: #555;">
-                                🕒 Starts: <?php echo date('M d, Y @ H:i', strtotime($match['StartTime'])); ?>
-                            </span>
-                        </li>
-                    <?php endwhile; ?>
-                <?php else: ?>
-                    <li class="empty">No upcoming matches found.</li>
-                <?php endif; ?>
-            </ul>
-        </div>
+    <h3>Upcoming Matches</h3>
+    <ul>
+        <?php if (!empty($matchResult)): ?>
+            <?php foreach ($matchResult as $match): ?>
+                <li class="tournament-card">
+                    Match #<?php echo htmlspecialchars($match['MatchID']); ?> — Tournament <?php echo htmlspecialchars($match['TournamentID']); ?><br>
+                    <span style="color: #555;">
+                        🕒 Starts: <?php echo date('M d, Y @ H:i', strtotime($match['StartTime'])); ?>
+                    </span>
+
+                    <!-- Report Score Button -->
+                    
+                </li>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <li class="empty">No upcoming matches found.</li>
+        <?php endif; ?>
+    </ul>
+</div>
+
+
+
 
         <!-- Stats -->
         <div class="card">
@@ -172,8 +180,32 @@ $matchResult = mysqli_query($conn, $matchSql);
             <p>Find new competitions and show your skills!</p>
             <a href="tournament.php" class="button">Browse Tournaments</a>
         </div>
+
+        <!-- Change Password -->
+        <div class="card">
+            <h3>Change Password</h3>
+
+            <?php if (isset($_GET['password']) && $_GET['password'] === 'success'): ?>
+                <p style="color: green;">Password changed successfully!</p>
+            <?php elseif (isset($_GET['password']) && $_GET['password'] === 'error'): ?>
+                <p style="color: red;">Failed to change password. Please try again.</p>
+            <?php endif; ?>
+
+            <form action="change_password.php" method="POST">
+                <label for="new_password">New Password:</label><br>
+                <input type="password" name="new_password" id="new_password" required><br><br>
+                
+                <label for="confirm_password">Confirm Password:</label><br>
+                <input type="password" name="confirm_password" id="confirm_password" required><br><br>
+                
+                <button type="submit" class="button">Update Password</button>
+            </form>
+        </div>
+
+        <a href="report_score.php" class="button">Report Score</a>
+
     </div>
 </div>
 
 </body>
-</html>
+</

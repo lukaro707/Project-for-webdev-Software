@@ -9,6 +9,8 @@ class Tournament {
     private $prizePool;
     private $entryFee;
 
+    private $name;  
+
     public function __construct(
         $tournamentID = null,
         $organizerUsername = null,
@@ -29,6 +31,10 @@ class Tournament {
         $this->entryFee = $entryFee;
     }
 
+
+    public function getName() {
+        return $this->name;
+    }
 
     public function getTournamentID() {
         return $this->tournamentID;
@@ -63,6 +69,11 @@ class Tournament {
     }
 
     // Setters
+
+    public function setName($name) {
+        $this->name = $name;
+    }
+    
     public function setTournamentID($tournamentID) {
         $this->tournamentID = $tournamentID;
     }
