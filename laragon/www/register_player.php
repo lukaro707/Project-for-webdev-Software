@@ -1,21 +1,28 @@
 <?php
+session_start();
 include("templates/header.php");
 include 'databaseConnection.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = mysqli_real_escape_string($conn, $_POST['username']);
+    $username = $_POST['username'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-    $checkUsernameSql = "SELECT * FROM player WHERE Username = '$username'";
-    $checkResult = mysqli_query($conn, $checkUsernameSql);
+    // Check if username already exists
+    $checkStmt = $conn->prepare("SELECT * FROM player WHERE Username = :username");
+    $checkStmt->bindParam(':username', $username);
+    $checkStmt->execute();
 
-    if (mysqli_num_rows($checkResult) > 0) {
+    if ($checkStmt->rowCount() > 0) {
         $error = "Username already exists. Please choose another.";
     } else {
+        // Insert new player
         $sql = "INSERT INTO player (Username, Password, EntryFeePermissions, IsBanned, CreatedAt)
-                VALUES ('$username', '$password', 1, 0, NOW())";
+                VALUES (:username, :password, 1, 0, NOW())";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':username', $username);
+        $stmt->bindParam(':password', $password);
 
-        if (mysqli_query($conn, $sql)) {
+        if ($stmt->execute()) {
             header("Location: login.php?registered=1");
             exit;
         } else {
@@ -24,8 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 ?>
-<?php
-include("templates/header.php");?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -49,21 +54,18 @@ include("templates/header.php");?>
 
         .register-container {
             margin: 20px;
-            background: rgba(34, 34, 34, 0.7);
+            background: rgba(34, 34, 34, 0.8);
             padding: 40px;
             border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             width: 350px;
             text-align: center;
-            color: #ffff;
-            
-            
+            color: #fff;
         }
 
         h1 {
             margin-bottom: 20px;
             font-size: 26px;
-            color: #ffff;
         }
 
         input[type="text"],
@@ -74,7 +76,6 @@ include("templates/header.php");?>
             border: 1px solid #ccc;
             border-radius: 6px;
             background: #f9f9f9;
-            transition: border 0.2s;
         }
 
         input[type="text"]:focus,
@@ -94,7 +95,6 @@ include("templates/header.php");?>
             border-radius: 6px;
             margin-top: 15px;
             cursor: pointer;
-            transition: background-color 0.3s;
         }
 
         button:hover {
@@ -121,25 +121,23 @@ include("templates/header.php");?>
 <body>
 
 <main>
-<div class="register-container">
-    <h1 color="#ffff">Create Account</h1>
+    <div class="register-container">
+        <h1>Create Account</h1>
 
-    <?php if (isset($error)): ?>
-        <div class="error"><?php echo $error; ?></div>
-    <?php endif; ?>
+        <?php if (isset($error)): ?>
+            <div class="error"><?php echo $error; ?></div>
+        <?php endif; ?>
 
-    <form method="POST" action="register_player.php">
-        <input type="text" name="username" placeholder="Choose a Username" required>
+        <form method="POST" action="register_player.php">
+            <input type="text" name="username" placeholder="Choose a Username" required>
+            <input type="password" name="password" placeholder="Choose a Password" required>
+            <button type="submit">Register</button>
+        </form>
 
-        <input type="password" name="password" placeholder="Choose a Password" required>
-
-        <button type="submit">Register</button>
-    </form>
-
-    <div class="login-link">
-        Already have an account? <a href="login.php">Login here</a>
+        <div class="login-link">
+            Already have an account? <a href="login.php">Login here</a>
+        </div>
     </div>
-</div>
 </main>
 
 <?php include("templates/footer.php"); ?>
